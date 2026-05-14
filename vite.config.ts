@@ -11,8 +11,8 @@ export default defineConfig({
     dts({
       tsconfigPath: './tsconfig.json',
       outDir: 'dist',
-      rollupTypes: true,
-      include: ['src/lib'],
+      entryRoot: 'src',
+      rollupTypes: false,
       cleanVueFileName: true,
     }),
   ],
@@ -20,8 +20,7 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       entry: {
-        index: path.resolve(__dirname, 'src/lib/index.ts'),
-        fns: path.resolve(__dirname, 'src/lib/fns.ts'),
+        index: path.resolve(__dirname, 'src/index.ts'),
       },
       formats: ['es'],
     },
@@ -29,14 +28,14 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         preserveModules: true,
-        preserveModulesRoot: 'src/lib',
+        preserveModulesRoot: 'src',
         entryFileNames: ({ name }) => `${name}.js`,
       },
     },
   },
   resolve: {
     alias: {
-      '@/*': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });

@@ -4,27 +4,36 @@
   "description": "A text editor built on top of tiptap text editor components.",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:host": "vite --host",
     "build": "tsc -b && vite build",
     "type-check": "tsc --noEmit",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "cs": "changeset"
+    "lint": "eslint ."
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
   },
   "peerDependencies": {
     "react": ">=19",
     "react-dom": ">=19"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.8",
     "@eslint/js": "^9.39.2",
     "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^25.0.6",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^17.0.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.52.0",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"

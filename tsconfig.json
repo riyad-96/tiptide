@@ -13,6 +13,8 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
+    "rootDir": "src",
+
     /* FIX: Redirect output and allow emission */
     "noEmit": true,
     "declaration": true,
@@ -27,7 +29,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     }
