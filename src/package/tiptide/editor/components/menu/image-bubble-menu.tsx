@@ -41,7 +41,7 @@ export function ImageBubbleMenu() {
       pluginKey={'image-bubble-menu'}
       shouldShow={({ editor }) => editor.isActive('image')}
       className={
-        'tiptap-bubble-menu-inner-element bg-background flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg'
+        'tiptide-bubble-menu-inner-element bg-background flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg'
       }
     >
       <Tooltip content="Align Left" side="top">

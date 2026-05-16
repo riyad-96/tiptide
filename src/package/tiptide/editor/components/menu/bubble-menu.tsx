@@ -36,7 +36,7 @@ export function BubbleMenu() {
       editor={editor}
       pluginKey={'default-bubble-menu'}
       className={
-        'tiptide-bubble-menu-inner bg-background flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg'
+        'tiptide-bubble-menu-inner-element bg-background flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg'
       }
       updateDelay={80}
       shouldShow={({ editor, from, to }) => {

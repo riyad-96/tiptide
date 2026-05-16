@@ -1,4 +1,4 @@
-import Image from '@tiptap/extension-image';
+import Image, { type ImageOptions } from '@tiptap/extension-image';
 import { mergeAttributes } from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -7,7 +7,7 @@ declare module '@tiptap/core' {
       /**
        * Set the image alignment
        */
-        setImageAlign: (align: 'left' | 'center' | 'right' | null) => ReturnType;
+      setImageAlign: (align: 'left' | 'center' | 'right' | null) => ReturnType;
       /**
        * Set the image to full width
        */
@@ -24,6 +24,19 @@ declare module '@tiptap/core' {
 
 export const CustomImage = Image.extend({
   name: 'image',
+
+  addOptions() {
+    return {
+      ...this.parent?.(),
+      resize: {
+        enabled: true,
+        directions: ['left', 'right'],
+        minWidth: 50,
+        minHeight: 50,
+        alwaysPreserveAspectRatio: true,
+      },
+    } as ImageOptions;
+  },
 
   addAttributes() {
     return {

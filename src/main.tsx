@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client';
 import { App } from './react.app/app';
 import './index.css';
-import 'tiptide/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
