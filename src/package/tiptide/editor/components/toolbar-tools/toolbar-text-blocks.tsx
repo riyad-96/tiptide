@@ -12,11 +12,7 @@ import {
 } from 'lucide-react';
 
 import { Button } from '../ui/button';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '../ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { cn } from '../../style';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
@@ -110,24 +106,26 @@ export function ToolbarTextBlocks({ modal = false }: { modal?: boolean }) {
         </PopoverTrigger>
       </Tooltip>
 
-      <PopoverContent align="start" className="grid w-fit p-1">
-        {textBlocks.map((b) => (
-          <Button
-            key={b.id}
-            onClick={() => {
-              setOpen(false);
-              b.onClick();
-            }}
-            variant={activeBlock?.id === b.id ? 'secondary' : 'ghost'}
-            size="sm"
-            className={cn('flex justify-start')}
-            aria-label={b.text}
-            type="button"
-          >
-            <span>{<b.icon />}</span>
-            <span>{b.text}</span>
-          </Button>
-        ))}
+      <PopoverContent align="start" className="w-fit p-1">
+        <div>
+          {textBlocks.map((b) => (
+            <Button
+              key={b.id}
+              onClick={() => {
+                setOpen(false);
+                b.onClick();
+              }}
+              variant={activeBlock?.id === b.id ? 'secondary' : 'ghost'}
+              size="sm"
+              className="flex w-full justify-start"
+              aria-label={b.text}
+              type="button"
+            >
+              <span>{<b.icon />}</span>
+              <span>{b.text}</span>
+            </Button>
+          ))}
+        </div>
       </PopoverContent>
     </Popover>
   );
