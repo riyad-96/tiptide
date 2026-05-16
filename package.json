@@ -4,7 +4,8 @@
   "description": "A text editor built on top of tiptap text editor components.",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsc -b && vite build",
