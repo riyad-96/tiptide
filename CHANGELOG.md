@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.4
+
+### Patch Changes
+
+- 5ac6430: fix cn import issue
+
 ## 0.0.3
 
 ### Patch Changes
