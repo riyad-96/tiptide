@@ -25,7 +25,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: (id) => !id.startsWith('.') && !path.isAbsolute(id),
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',

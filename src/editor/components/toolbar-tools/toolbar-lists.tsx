@@ -1,0 +1,106 @@
+import { useState } from 'react';
+import { useEditorState } from '@tiptap/react';
+import {
+  ChevronDownIcon,
+  ListIcon,
+  ListOrderedIcon,
+  ListTodoIcon,
+} from 'lucide-react';
+
+import { Button } from '../ui/button';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '../ui/popover';
+import { cn } from '../../style';
+
+import { useEditorProvider } from '../../hooks/use-editor-provider';
+import { Tooltip } from '../tooltip';
+
+export function ToolbarLists({ modal = false }: { modal?: boolean }) {
+  const [open, setOpen] = useState(false);
+  const { editor } = useEditorProvider();
+
+  const editorState = useEditorState({
+    editor,
+    selector: (ctx) => ({
+      isBulletList: ctx.editor.isActive('bulletList'),
+      isOrderedList: ctx.editor.isActive('orderedList'),
+      isTaskList: ctx.editor.isActive('taskList'),
+    }),
+  });
+
+  const lists = [
+    {
+      id: 1,
+      icon: ListIcon,
+      onClick: () => editor.chain().focus().toggleBulletList().run(),
+      text: 'Bullet List',
+      isActive: editorState.isBulletList,
+    },
+    {
+      id: 2,
+      icon: ListOrderedIcon,
+      onClick: () => editor.chain().focus().toggleOrderedList().run(),
+      text: 'Number List',
+      isActive: editorState.isOrderedList,
+    },
+    {
+      id: 3,
+      icon: ListTodoIcon,
+      onClick: () => editor.chain().focus().toggleTaskList().run(),
+      text: 'Todo List',
+      isActive: editorState.isTaskList,
+    },
+  ];
+
+  const activeList = lists.find((h) => h.isActive);
+
+  return (
+    <Popover open={open} onOpenChange={setOpen} modal={modal}>
+      <Tooltip content="List">
+        <PopoverTrigger asChild>
+          <Button
+            variant={activeList ? 'secondary' : 'ghost'}
+            size="sm"
+            className={cn('flex items-center gap-0.5 pe-1!')}
+            type="button"
+          >
+            <span>
+              {activeList ? (
+                <>
+                  <activeList.icon />
+                </>
+              ) : (
+                <ListIcon />
+              )}
+            </span>
+
+            <ChevronDownIcon className="size-2.5" />
+          </Button>
+        </PopoverTrigger>
+      </Tooltip>
+
+      <PopoverContent align="start" className="grid w-fit p-1">
+        {lists.map((l) => (
+          <Button
+            key={l.id}
+            onClick={() => {
+              l.onClick();
+              setOpen(false);
+            }}
+            variant={activeList?.id === l.id ? 'secondary' : 'ghost'}
+            size="sm"
+            className={cn('flex justify-start')}
+            aria-label={l.text}
+            type="button"
+          >
+            <span>{<l.icon />}</span>
+            <span>{l.text}</span>
+          </Button>
+        ))}
+      </PopoverContent>
+    </Popover>
+  );
+}
