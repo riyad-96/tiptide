@@ -9,7 +9,10 @@ type BubbleMenuProps = {
   className?: string;
 };
 
-const BubbleMenuComponent = memo(function BubbleMenu({ children, className }: BubbleMenuProps) {
+const BubbleMenuComponent = memo(function BubbleMenu({
+  children,
+  className,
+}: BubbleMenuProps) {
   const { editor, isBubbleMenuHidden } = useEditorProvider();
 
   if (isBubbleMenuHidden) return <></>;

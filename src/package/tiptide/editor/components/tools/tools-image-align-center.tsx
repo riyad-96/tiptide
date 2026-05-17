@@ -56,4 +56,3 @@ export const ToolsImageAlignCenter = memo(function ToolsImageAlignCenter({
     </Tooltip>
   );
 });
-

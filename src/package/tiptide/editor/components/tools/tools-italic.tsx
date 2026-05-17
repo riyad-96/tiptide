@@ -50,4 +50,3 @@ export const ToolsItalic = memo(function ToolsItalic({
     </Tooltip>
   );
 });
-

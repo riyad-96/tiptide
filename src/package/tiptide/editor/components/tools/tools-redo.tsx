@@ -49,4 +49,3 @@ export const ToolsRedo = memo(function ToolsRedo({
     </Tooltip>
   );
 });
-

@@ -94,14 +94,13 @@ export default function CustomEditor() {
           <Tools.italic />
           <Tools.link />
         </BubbleMenu>
-        
+
         <ImageBubbleMenu />
       </div>
     </TiptideProvider>
   );
 }
 ```
-
 
 ## Component API
 
@@ -119,38 +118,38 @@ export default function CustomEditor() {
 
 The `Tools` object provides all individual editor tools as compound components. This allows for complete customization of toolbars and menus.
 
-| Property | Description |
-| :--- | :--- |
-| `Tools.undo` / `Tools.redo` | History controls |
-| `Tools.bold` / `Tools.italic` / `Tools.underline` / `Tools.strike` | Text formatting |
-| `Tools.code` / `Tools.codeblock` | Code formatting |
-| `Tools.textBlocks` | Heading and paragraph selector |
-| `Tools.lists` | Bullet, ordered, and task list selector |
-| `Tools.blockquote` | Quote block |
-| `Tools.colorSelector` | Text color and highlight selector |
-| `Tools.link` | Link management |
-| `Tools.image` | Image placeholder insertion |
-| `Tools.imageAlignLeft` / `Tools.imageAlignCenter` / `Tools.imageAlignRight` | Image alignment |
-| `Tools.imageFullWidth` | Image full width toggle |
-| `Tools.imageRemove` | Image removal |
-| `Tools.alignLeft` / `Tools.alignCenter` / `Tools.alignRight` / `Tools.alignJustify` | Text alignment |
-| `Tools.subscript` / `Tools.superscript` | Script controls |
-| `Tools.horizontalRule` | Divider insertion |
-| `Tools.separator` | UI separator |
+| Property                                                                            | Description                             |
+| :---------------------------------------------------------------------------------- | :-------------------------------------- |
+| `Tools.undo` / `Tools.redo`                                                         | History controls                        |
+| `Tools.bold` / `Tools.italic` / `Tools.underline` / `Tools.strike`                  | Text formatting                         |
+| `Tools.code` / `Tools.codeblock`                                                    | Code formatting                         |
+| `Tools.textBlocks`                                                                  | Heading and paragraph selector          |
+| `Tools.lists`                                                                       | Bullet, ordered, and task list selector |
+| `Tools.blockquote`                                                                  | Quote block                             |
+| `Tools.colorSelector`                                                               | Text color and highlight selector       |
+| `Tools.link`                                                                        | Link management                         |
+| `Tools.image`                                                                       | Image placeholder insertion             |
+| `Tools.imageAlignLeft` / `Tools.imageAlignCenter` / `Tools.imageAlignRight`         | Image alignment                         |
+| `Tools.imageFullWidth`                                                              | Image full width toggle                 |
+| `Tools.imageRemove`                                                                 | Image removal                           |
+| `Tools.alignLeft` / `Tools.alignCenter` / `Tools.alignRight` / `Tools.alignJustify` | Text alignment                          |
+| `Tools.subscript` / `Tools.superscript`                                             | Script controls                         |
+| `Tools.horizontalRule`                                                              | Divider insertion                       |
+| `Tools.separator`                                                                   | UI separator                            |
 
 #### Tools Props
 
 All `Tools` components accept the following props:
 
-| Prop | Type | Description |
-| :--- | :--- | :--- |
-| `className` | `string` | Custom CSS classes for the tool button. |
-| `size` | `'sm' \| 'lg' \| 'default' \| 'icon' \| 'icon-sm'` | Size of the tool button. |
-| `hideTooltip` | `boolean` | Hide the tooltip for this specific tool. |
-| `tooltipContent` | `string` | Override the default tooltip text. |
-| `tooltipPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | Position of the tooltip. |
-| `onClick` | `(editor: Editor) => void` | Custom callback triggered after the tool's action. |
-| `children` | `React.ReactNode` | Override the default icon/content of the tool. |
+| Prop              | Type                                               | Description                                        |
+| :---------------- | :------------------------------------------------- | :------------------------------------------------- |
+| `className`       | `string`                                           | Custom CSS classes for the tool button.            |
+| `size`            | `'sm' \| 'lg' \| 'default' \| 'icon' \| 'icon-sm'` | Size of the tool button.                           |
+| `hideTooltip`     | `boolean`                                          | Hide the tooltip for this specific tool.           |
+| `tooltipContent`  | `string`                                           | Override the default tooltip text.                 |
+| `tooltipPosition` | `'top' \| 'bottom' \| 'left' \| 'right'`           | Position of the tooltip.                           |
+| `onClick`         | `(editor: Editor) => void`                         | Custom callback triggered after the tool's action. |
+| `children`        | `React.ReactNode`                                  | Override the default icon/content of the tool.     |
 
 ### `Viewer`
 

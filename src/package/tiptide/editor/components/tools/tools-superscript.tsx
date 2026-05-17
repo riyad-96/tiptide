@@ -49,4 +49,3 @@ export const ToolsSuperscript = memo(function ToolsSuperscript({
     </Tooltip>
   );
 });
-

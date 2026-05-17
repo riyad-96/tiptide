@@ -49,4 +49,3 @@ export const ToolsHorizontalRule = memo(function ToolsHorizontalRule({
     </Tooltip>
   );
 });
-

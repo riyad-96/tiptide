@@ -49,4 +49,3 @@ export const ToolsAlignJustify = memo(function ToolsAlignJustify({
     </Tooltip>
   );
 });
-

@@ -9,7 +9,10 @@ type ImageBubbleMenuProps = {
   className?: string;
 };
 
-const ImageBubbleMenuComponent = memo(function ImageBubbleMenu({ children, className }: ImageBubbleMenuProps) {
+const ImageBubbleMenuComponent = memo(function ImageBubbleMenu({
+  children,
+  className,
+}: ImageBubbleMenuProps) {
   const { editor } = useEditorProvider();
 
   return (

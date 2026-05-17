@@ -4,7 +4,10 @@ import { Tools } from './tools';
 
 type ToolbarProps = { children?: React.ReactNode; className?: string };
 
-const ToolbarComponent = memo(function Toolbar({ children, className }: ToolbarProps) {
+const ToolbarComponent = memo(function Toolbar({
+  children,
+  className,
+}: ToolbarProps) {
   return (
     <div className={cn('tiptide-toolbar', className)}>
       {children || (
