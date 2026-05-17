@@ -1,5 +1,20 @@
 # tiptide
 
+## 0.0.6
+
+### Patch Changes
+
+- 7c7ea5c: image resize styles fixed
+
+## 0.0.5
+
+### Patch Changes
+
+- 5f0baa5: updated README.md
+- e7f7dd3: fixed bubble menu animation
+- 0f75c3d: performance boost & modular tools
+- 84f4b94: Toolbar, BubbleMenu, ImageBubbleMenu is modular now.
+
 ## 0.0.4
 
 ### Patch Changes
