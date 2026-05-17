@@ -1,4 +1,4 @@
-import {  useState , memo } from 'react';
+import { useState, memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { ChevronDownIcon, PaletteIcon } from 'lucide-react';
 
@@ -216,4 +216,3 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
     </Popover>
   );
 });
-

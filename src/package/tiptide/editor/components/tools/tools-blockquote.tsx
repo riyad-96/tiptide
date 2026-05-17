@@ -50,4 +50,3 @@ export const ToolsBlockquote = memo(function ToolsBlockquote({
     </Tooltip>
   );
 });
-

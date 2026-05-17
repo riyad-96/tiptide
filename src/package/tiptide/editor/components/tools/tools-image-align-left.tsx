@@ -56,4 +56,3 @@ export const ToolsImageAlignLeft = memo(function ToolsImageAlignLeft({
     </Tooltip>
   );
 });
-

@@ -41,4 +41,3 @@ export const Tooltip = memo(function Tooltip({
     </ShadcnTooltip>
   );
 });
-

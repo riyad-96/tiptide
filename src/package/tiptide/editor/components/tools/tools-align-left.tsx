@@ -49,4 +49,3 @@ export const ToolsAlignLeft = memo(function ToolsAlignLeft({
     </Tooltip>
   );
 });
-

@@ -39,4 +39,3 @@ export const ToolsImageRemove = memo(function ToolsImageRemove({
     </Tooltip>
   );
 });
-

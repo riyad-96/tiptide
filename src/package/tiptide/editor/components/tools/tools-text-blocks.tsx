@@ -1,4 +1,4 @@
-import {  useState , memo } from 'react';
+import { useState, memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import {
   ChevronDownIcon,
@@ -151,4 +151,3 @@ export const ToolsTextBlocks = memo(function ToolsTextBlocks({
     </Popover>
   );
 });
-

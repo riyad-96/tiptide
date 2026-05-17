@@ -50,4 +50,3 @@ export const ToolsStrike = memo(function ToolsStrike({
     </Tooltip>
   );
 });
-

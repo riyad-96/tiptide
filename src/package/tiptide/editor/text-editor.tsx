@@ -80,7 +80,9 @@ const TiptideTextarea = React.memo(function TiptideTextarea() {
   );
 });
 
-const TiptideEditor = React.memo(function TiptideEditor(props: TextEditorProps) {
+const TiptideEditor = React.memo(function TiptideEditor(
+  props: TextEditorProps,
+) {
   return (
     <TiptideProvider {...props}>
       <Toolbar />

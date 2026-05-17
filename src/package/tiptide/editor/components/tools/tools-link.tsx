@@ -1,4 +1,4 @@
-import {  useRef, useState , memo } from 'react';
+import { useRef, useState, memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import {
   CornerDownLeftIcon,
@@ -167,4 +167,3 @@ export const ToolsLink = memo(function ToolsLink({
     </Popover>
   );
 });
-

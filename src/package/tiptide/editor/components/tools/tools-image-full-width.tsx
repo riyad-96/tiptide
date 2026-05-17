@@ -47,4 +47,3 @@ export const ToolsImageFullWidth = memo(function ToolsImageFullWidth({
     </Tooltip>
   );
 });
-
