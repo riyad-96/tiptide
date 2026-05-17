@@ -1,4 +1,6 @@
 import type { Content, Editor } from '@tiptap/core';
+import type { ComponentType } from 'react';
+import type { CustomPlaceholderProps } from './editor-context';
 
 export type TextEditorProps = {
   hideBubbleMenuOnTouch?: boolean;
@@ -7,4 +9,6 @@ export type TextEditorProps = {
   onMount?: (editor: Editor) => void;
   placeholder?: string | boolean;
   hideTooltip?: boolean;
+  onUpload?: (file: File) => Promise<string> | string;
+  imagePlaceholderBlock?: ComponentType<CustomPlaceholderProps>;
 };

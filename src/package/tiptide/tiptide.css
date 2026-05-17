@@ -384,6 +384,13 @@
     will-change: left, top;
   }
 
+  .tiptide-bubble-menu-inner-element {
+    transition:
+      left 150ms ease-out,
+      top 150ms ease-out;
+    will-change: left, top;
+  }
+
   /* Suggestions */
   span.tiptide-suggestion[data-decoration-content] {
     display: inline-block;

@@ -25,7 +25,7 @@ const BubbleMenuComponent = memo(function BubbleMenu({
         'tiptide-bubble-menu-inner-element bg-background z-100 flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg',
         className,
       )}
-      updateDelay={80}
+      updateDelay={40}
       shouldShow={({ editor, from, to }) => {
         if (!editor.isFocused) return false;
 

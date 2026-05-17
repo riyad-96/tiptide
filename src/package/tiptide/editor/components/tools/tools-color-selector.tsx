@@ -20,7 +20,8 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
   tooltipPosition,
   onClick: propOnClick,
   modal = false,
-}: ToolProps & { modal?: boolean }) {
+  popoverAlign,
+}: ToolProps & { modal?: boolean; popoverAlign?: 'start' | 'center' | 'end' }) {
   const [open, setOpen] = useState(false);
   const { editor } = useEditorProvider();
 
@@ -118,7 +119,10 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
         </PopoverTrigger>
       </Tooltip>
 
-      <PopoverContent align="start" className="w-fit overflow-hidden p-0">
+      <PopoverContent
+        align={popoverAlign ?? 'start'}
+        className="w-fit overflow-hidden p-0"
+      >
         <div className="max-h-62.5 min-w-37.5 space-y-2.5 overflow-y-auto p-1 py-2">
           <div className="grid gap-1">
             <span className="px-2.5 text-xs text-neutral-700 dark:text-neutral-300">

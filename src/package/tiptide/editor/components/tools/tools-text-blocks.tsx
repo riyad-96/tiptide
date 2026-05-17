@@ -28,7 +28,8 @@ export const ToolsTextBlocks = memo(function ToolsTextBlocks({
   tooltipPosition,
   onClick: propOnClick,
   modal = false,
-}: ToolProps & { modal?: boolean }) {
+  popoverAlign,
+}: ToolProps & { modal?: boolean; popoverAlign?: 'start' | 'center' | 'end' }) {
   const [open, setOpen] = useState(false);
   const { editor } = useEditorProvider();
 
@@ -127,7 +128,7 @@ export const ToolsTextBlocks = memo(function ToolsTextBlocks({
         </PopoverTrigger>
       </Tooltip>
 
-      <PopoverContent align="start" className="w-fit p-1">
+      <PopoverContent align={popoverAlign ?? 'start'} className="w-fit p-1">
         <div>
           {textBlocks.map((b) => (
             <Button

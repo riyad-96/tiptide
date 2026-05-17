@@ -20,6 +20,8 @@ function TiptideProvider({
   onChange,
   placeholder,
   hideTooltip = false,
+  onUpload,
+  imagePlaceholderBlock,
   children,
   ...rest
 }: TextEditorProps & { children?: React.ReactNode }) {
@@ -54,8 +56,10 @@ function TiptideProvider({
       editor,
       isBubbleMenuHidden,
       hideTooltip,
+      onUpload,
+      imagePlaceholderBlock,
     };
-  }, [editor, isBubbleMenuHidden, hideTooltip]);
+  }, [editor, isBubbleMenuHidden, hideTooltip, onUpload, imagePlaceholderBlock]);
 
   if (!editor) return null;
 
