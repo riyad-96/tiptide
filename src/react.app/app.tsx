@@ -1,4 +1,6 @@
 import {
+  BubbleMenu,
+  ImageBubbleMenu,
   TiptideContentType,
   // TiptideProvider,
   // TiptideTextarea,
@@ -7,6 +9,10 @@ import {
   // ImageBubbleMenu,
   // Tools,
   TiptideEditor,
+  TiptideProvider,
+  TiptideTextarea,
+  Toolbar,
+  Tools,
 } from 'tiptide';
 import 'tiptide/index.css';
 
@@ -36,12 +42,18 @@ export function App() {
 
   return (
     <>
+      {/* Basic usage */}
       <TiptideEditor
         content={content}
         onChange={(editor) => setContent(editor.getJSON())}
       />
 
-      {/* <TiptideProvider content={content} onChange={debounced} hideTooltip>
+      {/* Advanced usage */}
+      <TiptideProvider
+        content={content}
+        onChange={(editor) => setContent(editor.getJSON())}
+        hideTooltip
+      >
         <Toolbar>
           <Tools.undo />
           <Tools.redo />
@@ -111,7 +123,7 @@ export function App() {
           <Tools.imageFullWidth />
           <Tools.imageRemove />
         </ImageBubbleMenu>
-      </TiptideProvider> */}
+      </TiptideProvider>
     </>
   );
 }

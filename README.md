@@ -33,20 +33,20 @@ pnpm add react react-dom tailwindcss
 Import the pre-bundled CSS in your entry file (e.g., `main.tsx` or `_app.tsx`):
 
 ```tsx
-import 'tiptide/styles';
+import 'tiptide/index.css';
 ```
 
 ### 2. Basic Usage
 
-The `TextEditor` component is an all-in-one wrapper with default toolbars and menus.
+The `TiptideEditor` component is an all-in-one wrapper with default toolbars and menus.
 
 ```tsx
-import { TextEditor } from 'tiptide';
+import { TiptideEditor } from 'tiptide';
 
 export default function MyEditor() {
   return (
     <div className="h-[500px] overflow-hidden rounded-lg border">
-      <TextEditor
+      <TiptideEditor
         content="<p>Hello Tiptide!</p>"
         onChange={(editor) => console.log(editor.getHTML())}
         placeholder="Type '/' for commands..."
@@ -58,21 +58,21 @@ export default function MyEditor() {
 
 ## Advanced Usage (Compound Components)
 
-If you need a custom layout, you can compose the editor manually using the `TextEditorProvider`.
+If you need a custom layout, you can compose the editor manually using the `TiptideProvider`.
 
 ```tsx
 import {
-  TextEditorProvider,
+  TiptideProvider,
   Toolbar,
-  Tool,
-  EditorContent,
+  Tools,
+  TiptideTextarea,
   BubbleMenu,
   ImageBubbleMenu,
 } from 'tiptide';
 
 export default function CustomEditor() {
   return (
-    <TextEditorProvider content="Custom layout">
+    <TiptideProvider content="Custom layout">
       <div className="flex h-full flex-col rounded-xl border">
         {/* Place the toolbar anywhere */}
         <Toolbar>
@@ -85,7 +85,7 @@ export default function CustomEditor() {
         </Toolbar>
 
         <div className="flex-1 overflow-y-auto p-4">
-          <EditorContent />
+          <TiptideTextarea />
         </div>
 
         {/* Floating menus with custom tools */}
@@ -97,7 +97,7 @@ export default function CustomEditor() {
         
         <ImageBubbleMenu />
       </div>
-    </TextEditorProvider>
+    </TiptideProvider>
   );
 }
 ```
@@ -105,7 +105,7 @@ export default function CustomEditor() {
 
 ## Component API
 
-### `TextEditor`
+### `TiptideEditor`
 
 | Prop                    | Type                       | Description                                              |
 | :---------------------- | :------------------------- | :------------------------------------------------------- |
@@ -115,32 +115,32 @@ export default function CustomEditor() {
 | `hideBubbleMenuOnTouch` | `boolean`                  | Hide the bubble menu on touch devices (default: `true`). |
 | `hideTooltip`           | `boolean`                  | Hide tooltips for toolbar items.                         |
 
-### `Tool`
+### `Tools`
 
-The `Tool` component provides all individual editor tools as compound components. This allows for complete customization of toolbars and menus.
+The `Tools` object provides all individual editor tools as compound components. This allows for complete customization of toolbars and menus.
 
 | Property | Description |
 | :--- | :--- |
-| `Tool.undo` / `Tool.redo` | History controls |
-| `Tool.bold` / `Tool.italic` / `Tool.underline` / `Tool.strike` | Text formatting |
-| `Tool.code` / `Tool.codeblock` | Code formatting |
-| `Tool.textBlocks` | Heading and paragraph selector |
-| `Tool.lists` | Bullet, ordered, and task list selector |
-| `Tool.blockquote` | Quote block |
-| `Tool.colorSelector` | Text color and highlight selector |
-| `Tool.link` | Link management |
-| `Tool.image` | Image placeholder insertion |
-| `Tool.imageAlignLeft` / `Tool.imageAlignCenter` / `Tool.imageAlignRight` | Image alignment |
-| `Tool.imageFullWidth` | Image full width toggle |
-| `Tool.imageRemove` | Image removal |
-| `Tool.alignLeft` / `Tool.alignCenter` / `Tool.alignRight` / `Tool.alignJustify` | Text alignment |
-| `Tool.subscript` / `Tool.superscript` | Script controls |
-| `Tool.horizontalRule` | Divider insertion |
-| `Tool.separator` | UI separator |
+| `Tools.undo` / `Tools.redo` | History controls |
+| `Tools.bold` / `Tools.italic` / `Tools.underline` / `Tools.strike` | Text formatting |
+| `Tools.code` / `Tools.codeblock` | Code formatting |
+| `Tools.textBlocks` | Heading and paragraph selector |
+| `Tools.lists` | Bullet, ordered, and task list selector |
+| `Tools.blockquote` | Quote block |
+| `Tools.colorSelector` | Text color and highlight selector |
+| `Tools.link` | Link management |
+| `Tools.image` | Image placeholder insertion |
+| `Tools.imageAlignLeft` / `Tools.imageAlignCenter` / `Tools.imageAlignRight` | Image alignment |
+| `Tools.imageFullWidth` | Image full width toggle |
+| `Tools.imageRemove` | Image removal |
+| `Tools.alignLeft` / `Tools.alignCenter` / `Tools.alignRight` / `Tools.alignJustify` | Text alignment |
+| `Tools.subscript` / `Tools.superscript` | Script controls |
+| `Tools.horizontalRule` | Divider insertion |
+| `Tools.separator` | UI separator |
 
-#### Tool Props
+#### Tools Props
 
-All `Tool` components accept the following props:
+All `Tools` components accept the following props:
 
 | Prop | Type | Description |
 | :--- | :--- | :--- |

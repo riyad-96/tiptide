@@ -149,6 +149,16 @@
     @apply prose-h2:my-6 prose-h3:my-5 prose-h4:my-4 prose-h5:my-3 prose-h6:my-1.5;
     @apply prose-a:no-underline prose-hr:my-10;
 
+    strong,
+    b,
+    em,
+    i,
+    s,
+    strike,
+    del {
+      color: inherit;
+    }
+
     --code-bg-clr: oklch(96.2% 0 0);
     --code-border-clr: oklch(90.2% 0 0);
     --pre-code-clr: oklch(10% 0 0);
