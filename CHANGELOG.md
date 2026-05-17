@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.6
+
+### Patch Changes
+
+- 7c7ea5c: image resize styles fixed
+
 ## 0.0.5
 
 ### Patch Changes
