@@ -11,10 +11,12 @@ import {
   // Tools,
   TiptideEditor,
   TiptideEditorType,
+  TiptideJSONContentType,
   TiptideProvider,
   TiptideTextarea,
   Toolbar,
   Tools,
+  Viewer,
 } from 'tiptide';
 import 'tiptide/index.css';
 
@@ -24,9 +26,9 @@ import { useEffect, useState, useRef } from 'react';
 export function App() {
   const [isMounted, setIsMounted] = useState(false);
 
-  const [content, setContent] = useLocalStorage<TiptideContentType>(
+  const [content, setContent] = useLocalStorage<TiptideJSONContentType>(
     'tiptide-json-content',
-    null,
+    {},
     {
       debounceMs: 400,
       onMount: (value) => {
@@ -52,9 +54,19 @@ export function App() {
   if (!isMounted) return <></>;
 
   return (
-    <>
+    <div className="flex h-screen">
       {/* Basic usage */}
-      <TiptideEditor content={content} onChange={handleUpdate} />
+      <TiptideEditor
+        content={content}
+        onChange={(editor) => setContent(editor.getJSON())}
+        hideTooltip
+      />
+
+      <Tools.separator className="h-full" />
+
+      <div className="pt-12.5">
+        <Viewer content={content} />
+      </div>
 
       {/* Advanced usage */}
       {/* <TiptideProvider content={content} onChange={handleUpdate} hideTooltip>
@@ -128,6 +140,6 @@ export function App() {
           <Tools.imageRemove />
         </ImageBubbleMenu>
       </TiptideProvider> */}
-    </>
+    </div>
   );
 }
