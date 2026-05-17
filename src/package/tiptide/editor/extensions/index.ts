@@ -11,9 +11,11 @@ import DragHandle from '@tiptap/extension-drag-handle';
 
 import { SlashCommand } from './slash-command';
 import { ImagePlaceholder } from './upload-image';
+import { Extension } from '@tiptap/core';
 
 type TiptapExtensionProps = {
   placeholder?: string | boolean;
+  extraExtensions?: Extension[];
 };
 
 export const tiptapExtensions = (props?: TiptapExtensionProps) => {
@@ -68,5 +70,6 @@ export const tiptapExtensions = (props?: TiptapExtensionProps) => {
         return element;
       },
     }),
+    ...(props?.extraExtensions || []),
   ];
 };
