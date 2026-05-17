@@ -1,72 +1,83 @@
-import { ToolbarLink } from './toolbar-tools/toolbar-link';
-import { ToolbarTextBlocks } from './toolbar-tools/toolbar-text-blocks';
-import { ToolbarSeparator } from './toolbar-tools/toolbar-separator';
-import { ToolbarLists } from './toolbar-tools/toolbar-lists';
-import { ToolbarColorSelector } from './toolbar-tools/toolbar-color-selector';
-import { ToolbarImage } from './toolbar-tools/toolbar-image';
-import { ToolbarUndo } from './toolbar-tools/toolbar-undo';
-import { ToolbarRedo } from './toolbar-tools/toolbar-redo';
-import { ToolbarBlockquote } from './toolbar-tools/toolbar-blockquote';
-import { ToolbarCodeblock } from './toolbar-tools/toolbar-codeblock';
-import { ToolbarBold } from './toolbar-tools/toolbar-bold';
-import { ToolbarItalic } from './toolbar-tools/toolbar-italic';
-import { ToolbarUnderline } from './toolbar-tools/toolbar-underline';
-import { ToolbarStrike } from './toolbar-tools/toolbar-strike';
-import { ToolbarCode } from './toolbar-tools/toolbar-code';
-import { ToolbarAlignLeft } from './toolbar-tools/toolbar-align-left';
-import { ToolbarAlignCenter } from './toolbar-tools/toolbar-align-center';
-import { ToolbarAlignRight } from './toolbar-tools/toolbar-align-right';
-import { ToolbarAlignJustify } from './toolbar-tools/toolbar-align-justify';
-import { ToolbarHorizontalRule } from './toolbar-tools/toolbar-horizontal-rule';
-import { ToolbarSuperscript } from './toolbar-tools/toolbar-superscript';
-import { ToolbarSubscript } from './toolbar-tools/toolbar-subscript';
+import React from 'react';
+import { cn } from '../style';
+import { Tools } from './tools';
 
-export function ToolBar() {
+type ToolbarProps = { children?: React.ReactNode; className?: string };
+
+export function Toolbar({ children, className }: ToolbarProps) {
   return (
-    <div className="tiptide-toolbar">
-      <ToolbarUndo />
-      <ToolbarRedo />
+    <div className={cn('tiptide-toolbar', className)}>
+      {children || (
+        <>
+          <Tools.undo />
+          <Tools.redo />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarTextBlocks />
-      <ToolbarLists />
+          <Tools.textBlocks />
+          <Tools.lists />
 
-      <ToolbarBlockquote />
-      <ToolbarCodeblock />
+          <Tools.blockquote />
+          <Tools.codeblock />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarBold />
-      <ToolbarItalic />
-      <ToolbarUnderline />
-      <ToolbarStrike />
-      <ToolbarCode />
+          <Tools.bold />
+          <Tools.italic />
+          <Tools.underline />
+          <Tools.strike />
+          <Tools.code />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarColorSelector />
+          <Tools.colorSelector />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarLink />
+          <Tools.link />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarAlignLeft />
-      <ToolbarAlignCenter />
-      <ToolbarAlignRight />
-      <ToolbarAlignJustify />
-      <ToolbarHorizontalRule />
+          <Tools.alignLeft />
+          <Tools.alignCenter />
+          <Tools.alignRight />
+          <Tools.alignJustify />
+          <Tools.horizontalRule />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarSuperscript />
-      <ToolbarSubscript />
+          <Tools.superscript />
+          <Tools.subscript />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarImage />
+          <Tools.image />
+        </>
+      )}
     </div>
   );
 }
+
+// Attach tools to ToolBar for dot-notation usage
+Toolbar.undo = Tools.undo;
+Toolbar.redo = Tools.redo;
+Toolbar.textBlocks = Tools.textBlocks;
+Toolbar.lists = Tools.lists;
+Toolbar.blockquote = Tools.blockquote;
+Toolbar.codeblock = Tools.codeblock;
+Toolbar.bold = Tools.bold;
+Toolbar.italic = Tools.italic;
+Toolbar.underline = Tools.underline;
+Toolbar.strike = Tools.strike;
+Toolbar.code = Tools.code;
+Toolbar.colorSelector = Tools.colorSelector;
+Toolbar.link = Tools.link;
+Toolbar.alignLeft = Tools.alignLeft;
+Toolbar.alignCenter = Tools.alignCenter;
+Toolbar.alignRight = Tools.alignRight;
+Toolbar.alignJustify = Tools.alignJustify;
+Toolbar.horizontalRule = Tools.horizontalRule;
+Toolbar.superscript = Tools.superscript;
+Toolbar.subscript = Tools.subscript;
+Toolbar.image = Tools.image;
+Toolbar.separator = Tools.separator;

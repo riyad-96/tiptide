@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarAlignRight() {
+export function ToolsAlignRight({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,23 @@ export function ToolbarAlignRight() {
   });
 
   return (
-    <Tooltip content="Align right">
+    <Tooltip
+      content={tooltipContent ?? 'Align right'}
+      hideTooltip={hideTooltip}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleTextAlign('right').run()}
+        onClick={() => {
+          editor.chain().focus().toggleTextAlign('right').run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Align right"
         type="button"
+        className={className}
       >
-        <TextAlignEndIcon />
+        {children ?? <TextAlignEndIcon />}
       </Button>
     </Tooltip>
   );

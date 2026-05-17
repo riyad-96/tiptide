@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarStrike() {
+export function ToolsStrike({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,24 @@ export function ToolbarStrike() {
   });
 
   return (
-    <Tooltip content="Strike" disabled={!editorState.can}>
+    <Tooltip
+      content={tooltipContent ?? 'Strike'}
+      hideTooltip={hideTooltip}
+      disabled={!editorState.can}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleStrike().run()}
+        onClick={() => {
+          editor.chain().focus().toggleStrike().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Toggle strike"
         type="button"
+        className={className}
       >
-        <StrikethroughIcon className="size-4" />
+        {children ?? <StrikethroughIcon className="size-4" />}
       </Button>
     </Tooltip>
   );

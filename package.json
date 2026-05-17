@@ -12,6 +12,7 @@
     "dev": "vite",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
+    "format": "prettier --write .",
     "cs": "changeset"
   },
   "sideEffects": false,
@@ -73,6 +74,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^17.0.0",
+    "kitzo": "^3.1.2",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "react": "^19.2.3",

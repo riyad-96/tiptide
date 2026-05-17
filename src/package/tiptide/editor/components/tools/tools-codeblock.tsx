@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarCodeblock() {
+export function ToolsCodeblock({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,23 @@ export function ToolbarCodeblock() {
   });
 
   return (
-    <Tooltip content="Codeblock">
+    <Tooltip
+      content={tooltipContent ?? 'Codeblock'}
+      hideTooltip={hideTooltip}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        onClick={() => {
+          editor.chain().focus().toggleCodeBlock().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Toggle code block"
         type="button"
+        className={className}
       >
-        <CodeSquareIcon className="size-4" />
+        {children ?? <CodeSquareIcon className="size-4" />}
       </Button>
     </Tooltip>
   );

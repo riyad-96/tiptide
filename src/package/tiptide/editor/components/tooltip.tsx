@@ -11,6 +11,7 @@ type TooltipProps = {
   content: React.ReactNode;
   disabled?: boolean;
   side?: 'top' | 'left' | 'right' | 'bottom';
+  hideTooltip?: boolean;
 };
 
 export function Tooltip({
@@ -18,8 +19,14 @@ export function Tooltip({
   content,
   disabled,
   side = 'bottom',
+  hideTooltip: propHideTooltip,
 }: TooltipProps) {
-  const { hideTooltip } = useEditorProvider();
+  const { hideTooltip: providerHideTooltip } = useEditorProvider();
+
+  const hideTooltip =
+    typeof propHideTooltip === 'boolean'
+      ? propHideTooltip
+      : providerHideTooltip;
 
   return (
     <ShadcnTooltip disableHoverableContent>

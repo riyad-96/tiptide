@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarBold() {
+export function ToolsBold({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,24 @@ export function ToolbarBold() {
   });
 
   return (
-    <Tooltip content="Bold" disabled={!editorState.can}>
+    <Tooltip
+      content={tooltipContent ?? 'Bold'}
+      hideTooltip={hideTooltip}
+      disabled={!editorState.can}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleBold().run()}
+        onClick={() => {
+          editor.chain().focus().toggleBold().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Toggle bold"
         type="button"
+        className={className}
       >
-        <BoldIcon className="size-4" />
+        {children ?? <BoldIcon className="size-4" />}
       </Button>
     </Tooltip>
   );

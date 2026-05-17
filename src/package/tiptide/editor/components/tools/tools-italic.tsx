@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarItalic() {
+export function ToolsItalic({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,24 @@ export function ToolbarItalic() {
   });
 
   return (
-    <Tooltip content="Italic" disabled={!editorState.can}>
+    <Tooltip
+      content={tooltipContent ?? 'Italic'}
+      hideTooltip={hideTooltip}
+      disabled={!editorState.can}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleItalic().run()}
+        onClick={() => {
+          editor.chain().focus().toggleItalic().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Toggle italic"
         type="button"
+        className={className}
       >
-        <ItalicIcon className="size-4" />
+        {children ?? <ItalicIcon className="size-4" />}
       </Button>
     </Tooltip>
   );

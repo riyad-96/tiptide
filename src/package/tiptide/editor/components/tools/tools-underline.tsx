@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarUnderline() {
+export function ToolsUnderline({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,24 @@ export function ToolbarUnderline() {
   });
 
   return (
-    <Tooltip content="Underline" disabled={!editorState.can}>
+    <Tooltip
+      content={tooltipContent ?? 'Underline'}
+      hideTooltip={hideTooltip}
+      disabled={!editorState.can}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleUnderline().run()}
+        onClick={() => {
+          editor.chain().focus().toggleUnderline().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Toggle underline"
         type="button"
+        className={className}
       >
-        <UnderlineIcon className="size-4" />
+        {children ?? <UnderlineIcon className="size-4" />}
       </Button>
     </Tooltip>
   );

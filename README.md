@@ -23,19 +23,21 @@ pnpm add tiptide
 Tiptide requires React 19+ and Tailwind CSS.
 
 ```bash
-pnpm add react react-dom tailwindcss @tailwindcss/typography
+pnpm add react react-dom tailwindcss
 ```
 
 ## Quick Start
 
 ### 1. Import Styles
+
 Import the pre-bundled CSS in your entry file (e.g., `main.tsx` or `_app.tsx`):
 
 ```tsx
-import 'tiptide/dist/tiptide.css';
+import 'tiptide/styles';
 ```
 
 ### 2. Basic Usage
+
 The `TextEditor` component is an all-in-one wrapper with default toolbars and menus.
 
 ```tsx
@@ -43,9 +45,9 @@ import { TextEditor } from 'tiptide';
 
 export default function MyEditor() {
   return (
-    <div className="h-[500px] border rounded-lg overflow-hidden">
-      <TextEditor 
-        content="<p>Hello Tiptide!</p>" 
+    <div className="h-[500px] overflow-hidden rounded-lg border">
+      <TextEditor
+        content="<p>Hello Tiptide!</p>"
         onChange={(editor) => console.log(editor.getHTML())}
         placeholder="Type '/' for commands..."
       />
@@ -59,27 +61,40 @@ export default function MyEditor() {
 If you need a custom layout, you can compose the editor manually using the `TextEditorProvider`.
 
 ```tsx
-import { 
-  TextEditorProvider, 
-  ToolBar, 
-  EditorContent, 
-  BubbleMenu, 
-  ImageBubbleMenu 
+import {
+  TextEditorProvider,
+  Toolbar,
+  Tool,
+  EditorContent,
+  BubbleMenu,
+  ImageBubbleMenu,
 } from 'tiptide';
 
 export default function CustomEditor() {
   return (
     <TextEditorProvider content="Custom layout">
-      <div className="flex flex-col h-full border rounded-xl">
+      <div className="flex h-full flex-col rounded-xl border">
         {/* Place the toolbar anywhere */}
-        <ToolBar /> 
-        
+        <Toolbar>
+          <Tools.undo />
+          <Tools.redo />
+          <Tools.separator />
+          <Tools.bold />
+          <Tools.italic />
+          <Tools.underline />
+        </Toolbar>
+
         <div className="flex-1 overflow-y-auto p-4">
-           <EditorContent />
+          <EditorContent />
         </div>
 
-        {/* Floating menus */}
-        <BubbleMenu />
+        {/* Floating menus with custom tools */}
+        <BubbleMenu>
+          <Tools.bold />
+          <Tools.italic />
+          <Tools.link />
+        </BubbleMenu>
+        
         <ImageBubbleMenu />
       </div>
     </TextEditorProvider>
@@ -87,44 +102,64 @@ export default function CustomEditor() {
 }
 ```
 
-## Tailwind CSS Configuration
-
-Tiptide uses Tailwind CSS for styling. To ensure everything looks perfect, make sure you have the `@tailwindcss/typography` plugin installed and configured in your `tailwind.config.js`:
-
-```javascript
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  // ...
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
-```
-
-*Note: If you are using Tailwind 4, simply import the plugin in your CSS:*
-```css
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-```
 
 ## Component API
 
 ### `TextEditor`
+
+| Prop                    | Type                       | Description                                              |
+| :---------------------- | :------------------------- | :------------------------------------------------------- |
+| `content`               | `string \| JSONContent`    | Initial content for the editor.                          |
+| `onChange`              | `(editor: Editor) => void` | Callback triggered on every update.                      |
+| `placeholder`           | `string`                   | Placeholder text shown when the editor is empty.         |
+| `hideBubbleMenuOnTouch` | `boolean`                  | Hide the bubble menu on touch devices (default: `true`). |
+| `hideTooltip`           | `boolean`                  | Hide tooltips for toolbar items.                         |
+
+### `Tool`
+
+The `Tool` component provides all individual editor tools as compound components. This allows for complete customization of toolbars and menus.
+
+| Property | Description |
+| :--- | :--- |
+| `Tool.undo` / `Tool.redo` | History controls |
+| `Tool.bold` / `Tool.italic` / `Tool.underline` / `Tool.strike` | Text formatting |
+| `Tool.code` / `Tool.codeblock` | Code formatting |
+| `Tool.textBlocks` | Heading and paragraph selector |
+| `Tool.lists` | Bullet, ordered, and task list selector |
+| `Tool.blockquote` | Quote block |
+| `Tool.colorSelector` | Text color and highlight selector |
+| `Tool.link` | Link management |
+| `Tool.image` | Image placeholder insertion |
+| `Tool.imageAlignLeft` / `Tool.imageAlignCenter` / `Tool.imageAlignRight` | Image alignment |
+| `Tool.imageFullWidth` | Image full width toggle |
+| `Tool.imageRemove` | Image removal |
+| `Tool.alignLeft` / `Tool.alignCenter` / `Tool.alignRight` / `Tool.alignJustify` | Text alignment |
+| `Tool.subscript` / `Tool.superscript` | Script controls |
+| `Tool.horizontalRule` | Divider insertion |
+| `Tool.separator` | UI separator |
+
+#### Tool Props
+
+All `Tool` components accept the following props:
+
 | Prop | Type | Description |
 | :--- | :--- | :--- |
-| `content` | `string \| JSONContent` | Initial content for the editor. |
-| `onChange` | `(editor: Editor) => void` | Callback triggered on every update. |
-| `placeholder` | `string` | Placeholder text shown when the editor is empty. |
-| `hideBubbleMenuOnTouch` | `boolean` | Hide the bubble menu on touch devices (default: `true`). |
-| `hideTooltip` | `boolean` | Hide tooltips for toolbar items. |
+| `className` | `string` | Custom CSS classes for the tool button. |
+| `size` | `'sm' \| 'lg' \| 'default' \| 'icon' \| 'icon-sm'` | Size of the tool button. |
+| `hideTooltip` | `boolean` | Hide the tooltip for this specific tool. |
+| `tooltipContent` | `string` | Override the default tooltip text. |
+| `tooltipPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | Position of the tooltip. |
+| `onClick` | `(editor: Editor) => void` | Custom callback triggered after the tool's action. |
+| `children` | `React.ReactNode` | Override the default icon/content of the tool. |
 
 ### `Viewer`
+
 A read-only component to display saved content with consistent styling.
 
 ```tsx
 import { Viewer } from 'tiptide';
 
-<Viewer content={savedJsonContent} />
+<Viewer content={savedJsonContent} />;
 ```
 
 ## License

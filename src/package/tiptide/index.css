@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -143,7 +143,7 @@
 @layer components {
   /* Tiptide Editor Main Styles */
   .tiptide-editor {
-    @apply prose prose-neutral dark:prose-invert max-sm:prose-sm focus:outline-none bg-background h-full overflow-y-auto max-w-none w-full px-10 py-6;
+    @apply prose prose-neutral dark:prose-invert max-sm:prose-sm bg-background h-full w-full max-w-none overflow-y-auto px-10 py-6 focus:outline-none;
     @apply prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-lg;
     @apply prose-h2:font-bold prose-h3:font-semibold prose-h5:font-semibold prose-h6:font-semibold;
     @apply prose-h2:my-6 prose-h3:my-5 prose-h4:my-4 prose-h5:my-3 prose-h6:my-1.5;
@@ -250,9 +250,15 @@
       --resize-handle-bg: oklch(73.155% 0.14431 250.444);
       --image-resize-radius: 10px;
 
-      &[data-align='left'] { justify-content: flex-start; }
-      &[data-align='center'] { justify-content: center; }
-      &[data-align='right'] { justify-content: flex-end; }
+      &[data-align='left'] {
+        justify-content: flex-start;
+      }
+      &[data-align='center'] {
+        justify-content: center;
+      }
+      &[data-align='right'] {
+        justify-content: flex-end;
+      }
     }
 
     [data-resize-wrapper] {
@@ -306,7 +312,9 @@
 
     &.ProseMirror-selectednode [data-resize-wrapper] {
       outline: 2px solid var(--resize-handle-bg);
-      [data-resize-handle] { opacity: 1; }
+      [data-resize-handle] {
+        opacity: 1;
+      }
     }
   }
 
@@ -321,11 +329,11 @@
   }
 
   .tiptide-toolbar {
-    @apply bg-background flex min-w-0 items-center gap-1 overflow-x-auto border-b border-border p-2 sticky top-0 z-10;
+    @apply bg-background border-border sticky top-0 z-10 flex min-w-0 items-center gap-1 overflow-x-auto border-b p-2;
   }
 
   .tiptide-button {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+    @apply focus-visible:ring-ring inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50;
   }
 
   .tiptide-wrapper {
@@ -341,14 +349,28 @@
       pointer-events: none;
     }
 
-    img[data-align='left'] { display: block; margin-inline-start: 0; margin-inline-end: auto; }
-    img[data-align='center'] { display: block; margin-inline-start: auto; margin-inline-end: auto; }
-    img[data-align='right'] { display: block; margin-inline-start: auto; margin-inline-end: 0; }
+    img[data-align='left'] {
+      display: block;
+      margin-inline-start: 0;
+      margin-inline-end: auto;
+    }
+    img[data-align='center'] {
+      display: block;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+    }
+    img[data-align='right'] {
+      display: block;
+      margin-inline-start: auto;
+      margin-inline-end: 0;
+    }
   }
 
   /* Bubble menu transition */
   div:has(.tiptide-bubble-menu-inner) {
-    transition: left 150ms ease-out, top 150ms ease-out;
+    transition:
+      left 150ms ease-out,
+      top 150ms ease-out;
     will-change: left, top;
   }
 
@@ -387,8 +409,13 @@
     padding-block: 0.25rem;
     opacity: 0.6;
 
-    &:hover, &:active { opacity: 1; }
-    &:active { cursor: grabbing; }
+    &:hover,
+    &:active {
+      opacity: 1;
+    }
+    &:active {
+      cursor: grabbing;
+    }
   }
 
   .tiptide-editor:hover .tiptide-drag-handler-container {
@@ -403,8 +430,14 @@
 }
 
 @keyframes tiptide-scale-out {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @media (pointer: fine) {

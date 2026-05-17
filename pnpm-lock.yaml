@@ -126,6 +126,9 @@ importers:
       globals:
         specifier: ^17.0.0
         version: 17.6.0
+      kitzo:
+        specifier: ^3.1.2
+        version: 3.1.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       prettier:
         specifier: ^3.8.3
         version: 3.8.3
@@ -3073,6 +3076,12 @@ packages:
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
+
+  kitzo@3.1.2:
+    resolution: {integrity: sha512-cpRvW5uXqQ/JA9szqrth+3GAGG5xrHbQQjoHz9AvQyhhug/ofORgO1rcLH0FJUZPH3xi1dqA00c7qnFs2nwWGw==}
+    peerDependencies:
+      react: '>=19'
+      react-dom: '>=19'
 
   kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
@@ -7163,6 +7172,11 @@ snapshots:
   keyv@4.5.4:
     dependencies:
       json-buffer: 3.0.1
+
+  kitzo@3.1.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+    dependencies:
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
 
   kleur@3.0.3: {}
 

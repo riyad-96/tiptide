@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarHorizontalRule() {
+export function ToolsHorizontalRule({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,23 @@ export function ToolbarHorizontalRule() {
   });
 
   return (
-    <Tooltip content="Divider">
+    <Tooltip
+      content={tooltipContent ?? 'Divider'}
+      hideTooltip={hideTooltip}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().setHorizontalRule().run()}
+        onClick={() => {
+          editor.chain().focus().setHorizontalRule().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Divider"
         type="button"
+        className={className}
       >
-        <SeparatorHorizontalIcon />
+        {children ?? <SeparatorHorizontalIcon />}
       </Button>
     </Tooltip>
   );

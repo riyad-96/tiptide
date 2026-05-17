@@ -1,33 +1,15 @@
-import { CodeSquareIcon, TextQuoteIcon } from 'lucide-react';
-import { useEditorState } from '@tiptap/react';
 import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react/menus';
-
-import { Toggle } from '../ui/toggle';
-import { ToolbarLink } from '../toolbar-tools/toolbar-link';
-import { ToolbarSeparator } from '../toolbar-tools/toolbar-separator';
-import { ToolbarColorSelector } from '../toolbar-tools/toolbar-color-selector';
-import { ToolbarCode } from '../toolbar-tools/toolbar-code';
-import { ToolbarStrike } from '../toolbar-tools/toolbar-strike';
-import { ToolbarUnderline } from '../toolbar-tools/toolbar-underline';
-import { ToolbarItalic } from '../toolbar-tools/toolbar-italic';
-import { ToolbarBold } from '../toolbar-tools/toolbar-bold';
-import { ToolbarLists } from '../toolbar-tools/toolbar-lists';
-import { ToolbarTextBlocks } from '../toolbar-tools/toolbar-text-blocks';
 import { useEditorProvider } from '../../hooks/use-editor-provider';
+import { cn } from '../../style';
+import { Tools } from '../tools';
 
-export function BubbleMenu() {
+type BubbleMenuProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+export function BubbleMenu({ children, className }: BubbleMenuProps) {
   const { editor, isBubbleMenuHidden } = useEditorProvider();
-
-  const editorState = useEditorState({
-    editor,
-    selector: (ctx) => {
-      return {
-        isCodeBlock: ctx.editor.isActive('codeBlock'),
-        isBlockQuote: ctx.editor.isActive('blockquote'),
-        canBlockQuote: ctx.editor.can().toggleBlockquote(),
-      };
-    },
-  });
 
   if (isBubbleMenuHidden) return <></>;
 
@@ -35,9 +17,10 @@ export function BubbleMenu() {
     <TiptapBubbleMenu
       editor={editor}
       pluginKey={'default-bubble-menu'}
-      className={
-        'tiptide-bubble-menu-inner-element bg-background flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg'
-      }
+      className={cn(
+        'tiptide-bubble-menu-inner-element bg-background z-100 flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg',
+        className,
+      )}
       updateDelay={80}
       shouldShow={({ editor, from, to }) => {
         if (!editor.isFocused) return false;
@@ -54,43 +37,54 @@ export function BubbleMenu() {
         return true;
       }}
     >
-      <ToolbarTextBlocks />
-      <ToolbarLists />
+      {children || (
+        <>
+          <Tools.textBlocks />
+          <Tools.lists />
+          <Tools.blockquote />
+          <Tools.codeblock />
 
-      <Toggle
-        size="sm"
-        pressed={editorState.isBlockQuote}
-        onPressedChange={() => editor.chain().focus().toggleBlockquote().run()}
-        aria-label="Toggle blockquote"
-        disabled={!editorState.canBlockQuote}
-      >
-        <TextQuoteIcon className="size-4" />
-      </Toggle>
+          <Tools.separator />
 
-      <Toggle
-        size="sm"
-        pressed={editorState.isCodeBlock}
-        onPressedChange={() => editor.chain().focus().toggleCodeBlock().run()}
-        aria-label="Toggle code block"
-      >
-        <CodeSquareIcon className="size-4" />
-      </Toggle>
+          <Tools.bold />
+          <Tools.italic />
+          <Tools.underline />
+          <Tools.strike />
+          <Tools.code />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarBold />
-      <ToolbarItalic />
-      <ToolbarUnderline />
-      <ToolbarStrike />
-      <ToolbarCode />
+          <Tools.colorSelector />
 
-      <ToolbarSeparator />
+          <Tools.separator />
 
-      <ToolbarColorSelector />
-
-      <ToolbarSeparator />
-
-      <ToolbarLink />
+          <Tools.link />
+        </>
+      )}
     </TiptapBubbleMenu>
   );
 }
+
+// Attach tools to ToolBar for dot-notation usage
+BubbleMenu.undo = Tools.undo;
+BubbleMenu.redo = Tools.redo;
+BubbleMenu.textBlocks = Tools.textBlocks;
+BubbleMenu.lists = Tools.lists;
+BubbleMenu.blockquote = Tools.blockquote;
+BubbleMenu.codeblock = Tools.codeblock;
+BubbleMenu.bold = Tools.bold;
+BubbleMenu.italic = Tools.italic;
+BubbleMenu.underline = Tools.underline;
+BubbleMenu.strike = Tools.strike;
+BubbleMenu.code = Tools.code;
+BubbleMenu.colorSelector = Tools.colorSelector;
+BubbleMenu.link = Tools.link;
+BubbleMenu.alignLeft = Tools.alignLeft;
+BubbleMenu.alignCenter = Tools.alignCenter;
+BubbleMenu.alignRight = Tools.alignRight;
+BubbleMenu.alignJustify = Tools.alignJustify;
+BubbleMenu.horizontalRule = Tools.horizontalRule;
+BubbleMenu.superscript = Tools.superscript;
+BubbleMenu.subscript = Tools.subscript;
+BubbleMenu.image = Tools.image;
+BubbleMenu.separator = Tools.separator;

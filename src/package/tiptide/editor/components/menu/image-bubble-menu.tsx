@@ -1,107 +1,46 @@
-import { useEditorState } from '@tiptap/react';
 import { BubbleMenu } from '@tiptap/react/menus';
-
-import { Button } from '../ui/button';
-import {
-  AlignCenterIcon,
-  AlignLeftIcon,
-  AlignRightIcon,
-  MaximizeIcon,
-  XIcon,
-} from 'lucide-react';
-
 import { useEditorProvider } from '../../hooks/use-editor-provider';
-import { Tooltip } from '../tooltip';
+import { cn } from '../../style';
+import { Tools } from '../tools';
 
-export function ImageBubbleMenu() {
+type ImageBubbleMenuProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+export function ImageBubbleMenu({ children, className }: ImageBubbleMenuProps) {
   const { editor } = useEditorProvider();
-
-  const editorState = useEditorState({
-    editor,
-    selector: (ctx) => ({
-      isAlignLeft: ctx.editor.isActive('image', { align: 'left' }),
-      isAlignCenter: ctx.editor.isActive('image', { align: 'center' }),
-      isAlignRight: ctx.editor.isActive('image', { align: 'right' }),
-      isFullWidth: ctx.editor.isActive('image', { width: '100%' }),
-    }),
-  });
-
-  const setAlign = (align: 'left' | 'center' | 'right') => {
-    const isAlreadyAligned = editor.isActive('image', { align });
-    editor
-      .chain()
-      .focus()
-      .setImageAlign(isAlreadyAligned ? null : align)
-      .run();
-  };
 
   return (
     <BubbleMenu
       editor={editor}
       pluginKey={'image-bubble-menu'}
       shouldShow={({ editor }) => editor.isActive('image')}
-      className={
-        'tiptide-bubble-menu-inner-element bg-background flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg'
-      }
+      className={cn(
+        'tiptide-bubble-menu-inner-element bg-background z-100 flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg',
+        className,
+      )}
     >
-      <Tooltip content="Align Left" side="top">
-        <Button
-          variant={editorState.isAlignLeft ? 'secondary' : 'ghost'}
-          size="sm"
-          onClick={() => setAlign('left')}
-          type="button"
-        >
-          <AlignLeftIcon className="size-4" />
-        </Button>
-      </Tooltip>
+      {children || (
+        <>
+          <Tools.imageAlignLeft />
+          <Tools.imageAlignCenter />
+          <Tools.imageAlignRight />
 
-      <Tooltip content="Align Center" side="top">
-        <Button
-          variant={editorState.isAlignCenter ? 'secondary' : 'ghost'}
-          size="sm"
-          onClick={() => setAlign('center')}
-          type="button"
-        >
-          <AlignCenterIcon className="size-4" />
-        </Button>
-      </Tooltip>
+          <Tools.separator />
 
-      <Tooltip content="Align Right" side="top">
-        <Button
-          variant={editorState.isAlignRight ? 'secondary' : 'ghost'}
-          size="sm"
-          onClick={() => setAlign('right')}
-          type="button"
-        >
-          <AlignRightIcon className="size-4" />
-        </Button>
-      </Tooltip>
-
-      <div className="bg-border mx-1 h-4 w-px" />
-
-      <Tooltip content="Full Width" side="top">
-        <Button
-          variant={editorState.isFullWidth ? 'secondary' : 'ghost'}
-          size="sm"
-          onClick={() => editor.chain().focus().setImageFullWidth().run()}
-          type="button"
-        >
-          <MaximizeIcon className="size-4" />
-        </Button>
-      </Tooltip>
-
-      <Tooltip content="Remove image" side="top">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => {
-            editor.chain().deleteSelection().run();
-          }}
-          type="button"
-        >
-          <XIcon className="size-4" />
-        </Button>
-      </Tooltip>
+          <Tools.imageFullWidth />
+          <Tools.imageRemove />
+        </>
+      )}
     </BubbleMenu>
   );
 }
+
+// Attach tools to ImageBubbleMenu for dot-notation usage
+ImageBubbleMenu.AlignLeft = Tools.imageAlignLeft;
+ImageBubbleMenu.AlignCenter = Tools.imageAlignCenter;
+ImageBubbleMenu.AlignRight = Tools.imageAlignRight;
+ImageBubbleMenu.FullWidth = Tools.imageFullWidth;
+ImageBubbleMenu.Remove = Tools.imageRemove;
+ImageBubbleMenu.Separator = Tools.separator;

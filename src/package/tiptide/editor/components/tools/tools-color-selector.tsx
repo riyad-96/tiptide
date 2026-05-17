@@ -3,17 +3,24 @@ import { useEditorState } from '@tiptap/react';
 import { ChevronDownIcon, PaletteIcon } from 'lucide-react';
 
 import { Button } from '../ui/button';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '../ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { cn } from '../../style';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 
-export function ToolbarColorSelector({ modal = false }: { modal?: boolean }) {
+import type { ToolProps } from '../../types/tool';
+
+export function ToolsColorSelector({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+  modal = false,
+}: ToolProps & { modal?: boolean }) {
   const [open, setOpen] = useState(false);
   const { editor } = useEditorProvider();
 
@@ -85,16 +92,28 @@ export function ToolbarColorSelector({ modal = false }: { modal?: boolean }) {
 
   return (
     <Popover open={open} onOpenChange={setOpen} modal={modal}>
-      <Tooltip content={'Highligt'} disabled={!canColorOrHighlight}>
+      <Tooltip
+        content={tooltipContent ?? 'Highlight'}
+        hideTooltip={hideTooltip}
+        disabled={!canColorOrHighlight}
+        side={tooltipPosition}
+      >
         <PopoverTrigger asChild>
           <Button
-            variant={isColorActive ? 'secondary' : 'ghost'}
-            size="sm"
-            className={cn('flex items-center gap-0.5 pe-1!')}
+            variant={isColorActive || open ? 'secondary' : 'ghost'}
+            size={size ?? 'sm'}
+            className={`flex items-center gap-0.5 pe-1! ${className || ''}`}
             type="button"
+            onClick={() => {
+              if (typeof propOnClick === 'function') propOnClick(editor);
+            }}
           >
-            <PaletteIcon />
-            <ChevronDownIcon className="size-2.5" />
+            {children ?? (
+              <>
+                <PaletteIcon />
+                <ChevronDownIcon className="size-2.5" />
+              </>
+            )}
           </Button>
         </PopoverTrigger>
       </Tooltip>

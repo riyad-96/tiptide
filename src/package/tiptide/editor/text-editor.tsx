@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 
 import { BubbleMenu } from './components/menu/bubble-menu';
-import { ToolBar } from './components/toolbar';
+import { Toolbar } from './components/toolbar';
 import { tiptapExtensions } from './extensions';
 import { TooltipProvider } from './components/ui/tooltip';
 import { tiptapStyleClasses } from './style';
@@ -11,7 +11,10 @@ import { useEditorProvider } from './hooks/use-editor-provider';
 import type { TextEditorProps } from './types/text-editor';
 import { ImageBubbleMenu } from './components/menu/image-bubble-menu';
 
-export function TextEditorProvider({
+// types
+import type { Editor, Content } from '@tiptap/core';
+
+function TiptideProvider({
   hideBubbleMenuOnTouch = true,
   content,
   onChange,
@@ -58,28 +61,36 @@ export function TextEditorProvider({
 
   return (
     <editorContext.Provider value={value}>
-      <TooltipProvider>{children}</TooltipProvider>
+      <TooltipProvider>
+        <div className="tiptide-wrapper">{children}</div>
+      </TooltipProvider>
     </editorContext.Provider>
   );
 }
 
-export function TextEditor(props: TextEditorProps) {
-  return (
-    <TextEditorProvider {...props}>
-      <div className="tiptide-wrapper">
-        <ToolBar />
-        <EditorContentWrapper />
-      </div>
-      <BubbleMenu />
-      <ImageBubbleMenu />
-    </TextEditorProvider>
-  );
-}
-
-function EditorContentWrapper() {
+function TiptideTextarea() {
   const { editor } = useEditorProvider();
 
   return (
-    <EditorContent editor={editor} className="tiptide-content" spellCheck={false} />
+    <EditorContent
+      editor={editor}
+      className="tiptide-content"
+      spellCheck={false}
+    />
   );
 }
+
+function TiptideEditor(props: TextEditorProps) {
+  return (
+    <TiptideProvider {...props}>
+      <Toolbar />
+      <TiptideTextarea />
+
+      <BubbleMenu />
+      <ImageBubbleMenu />
+    </TiptideProvider>
+  );
+}
+
+export { TiptideProvider, TiptideTextarea, TiptideEditor };
+export type { Editor as TiptideEditorType, Content as TiptideContentType };

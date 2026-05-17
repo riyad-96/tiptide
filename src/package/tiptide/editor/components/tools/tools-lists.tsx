@@ -8,17 +8,24 @@ import {
 } from 'lucide-react';
 
 import { Button } from '../ui/button';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '../ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { cn } from '../../style';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 
-export function ToolbarLists({ modal = false }: { modal?: boolean }) {
+import type { ToolProps } from '../../types/tool';
+
+export function ToolsLists({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+  modal = false,
+}: ToolProps & { modal?: boolean }) {
   const [open, setOpen] = useState(false);
   const { editor } = useEditorProvider();
 
@@ -59,25 +66,36 @@ export function ToolbarLists({ modal = false }: { modal?: boolean }) {
 
   return (
     <Popover open={open} onOpenChange={setOpen} modal={modal}>
-      <Tooltip content="List">
+      <Tooltip
+        content={tooltipContent ?? 'List'}
+        hideTooltip={hideTooltip}
+        side={tooltipPosition}
+      >
         <PopoverTrigger asChild>
           <Button
             variant={activeList ? 'secondary' : 'ghost'}
-            size="sm"
-            className={cn('flex items-center gap-0.5 pe-1!')}
+            size={size ?? 'sm'}
+            className={`flex items-center gap-0.5 pe-1! ${className || ''}`}
             type="button"
+            onClick={() => {
+              if (typeof propOnClick === 'function') propOnClick(editor);
+            }}
           >
-            <span>
-              {activeList ? (
-                <>
-                  <activeList.icon />
-                </>
-              ) : (
-                <ListIcon />
-              )}
-            </span>
+            {children ?? (
+              <>
+                <span>
+                  {activeList ? (
+                    <>
+                      <activeList.icon />
+                    </>
+                  ) : (
+                    <ListIcon />
+                  )}
+                </span>
 
-            <ChevronDownIcon className="size-2.5" />
+                <ChevronDownIcon className="size-2.5" />
+              </>
+            )}
           </Button>
         </PopoverTrigger>
       </Tooltip>

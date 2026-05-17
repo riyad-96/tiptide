@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarAlignJustify() {
+export function ToolsAlignJustify({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,23 @@ export function ToolbarAlignJustify() {
   });
 
   return (
-    <Tooltip content="Align justify">
+    <Tooltip
+      content={tooltipContent ?? 'Align justify'}
+      hideTooltip={hideTooltip}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleTextAlign('justify').run()}
+        onClick={() => {
+          editor.chain().focus().toggleTextAlign('justify').run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Align justify"
         type="button"
+        className={className}
       >
-        <TextAlignJustifyIcon />
+        {children ?? <TextAlignJustifyIcon />}
       </Button>
     </Tooltip>
   );

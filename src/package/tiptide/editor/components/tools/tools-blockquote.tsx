@@ -5,8 +5,17 @@ import { Button } from '../ui/button';
 
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
+import type { ToolProps } from '../../types/tool';
 
-export function ToolbarBlockquote() {
+export function ToolsBlockquote({
+  className,
+  hideTooltip,
+  tooltipContent,
+  children,
+  size,
+  tooltipPosition,
+  onClick: propOnClick,
+}: ToolProps) {
   const { editor } = useEditorProvider();
 
   const editorState = useEditorState({
@@ -18,15 +27,24 @@ export function ToolbarBlockquote() {
   });
 
   return (
-    <Tooltip content="Blockquote" disabled={!editorState.can}>
+    <Tooltip
+      content={tooltipContent ?? 'Blockquote'}
+      hideTooltip={hideTooltip}
+      disabled={!editorState.can}
+      side={tooltipPosition}
+    >
       <Button
-        size="sm"
+        size={size ?? 'icon-sm'}
         variant={editorState.isActive ? 'secondary' : 'ghost'}
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
+        onClick={() => {
+          editor.chain().focus().toggleBlockquote().run();
+          if (typeof propOnClick === 'function') propOnClick(editor);
+        }}
         aria-label="Toggle blockquote"
         type="button"
+        className={className}
       >
-        <TextQuoteIcon className="size-4" />
+        {children ?? <TextQuoteIcon className="size-4" />}
       </Button>
     </Tooltip>
   );
