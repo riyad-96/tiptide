@@ -2,22 +2,32 @@ import type { JSONContent } from '@tiptap/core';
 import { generateHTML } from '@tiptap/html';
 
 import { tiptapExtensions } from './extensions';
-import { tiptapStyleClasses } from './style';
+import { cn, tiptapStyleClasses } from './style';
 
 export function Viewer({
   content,
+  className,
+  containerClassName,
 }: {
   content: JSONContent | null | undefined;
+  containerClassName?: string;
+  className?: string;
 }) {
-  if (!content) return <></>;
-
-  const html = generateHTML(content, tiptapExtensions());
+  function getHTML() {
+    if (!content) return '';
+    return typeof content === 'string'
+      ? content
+      : generateHTML(content, tiptapExtensions());
+  }
 
   return (
-    <div className="h-full overflow-x-auto">
+    <div className={cn('h-full overflow-x-auto', containerClassName)}>
       <div
-        className={`${tiptapStyleClasses} tiptide-preview whitespace-pre-wrap`}
-        dangerouslySetInnerHTML={{ __html: html }}
+        className={cn(
+          `${tiptapStyleClasses} tiptide-preview whitespace-pre-wrap`,
+          className,
+        )}
+        dangerouslySetInnerHTML={{ __html: getHTML() }}
       ></div>
     </div>
   );

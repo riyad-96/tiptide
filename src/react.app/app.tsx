@@ -64,9 +64,7 @@ export function App() {
 
       <Tools.separator className="h-full" />
 
-      <div className="pt-12.5">
-        <Viewer content={content} />
-      </div>
+      <Viewer content={content} containerClassName="flex-1" />
 
       {/* Advanced usage */}
       {/* <TiptideProvider content={content} onChange={handleUpdate} hideTooltip>
