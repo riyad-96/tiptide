@@ -1,4 +1,4 @@
-import type { JSONContent } from '@tiptap/core';
+import type { Content } from '@tiptap/core';
 import { generateHTML } from '@tiptap/html';
 
 import { tiptapExtensions } from './extensions';
@@ -9,7 +9,7 @@ export function Viewer({
   className,
   containerClassName,
 }: {
-  content: JSONContent | null | undefined;
+  content: Content;
   containerClassName?: string;
   className?: string;
 }) {
