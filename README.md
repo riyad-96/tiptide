@@ -1,4 +1,4 @@
-# Tiptide 🌊
+# Tiptide
 
 A powerful, modular, and beautifully crafted text editor built on top of [Tiptap](https://tiptap.dev/). Tiptide provides a suite of compound components and extensions to build modern editing experiences in React.
 
@@ -16,14 +16,6 @@ A powerful, modular, and beautifully crafted text editor built on top of [Tiptap
 
 ```bash
 pnpm add tiptide
-```
-
-### Peer Dependencies
-
-Tiptide requires React 19+ and Tailwind CSS.
-
-```bash
-pnpm add react react-dom tailwindcss
 ```
 
 ## Quick Start
@@ -159,6 +151,138 @@ A read-only component to display saved content with consistent styling.
 import { Viewer } from 'tiptide';
 
 <Viewer content={savedContent} />;
+```
+
+## Image Insertion & Uploading Guide
+
+Tiptide provides a premium, strictly-typed image insertion system that accommodates standard image URLs, direct computer file uploads, inline editor canvas placeholders, and custom media library components.
+
+### 1. Simple Image URL Insertion
+
+Users can directly input any web image link.
+
+- **Workflow:** Clicking the image tool in the toolbar opens a Popover menu. Users paste their image URL into the input field and press **Insert**.
+- **Result:** Directly embeds a standard image node: `<img src="url" width="100%" height="auto" />`.
+
+### 2. Direct Asynchronous Uploads (`onUpload`)
+
+To handle file uploads securely, developers can supply an `onUpload` function.
+
+- **Setup:** Pass an `onUpload` callback to `<TiptideEditor>` or `<TiptideProvider>`.
+- **Typing:** `(file: File) => Promise<string> | string`
+- **Result:** Clicking **Upload from computer** in the Popover lets the user pick a file. Tiptide enters an uploading spin state, uploads the file via your custom API, and embeds the returned image URL automatically.
+
+```tsx
+import { TiptideEditor } from 'tiptide';
+
+export default function MyEditor() {
+  const handleUpload = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    return data.url; // Returns the uploaded image URL string
+  };
+
+  return <TiptideEditor onUpload={handleUpload} />;
+}
+```
+
+### 3. Custom Canvas Image Placeholders
+
+If you want inline upload spaces directly in the document page rather than doing a quiet background upload:
+
+- **Default:** Click **Insert upload placeholder card** in the image popover to drop a gorgeous dashed uploading card. Inside, users can click to select files (or drag/drop them).
+- **Customization:** Customize the look of these cards by passing your own React component via `imagePlaceholderBlock`.
+
+```tsx
+import { TiptideEditor, CustomPlaceholderProps } from 'tiptide';
+
+const MyCustomPlaceholderBlock = ({
+  editor,
+  getPos,
+  deleteNode,
+}: CustomPlaceholderProps) => {
+  return (
+    <div className="flex flex-col items-center rounded-lg border border-purple-500 bg-purple-50 p-6">
+      <p className="text-sm">
+        Drag or select files inside my special library view!
+      </p>
+      <button onClick={() => deleteNode()}>Cancel</button>
+    </div>
+  );
+};
+
+// Insert your custom placeholder card in the editor
+<TiptideEditor imagePlaceholderBlock={MyCustomPlaceholderBlock} />;
+```
+
+### 4. Custom Media Libraries (Overriding Toolbar Click)
+
+For enterprise apps with advanced media drawers/galleries, you can bypass Tiptide's default popover completely or add an action button to it:
+
+#### Option A: Full Toolbar Button Override
+
+Pass `onClick` to the image tool to trigger your own modal directly:
+
+```tsx
+import { Toolbar, Tools, TiptideEditorType } from 'tiptide';
+
+export function EditorToolbar() {
+  const openMediaLibrary = (editor: TiptideEditorType) => {
+    myModal.open((selectedImageUrl) => {
+      editor
+        .chain()
+        .focus()
+        .insertContent({
+          type: 'image',
+          attrs: { src: selectedImageUrl, width: '100%', height: 'auto' },
+        })
+        .run();
+    });
+  };
+
+  return (
+    <Toolbar>
+      {/* Clicking the image tool immediately triggers your own library, bypassing the Popover */}
+      <Tools.image onClick={openMediaLibrary} />
+    </Toolbar>
+  );
+}
+```
+
+#### Option B: Integrated Popover Dropdown Button
+
+If you want to keep the default Link / Direct File uploader but **also** want to add a button to open your custom media library, pass `onMediaLibraryClick` to the tool:
+
+```tsx
+import { Toolbar, Tools, TiptideEditorType } from 'tiptide';
+
+export function EditorToolbar() {
+  const openMediaLibrary = (editor: TiptideEditorType) => {
+    myModal.open((url) => {
+      editor
+        .chain()
+        .focus()
+        .insertContent({
+          type: 'image',
+          attrs: { src: url, width: '100%', height: 'auto' },
+        })
+        .run();
+    });
+  };
+
+  return (
+    <Toolbar>
+      {/* Kept default popover options + renders extra "Choose from media library" button */}
+      <Tools.image onMediaLibraryClick={openMediaLibrary} />
+    </Toolbar>
+  );
+}
 ```
 
 ## License

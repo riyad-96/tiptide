@@ -1,7 +1,7 @@
 import './tiptide.css';
 export * from './editor/text-editor';
-export * from './editor/context/editor-context';
-export * from './editor/hooks/use-editor-provider';
+// export * from './editor/context/editor-context';
+// export * from './editor/hooks/use-editor-provider';
 export * from './editor/viewer';
 
 // Components
@@ -15,4 +15,4 @@ export * from './editor/types/text-editor';
 export * from './editor/types/editor-context';
 
 // Extension Config
-export * from './editor/extensions';
+// export * from './editor/extensions';

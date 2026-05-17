@@ -9,7 +9,7 @@ import {
   Tools,
   Viewer,
 } from 'tiptide';
-import 'tiptide/index.css';
+import 'tiptide/tiptide.css';
 
 import { useLocalStorage } from 'kitzo';
 import { useEffect, useState } from 'react';
@@ -37,6 +37,15 @@ export function AdvancedEditorExample() {
     setIsMounted(true);
   }, []);
 
+  async function handleOnUpload(file: File) {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    const url = URL.createObjectURL(file);
+
+    console.log(url);
+    return url;
+  }
+
   if (!isMounted) return <></>;
 
   return (
@@ -44,69 +53,21 @@ export function AdvancedEditorExample() {
       {/* Advanced usage */}
       <div className="flex h-screen">
         <div className="flex-1">
-          <TiptideProvider content={content} onChange={handleUpdate}>
+          <TiptideProvider
+            content={content}
+            onChange={handleUpdate}
+            onUpload={handleOnUpload}
+          >
             <Toolbar>
-              <Tools.undo />
-              <Tools.redo />
-              <Tools.separator />
-              <Tools.textBlocks />
-              <Tools.bold />
-              <Tools.italic />
-              <Tools.underline />
-              <Tools.strike />
-              <Tools.separator />
-              <Tools.colorSelector />
-              <Tools.separator />
-              <Tools.subscript />
-              <Tools.superscript />
-              <Tools.separator />
-              <Tools.lists />
-              <Tools.separator />
-              <Tools.blockquote />
-              <Tools.codeblock />
-              <Tools.code />
-              <Tools.separator />
-              <Tools.link />
-              <Tools.image />
-              <Tools.separator />
-              <Tools.alignCenter />
-              <Tools.alignLeft />
-              <Tools.alignRight />
-              <Tools.alignJustify />
+              <Toolbar.image
+                onMediaLibraryClick={(editor) => {
+                  console.log(editor.getHTML());
+                }}
+              />
             </Toolbar>
-
             <TiptideTextarea />
 
-            <BubbleMenu>
-              <Tools.undo />
-              <Tools.redo />
-              <Tools.separator />
-              <Tools.textBlocks />
-              <Tools.bold />
-              <Tools.italic />
-              <Tools.underline />
-              <Tools.strike />
-              <Tools.separator />
-              <Tools.colorSelector />
-              <Tools.separator />
-              <Tools.subscript />
-              <Tools.superscript />
-              <Tools.separator />
-              <Tools.lists />
-              <Tools.separator />
-              <Tools.blockquote />
-              <Tools.codeblock />
-              <Tools.code />
-              <Tools.separator />
-              <Tools.link />
-              <Tools.image />
-              <Tools.separator />
-              <Tools.alignCenter />
-              <Tools.alignLeft />
-              <Tools.alignRight />
-              <Tools.alignJustify />
-            </BubbleMenu>
-
+            <BubbleMenu />
             <ImageBubbleMenu>
               <Tools.imageAlignLeft />
               <Tools.imageAlignCenter />
@@ -118,7 +79,11 @@ export function AdvancedEditorExample() {
         </div>
 
         <Tools.separator className="h-full" />
-        <Viewer content={content} containerClassName="flex-1" />
+
+        <div className="grid flex-1 grid-rows-[49px_1fr]">
+          <div className="border-b"></div>
+          <Viewer content={content} />
+        </div>
       </div>
     </>
   );

@@ -12,4 +12,5 @@ export type ToolProps = {
   size?: ButtonProps['size'];
   tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
   onClick?: (editor: Editor) => void;
+  onMediaLibraryClick?: (editor: Editor) => void;
 };

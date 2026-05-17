@@ -1,15 +1,31 @@
 import React, { useRef, useState } from 'react';
 import { NodeViewWrapper, type NodeViewProps } from '@tiptap/react';
-import { ImageIcon, Upload, X } from 'lucide-react';
+import { ImageIcon, Loader2, Upload, X } from 'lucide-react';
 import { Button } from '../../ui/button';
+import { useEditorProvider } from '../../../hooks/use-editor-provider';
 
 export const ImagePlaceholderBlock = ({
   editor,
   getPos,
   deleteNode,
 }: NodeViewProps) => {
+  const { onUpload, imagePlaceholderBlock } = useEditorProvider();
+
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  if (imagePlaceholderBlock) {
+    const CustomPlaceholder = imagePlaceholderBlock;
+    return (
+      <NodeViewWrapper className="my-4">
+        <CustomPlaceholder
+          editor={editor}
+          getPos={getPos as () => number}
+          deleteNode={deleteNode}
+        />
+      </NodeViewWrapper>
+    );
+  }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -18,8 +34,12 @@ export const ImagePlaceholderBlock = ({
     setIsUploading(true);
 
     try {
-      // Replace with your actual upload logic (e.g., S3/Vercel Blob)
-      const url = URL.createObjectURL(file);
+      let url = '';
+      if (typeof onUpload === 'function') {
+        url = await onUpload(file);
+      } else {
+        url = URL.createObjectURL(file);
+      }
 
       // Replace this placeholder node with the actual image node
       editor
@@ -45,7 +65,7 @@ export const ImagePlaceholderBlock = ({
           onClick={deleteNode}
           className="absolute top-2 right-2 rounded-md p-1 opacity-0 group-hover:opacity-100"
           variant={'outline'}
-          size="sm"
+          size="icon-sm"
           type="button"
         >
           <X className="h-4 w-4" />
@@ -53,7 +73,11 @@ export const ImagePlaceholderBlock = ({
 
         <div className="flex flex-col items-center gap-4 text-center select-none">
           <div className="rounded-full bg-white p-3 shadow-sm ring-1 ring-neutral-200 dark:bg-neutral-900 dark:ring-neutral-800">
-            <ImageIcon className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+            {isUploading ? (
+              <Loader2 className="h-6 w-6 animate-spin text-neutral-500 dark:text-neutral-400" />
+            ) : (
+              <ImageIcon className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+            )}
           </div>
 
           <div>
@@ -70,8 +94,17 @@ export const ImagePlaceholderBlock = ({
               size="sm"
               type="button"
             >
-              <Upload className="h-4 w-4" />
-              {isUploading ? 'Uploading...' : 'Upload File'}
+              {isUploading ? (
+                <>
+                  <Loader2 className="animate-duration-1000 h-4 w-4 animate-spin" />
+                  <span>Uploading...</span>
+                </>
+              ) : (
+                <>
+                  <Upload className="h-4 w-4" />
+                  <span>Upload File</span>
+                </>
+              )}
             </Button>
             <input
               type="file"

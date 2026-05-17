@@ -25,7 +25,8 @@ export const ToolsLists = memo(function ToolsLists({
   tooltipPosition,
   onClick: propOnClick,
   modal = false,
-}: ToolProps & { modal?: boolean }) {
+  popoverAlign,
+}: ToolProps & { modal?: boolean; popoverAlign?: 'start' | 'center' | 'end' }) {
   const [open, setOpen] = useState(false);
   const { editor } = useEditorProvider();
 
@@ -73,7 +74,7 @@ export const ToolsLists = memo(function ToolsLists({
       >
         <PopoverTrigger asChild>
           <Button
-            variant={activeList ? 'secondary' : 'ghost'}
+            variant={activeList || open ? 'secondary' : 'ghost'}
             size={size ?? 'sm'}
             className={`flex items-center gap-0.5 pe-1! ${className || ''}`}
             type="button"
@@ -100,7 +101,10 @@ export const ToolsLists = memo(function ToolsLists({
         </PopoverTrigger>
       </Tooltip>
 
-      <PopoverContent align="start" className="grid w-fit p-1">
+      <PopoverContent
+        align={popoverAlign ?? 'start'}
+        className="grid w-fit p-1"
+      >
         {lists.map((l) => (
           <Button
             key={l.id}

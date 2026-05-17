@@ -26,7 +26,8 @@ export const ToolsLink = memo(function ToolsLink({
   tooltipPosition,
   onClick: propOnClick,
   modal = false,
-}: ToolProps & { modal?: boolean }) {
+  popoverAlign,
+}: ToolProps & { modal?: boolean; popoverAlign?: 'start' | 'center' | 'end' }) {
   const [linkUrl, setLinkUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -105,7 +106,7 @@ export const ToolsLink = memo(function ToolsLink({
         </Tooltip>
       )}
 
-      <PopoverContent className="w-fit p-1">
+      <PopoverContent align={popoverAlign ?? 'center'} className="w-fit p-1">
         <div className="flex items-center gap-1">
           <input
             ref={inputRef}

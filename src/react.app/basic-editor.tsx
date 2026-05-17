@@ -5,7 +5,7 @@ import {
   Tools,
   Viewer,
 } from 'tiptide';
-import 'tiptide/index.css';
+import 'tiptide/tiptide.css';
 
 import { useLocalStorage } from 'kitzo';
 import { useEffect, useState } from 'react';
@@ -47,7 +47,13 @@ export function BasicEditorExample() {
           />
         </div>
         <Tools.separator className="h-full" />
-        <Viewer content={content} containerClassName="flex-1" />
+
+        <div className="grid flex-1 grid-rows-[49px_1fr]">
+          <div className="border-b"></div>
+          <div>
+            <Viewer content={content} />
+          </div>
+        </div>
       </div>
     </>
   );
