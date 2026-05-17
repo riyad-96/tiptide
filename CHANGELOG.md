@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.7
+
+### Patch Changes
+
+- d790e2d: Viewer component content type changed
+
 ## 0.0.6
 
 ### Patch Changes
