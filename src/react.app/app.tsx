@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BubbleMenu,
   ImageBubbleMenu,
@@ -9,6 +10,7 @@ import {
   // ImageBubbleMenu,
   // Tools,
   TiptideEditor,
+  TiptideEditorType,
   TiptideProvider,
   TiptideTextarea,
   Toolbar,
@@ -17,7 +19,7 @@ import {
 import 'tiptide/index.css';
 
 import { useLocalStorage } from 'kitzo';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export function App() {
   const [isMounted, setIsMounted] = useState(false);
@@ -33,6 +35,15 @@ export function App() {
     },
   );
 
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleUpdate = (editor: TiptideEditorType) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setContent(editor.getJSON());
+    }, 400);
+  };
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
@@ -43,17 +54,10 @@ export function App() {
   return (
     <>
       {/* Basic usage */}
-      <TiptideEditor
-        content={content}
-        onChange={(editor) => setContent(editor.getJSON())}
-      />
+      <TiptideEditor content={content} onChange={handleUpdate} />
 
       {/* Advanced usage */}
-      <TiptideProvider
-        content={content}
-        onChange={(editor) => setContent(editor.getJSON())}
-        hideTooltip
-      >
+      {/* <TiptideProvider content={content} onChange={handleUpdate} hideTooltip>
         <Toolbar>
           <Tools.undo />
           <Tools.redo />
@@ -123,7 +127,7 @@ export function App() {
           <Tools.imageFullWidth />
           <Tools.imageRemove />
         </ImageBubbleMenu>
-      </TiptideProvider>
+      </TiptideProvider> */}
     </>
   );
 }

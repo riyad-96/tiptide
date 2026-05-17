@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { AlignRightIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsImageAlignRight({
+export const ToolsImageAlignRight = memo(function ToolsImageAlignRight({
   className,
   hideTooltip,
   tooltipContent,
@@ -54,4 +55,5 @@ export function ToolsImageAlignRight({
       </Button>
     </Tooltip>
   );
-}
+});
+

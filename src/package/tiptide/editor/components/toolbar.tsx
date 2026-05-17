@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { cn } from '../style';
 import { Tools } from './tools';
 
 type ToolbarProps = { children?: React.ReactNode; className?: string };
 
-export function Toolbar({ children, className }: ToolbarProps) {
+const ToolbarComponent = memo(function Toolbar({ children, className }: ToolbarProps) {
   return (
     <div className={cn('tiptide-toolbar', className)}>
       {children || (
@@ -56,28 +56,30 @@ export function Toolbar({ children, className }: ToolbarProps) {
       )}
     </div>
   );
-}
+});
 
 // Attach tools to ToolBar for dot-notation usage
-Toolbar.undo = Tools.undo;
-Toolbar.redo = Tools.redo;
-Toolbar.textBlocks = Tools.textBlocks;
-Toolbar.lists = Tools.lists;
-Toolbar.blockquote = Tools.blockquote;
-Toolbar.codeblock = Tools.codeblock;
-Toolbar.bold = Tools.bold;
-Toolbar.italic = Tools.italic;
-Toolbar.underline = Tools.underline;
-Toolbar.strike = Tools.strike;
-Toolbar.code = Tools.code;
-Toolbar.colorSelector = Tools.colorSelector;
-Toolbar.link = Tools.link;
-Toolbar.alignLeft = Tools.alignLeft;
-Toolbar.alignCenter = Tools.alignCenter;
-Toolbar.alignRight = Tools.alignRight;
-Toolbar.alignJustify = Tools.alignJustify;
-Toolbar.horizontalRule = Tools.horizontalRule;
-Toolbar.superscript = Tools.superscript;
-Toolbar.subscript = Tools.subscript;
-Toolbar.image = Tools.image;
-Toolbar.separator = Tools.separator;
+export const Toolbar = Object.assign(ToolbarComponent, {
+  undo: Tools.undo,
+  redo: Tools.redo,
+  textBlocks: Tools.textBlocks,
+  lists: Tools.lists,
+  blockquote: Tools.blockquote,
+  codeblock: Tools.codeblock,
+  bold: Tools.bold,
+  italic: Tools.italic,
+  underline: Tools.underline,
+  strike: Tools.strike,
+  code: Tools.code,
+  colorSelector: Tools.colorSelector,
+  link: Tools.link,
+  alignLeft: Tools.alignLeft,
+  alignCenter: Tools.alignCenter,
+  alignRight: Tools.alignRight,
+  alignJustify: Tools.alignJustify,
+  horizontalRule: Tools.horizontalRule,
+  superscript: Tools.superscript,
+  subscript: Tools.subscript,
+  image: Tools.image,
+  separator: Tools.separator,
+});

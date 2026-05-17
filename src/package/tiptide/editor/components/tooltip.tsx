@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   Tooltip as ShadcnTooltip,
   TooltipContent,
@@ -14,7 +15,7 @@ type TooltipProps = {
   hideTooltip?: boolean;
 };
 
-export function Tooltip({
+export const Tooltip = memo(function Tooltip({
   children,
   content,
   disabled,
@@ -39,4 +40,5 @@ export function Tooltip({
       </TooltipContent>
     </ShadcnTooltip>
   );
-}
+});
+

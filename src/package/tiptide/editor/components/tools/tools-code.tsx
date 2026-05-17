@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { CodeXmlIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsCode({
+export const ToolsCode = memo(function ToolsCode({
   className,
   hideTooltip,
   tooltipContent,
@@ -48,4 +49,5 @@ export function ToolsCode({
       </Button>
     </Tooltip>
   );
-}
+});
+

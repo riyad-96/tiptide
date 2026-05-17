@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { TextAlignJustifyIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsAlignJustify({
+export const ToolsAlignJustify = memo(function ToolsAlignJustify({
   className,
   hideTooltip,
   tooltipContent,
@@ -47,4 +48,5 @@ export function ToolsAlignJustify({
       </Button>
     </Tooltip>
   );
-}
+});
+

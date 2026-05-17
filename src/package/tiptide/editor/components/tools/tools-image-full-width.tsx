@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { MaximizeIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsImageFullWidth({
+export const ToolsImageFullWidth = memo(function ToolsImageFullWidth({
   className,
   hideTooltip,
   tooltipContent,
@@ -45,4 +46,5 @@ export function ToolsImageFullWidth({
       </Button>
     </Tooltip>
   );
-}
+});
+

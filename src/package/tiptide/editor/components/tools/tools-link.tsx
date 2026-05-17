@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import {  useRef, useState , memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import {
   CornerDownLeftIcon,
@@ -17,7 +17,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsLink({
+export const ToolsLink = memo(function ToolsLink({
   className,
   hideTooltip,
   tooltipContent,
@@ -166,4 +166,5 @@ export function ToolsLink({
       </PopoverContent>
     </Popover>
   );
-}
+});
+

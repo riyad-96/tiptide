@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { ItalicIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsItalic({
+export const ToolsItalic = memo(function ToolsItalic({
   className,
   hideTooltip,
   tooltipContent,
@@ -48,4 +49,5 @@ export function ToolsItalic({
       </Button>
     </Tooltip>
   );
-}
+});
+

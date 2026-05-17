@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { SuperscriptIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsSuperscript({
+export const ToolsSuperscript = memo(function ToolsSuperscript({
   className,
   hideTooltip,
   tooltipContent,
@@ -47,4 +48,5 @@ export function ToolsSuperscript({
       </Button>
     </Tooltip>
   );
-}
+});
+

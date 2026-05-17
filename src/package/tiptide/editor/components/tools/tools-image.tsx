@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Button } from '../ui/button';
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { ImagePlusIcon } from 'lucide-react';
@@ -5,7 +6,7 @@ import { Tooltip } from '../tooltip';
 
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsImage({
+export const ToolsImage = memo(function ToolsImage({
   className,
   hideTooltip,
   tooltipContent,
@@ -41,4 +42,5 @@ export function ToolsImage({
       </Button>
     </Tooltip>
   );
-}
+});
+

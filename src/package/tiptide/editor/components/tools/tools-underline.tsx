@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { UnderlineIcon } from 'lucide-react';
 
@@ -7,7 +8,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsUnderline({
+export const ToolsUnderline = memo(function ToolsUnderline({
   className,
   hideTooltip,
   tooltipContent,
@@ -48,4 +49,5 @@ export function ToolsUnderline({
       </Button>
     </Tooltip>
   );
-}
+});
+

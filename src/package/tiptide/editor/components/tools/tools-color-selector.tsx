@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useState , memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import { ChevronDownIcon, PaletteIcon } from 'lucide-react';
 
@@ -11,7 +11,7 @@ import { Tooltip } from '../tooltip';
 
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsColorSelector({
+export const ToolsColorSelector = memo(function ToolsColorSelector({
   className,
   hideTooltip,
   tooltipContent,
@@ -215,4 +215,5 @@ export function ToolsColorSelector({
       </PopoverContent>
     </Popover>
   );
-}
+});
+

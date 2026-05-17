@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { BubbleMenu } from '@tiptap/react/menus';
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { cn } from '../../style';
@@ -8,7 +9,7 @@ type ImageBubbleMenuProps = {
   className?: string;
 };
 
-export function ImageBubbleMenu({ children, className }: ImageBubbleMenuProps) {
+const ImageBubbleMenuComponent = memo(function ImageBubbleMenu({ children, className }: ImageBubbleMenuProps) {
   const { editor } = useEditorProvider();
 
   return (
@@ -35,12 +36,14 @@ export function ImageBubbleMenu({ children, className }: ImageBubbleMenuProps) {
       )}
     </BubbleMenu>
   );
-}
+});
 
 // Attach tools to ImageBubbleMenu for dot-notation usage
-ImageBubbleMenu.AlignLeft = Tools.imageAlignLeft;
-ImageBubbleMenu.AlignCenter = Tools.imageAlignCenter;
-ImageBubbleMenu.AlignRight = Tools.imageAlignRight;
-ImageBubbleMenu.FullWidth = Tools.imageFullWidth;
-ImageBubbleMenu.Remove = Tools.imageRemove;
-ImageBubbleMenu.Separator = Tools.separator;
+export const ImageBubbleMenu = Object.assign(ImageBubbleMenuComponent, {
+  AlignLeft: Tools.imageAlignLeft,
+  AlignCenter: Tools.imageAlignCenter,
+  AlignRight: Tools.imageAlignRight,
+  FullWidth: Tools.imageFullWidth,
+  Remove: Tools.imageRemove,
+  Separator: Tools.separator,
+});

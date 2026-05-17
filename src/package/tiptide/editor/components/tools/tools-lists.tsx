@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useState , memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import {
   ChevronDownIcon,
@@ -16,7 +16,7 @@ import { Tooltip } from '../tooltip';
 
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsLists({
+export const ToolsLists = memo(function ToolsLists({
   className,
   hideTooltip,
   tooltipContent,
@@ -121,4 +121,5 @@ export function ToolsLists({
       </PopoverContent>
     </Popover>
   );
-}
+});
+

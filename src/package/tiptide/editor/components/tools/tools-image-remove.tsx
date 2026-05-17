@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { XIcon } from 'lucide-react';
 
 import { Button } from '../ui/button';
@@ -6,7 +7,7 @@ import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { Tooltip } from '../tooltip';
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsImageRemove({
+export const ToolsImageRemove = memo(function ToolsImageRemove({
   className,
   hideTooltip,
   tooltipContent,
@@ -37,4 +38,5 @@ export function ToolsImageRemove({
       </Button>
     </Tooltip>
   );
-}
+});
+

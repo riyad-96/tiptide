@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useState , memo } from 'react';
 import { useEditorState } from '@tiptap/react';
 import {
   ChevronDownIcon,
@@ -19,7 +19,7 @@ import { Tooltip } from '../tooltip';
 
 import type { ToolProps } from '../../types/tool';
 
-export function ToolsTextBlocks({
+export const ToolsTextBlocks = memo(function ToolsTextBlocks({
   className,
   hideTooltip,
   tooltipContent,
@@ -150,4 +150,5 @@ export function ToolsTextBlocks({
       </PopoverContent>
     </Popover>
   );
-}
+});
+

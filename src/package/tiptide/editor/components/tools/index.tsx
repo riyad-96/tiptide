@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Separator } from '../ui/separator';
 import { ToolsAlignCenter } from './tools-align-center';
 import { ToolsAlignJustify } from './tools-align-justify';
@@ -26,34 +27,36 @@ import { ToolsTextBlocks } from './tools-text-blocks';
 import { ToolsUnderline } from './tools-underline';
 import { ToolsUndo } from './tools-undo';
 
-export function Tools() {
+const ToolsComponent = memo(function Tools() {
   return null;
-}
+});
 
-Tools.alignCenter = ToolsAlignCenter;
-Tools.alignJustify = ToolsAlignJustify;
-Tools.alignLeft = ToolsAlignLeft;
-Tools.alignRight = ToolsAlignRight;
-Tools.blockquote = ToolsBlockquote;
-Tools.bold = ToolsBold;
-Tools.code = ToolsCode;
-Tools.codeblock = ToolsCodeblock;
-Tools.colorSelector = ToolsColorSelector;
-Tools.horizontalRule = ToolsHorizontalRule;
-Tools.image = ToolsImage;
-Tools.imageAlignCenter = ToolsImageAlignCenter;
-Tools.imageAlignLeft = ToolsImageAlignLeft;
-Tools.imageAlignRight = ToolsImageAlignRight;
-Tools.imageFullWidth = ToolsImageFullWidth;
-Tools.imageRemove = ToolsImageRemove;
-Tools.italic = ToolsItalic;
-Tools.link = ToolsLink;
-Tools.lists = ToolsLists;
-Tools.redo = ToolsRedo;
-Tools.strike = ToolsStrike;
-Tools.subscript = ToolsSubscript;
-Tools.superscript = ToolsSuperscript;
-Tools.textBlocks = ToolsTextBlocks;
-Tools.underline = ToolsUnderline;
-Tools.undo = ToolsUndo;
-Tools.separator = Separator;
+export const Tools = Object.assign(ToolsComponent, {
+  alignCenter: ToolsAlignCenter,
+  alignJustify: ToolsAlignJustify,
+  alignLeft: ToolsAlignLeft,
+  alignRight: ToolsAlignRight,
+  blockquote: ToolsBlockquote,
+  bold: ToolsBold,
+  code: ToolsCode,
+  codeblock: ToolsCodeblock,
+  colorSelector: ToolsColorSelector,
+  horizontalRule: ToolsHorizontalRule,
+  image: ToolsImage,
+  imageAlignCenter: ToolsImageAlignCenter,
+  imageAlignLeft: ToolsImageAlignLeft,
+  imageAlignRight: ToolsImageAlignRight,
+  imageFullWidth: ToolsImageFullWidth,
+  imageRemove: ToolsImageRemove,
+  italic: ToolsItalic,
+  link: ToolsLink,
+  lists: ToolsLists,
+  redo: ToolsRedo,
+  strike: ToolsStrike,
+  subscript: ToolsSubscript,
+  superscript: ToolsSuperscript,
+  textBlocks: ToolsTextBlocks,
+  underline: ToolsUnderline,
+  undo: ToolsUndo,
+  separator: Separator,
+});

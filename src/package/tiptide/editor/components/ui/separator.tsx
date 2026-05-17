@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { cn } from '../../style';
 
 type SeparatorProps = {
@@ -5,7 +6,7 @@ type SeparatorProps = {
   className?: string;
 };
 
-export function Separator({
+export const Separator = memo(function Separator({
   direction = 'vertical',
   className,
 }: SeparatorProps) {
@@ -18,4 +19,5 @@ export function Separator({
       )}
     />
   );
-}
+});
+

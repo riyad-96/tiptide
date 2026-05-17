@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 
 import { BubbleMenu } from './components/menu/bubble-menu';
@@ -12,7 +12,7 @@ import type { TextEditorProps } from './types/text-editor';
 import { ImageBubbleMenu } from './components/menu/image-bubble-menu';
 
 // types
-import type { Editor, Content } from '@tiptap/core';
+import type { Editor, Content, JSONContent } from '@tiptap/core';
 
 function TiptideProvider({
   hideBubbleMenuOnTouch = true,
@@ -68,7 +68,7 @@ function TiptideProvider({
   );
 }
 
-function TiptideTextarea() {
+const TiptideTextarea = React.memo(function TiptideTextarea() {
   const { editor } = useEditorProvider();
 
   return (
@@ -78,9 +78,9 @@ function TiptideTextarea() {
       spellCheck={false}
     />
   );
-}
+});
 
-function TiptideEditor(props: TextEditorProps) {
+const TiptideEditor = React.memo(function TiptideEditor(props: TextEditorProps) {
   return (
     <TiptideProvider {...props}>
       <Toolbar />
@@ -90,7 +90,11 @@ function TiptideEditor(props: TextEditorProps) {
       <ImageBubbleMenu />
     </TiptideProvider>
   );
-}
+});
 
 export { TiptideProvider, TiptideTextarea, TiptideEditor };
-export type { Editor as TiptideEditorType, Content as TiptideContentType };
+export type {
+  Editor as TiptideEditorType,
+  Content as TiptideContentType,
+  JSONContent as TiptideJSONContentType,
+};

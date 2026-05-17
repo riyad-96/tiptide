@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react/menus';
 import { useEditorProvider } from '../../hooks/use-editor-provider';
 import { cn } from '../../style';
@@ -8,7 +9,7 @@ type BubbleMenuProps = {
   className?: string;
 };
 
-export function BubbleMenu({ children, className }: BubbleMenuProps) {
+const BubbleMenuComponent = memo(function BubbleMenu({ children, className }: BubbleMenuProps) {
   const { editor, isBubbleMenuHidden } = useEditorProvider();
 
   if (isBubbleMenuHidden) return <></>;
@@ -63,28 +64,30 @@ export function BubbleMenu({ children, className }: BubbleMenuProps) {
       )}
     </TiptapBubbleMenu>
   );
-}
+});
 
 // Attach tools to ToolBar for dot-notation usage
-BubbleMenu.undo = Tools.undo;
-BubbleMenu.redo = Tools.redo;
-BubbleMenu.textBlocks = Tools.textBlocks;
-BubbleMenu.lists = Tools.lists;
-BubbleMenu.blockquote = Tools.blockquote;
-BubbleMenu.codeblock = Tools.codeblock;
-BubbleMenu.bold = Tools.bold;
-BubbleMenu.italic = Tools.italic;
-BubbleMenu.underline = Tools.underline;
-BubbleMenu.strike = Tools.strike;
-BubbleMenu.code = Tools.code;
-BubbleMenu.colorSelector = Tools.colorSelector;
-BubbleMenu.link = Tools.link;
-BubbleMenu.alignLeft = Tools.alignLeft;
-BubbleMenu.alignCenter = Tools.alignCenter;
-BubbleMenu.alignRight = Tools.alignRight;
-BubbleMenu.alignJustify = Tools.alignJustify;
-BubbleMenu.horizontalRule = Tools.horizontalRule;
-BubbleMenu.superscript = Tools.superscript;
-BubbleMenu.subscript = Tools.subscript;
-BubbleMenu.image = Tools.image;
-BubbleMenu.separator = Tools.separator;
+export const BubbleMenu = Object.assign(BubbleMenuComponent, {
+  undo: Tools.undo,
+  redo: Tools.redo,
+  textBlocks: Tools.textBlocks,
+  lists: Tools.lists,
+  blockquote: Tools.blockquote,
+  codeblock: Tools.codeblock,
+  bold: Tools.bold,
+  italic: Tools.italic,
+  underline: Tools.underline,
+  strike: Tools.strike,
+  code: Tools.code,
+  colorSelector: Tools.colorSelector,
+  link: Tools.link,
+  alignLeft: Tools.alignLeft,
+  alignCenter: Tools.alignCenter,
+  alignRight: Tools.alignRight,
+  alignJustify: Tools.alignJustify,
+  horizontalRule: Tools.horizontalRule,
+  superscript: Tools.superscript,
+  subscript: Tools.subscript,
+  image: Tools.image,
+  separator: Tools.separator,
+});
