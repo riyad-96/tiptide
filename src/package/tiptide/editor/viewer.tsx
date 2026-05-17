@@ -9,7 +9,7 @@ export function Viewer({
   className,
   containerClassName,
 }: {
-  content: Content;
+  content: Content | undefined;
   containerClassName?: string;
   className?: string;
 }) {
