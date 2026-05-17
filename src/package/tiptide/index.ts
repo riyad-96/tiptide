@@ -1,4 +1,4 @@
-import './index.css';
+import './tiptide.css';
 export * from './editor/text-editor';
 export * from './editor/context/editor-context';
 export * from './editor/hooks/use-editor-provider';
