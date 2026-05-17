@@ -4,9 +4,9 @@ import { AdvancedEditorExample } from './advanced-editor-example';
 
 export function App() {
   return (
-    <>
+    <div className="bg-background">
       <BasicEditorExample />
       <AdvancedEditorExample />
-    </>
+    </div>
   );
 }

@@ -44,11 +44,7 @@ export function AdvancedEditorExample() {
       {/* Advanced usage */}
       <div className="flex h-screen">
         <div className="flex-1">
-          <TiptideProvider
-            content={content}
-            onChange={handleUpdate}
-            hideTooltip
-          >
+          <TiptideProvider content={content} onChange={handleUpdate}>
             <Toolbar>
               <Tools.undo />
               <Tools.redo />
