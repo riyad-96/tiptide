@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.8
+
+### Patch Changes
+
+- 514bb05: improved image insert methods
+
 ## 0.0.7
 
 ### Patch Changes
