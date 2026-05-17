@@ -33,7 +33,7 @@ pnpm add react react-dom tailwindcss
 Import the pre-bundled CSS in your entry file (e.g., `main.tsx` or `_app.tsx`):
 
 ```tsx
-import 'tiptide/index.css';
+import 'tiptide/styles';
 ```
 
 ### 2. Basic Usage
@@ -159,7 +159,7 @@ A read-only component to display saved content with consistent styling.
 ```tsx
 import { Viewer } from 'tiptide';
 
-<Viewer content={savedJsonContent} />;
+<Viewer content={savedContent} />;
 ```
 
 ## License
