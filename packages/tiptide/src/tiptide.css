@@ -141,12 +141,6 @@
 @layer components {
   /* Tiptide Editor Main Styles */
   .tiptide-editor {
-    @apply prose prose-neutral dark:prose-invert max-sm:prose-sm bg-background h-full w-full max-w-none overflow-y-auto px-10 py-6 focus:outline-none;
-    @apply prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-lg;
-    @apply prose-h2:font-bold prose-h3:font-semibold prose-h5:font-semibold prose-h6:font-semibold;
-    @apply prose-h2:my-6 prose-h3:my-5 prose-h4:my-4 prose-h5:my-3 prose-h6:my-1.5;
-    @apply prose-a:no-underline prose-hr:my-10;
-
     strong,
     b,
     em,
@@ -336,21 +330,9 @@
     --editor-selection-bg: oklch(1 0 0 / 0.2);
   }
 
-  .tiptide-toolbar {
-    @apply bg-background border-border sticky top-0 z-10 flex min-w-0 items-center gap-1 overflow-x-auto border-b p-2;
-  }
-
-  .tiptide-button {
+  /* .tiptide-button {
     @apply focus-visible:ring-ring inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50;
-  }
-
-  .tiptide-wrapper {
-    @apply text-primary grid h-full grid-rows-[auto_1fr] overflow-y-auto;
-  }
-
-  .tiptide-content {
-    @apply h-full;
-  }
+  } */
 
   .tiptide-preview {
     label:has(input[type='checkbox']) {

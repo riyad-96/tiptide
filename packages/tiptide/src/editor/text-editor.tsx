@@ -59,14 +59,22 @@ function TiptideProvider({
       onUpload,
       imagePlaceholderBlock,
     };
-  }, [editor, isBubbleMenuHidden, hideTooltip, onUpload, imagePlaceholderBlock]);
+  }, [
+    editor,
+    isBubbleMenuHidden,
+    hideTooltip,
+    onUpload,
+    imagePlaceholderBlock,
+  ]);
 
   if (!editor) return null;
 
   return (
     <editorContext.Provider value={value}>
       <TooltipProvider>
-        <div className="tiptide-wrapper">{children}</div>
+        <div className="text-primary grid h-full grid-rows-[auto_1fr] overflow-y-auto">
+          {children}
+        </div>
       </TooltipProvider>
     </editorContext.Provider>
   );
@@ -78,7 +86,7 @@ const TiptideTextarea = React.memo(function TiptideTextarea() {
   return (
     <EditorContent
       editor={editor}
-      className="tiptide-content"
+      className="h-full overflow-y-auto"
       spellCheck={false}
     />
   );

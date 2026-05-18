@@ -14,7 +14,7 @@ export function ResizablePanelWindow({
   orientation?: 'horizontal' | 'vertical';
 }) {
   return (
-    <ResizablePanelGroup orientation={orientation}>
+    <ResizablePanelGroup orientation={orientation} className="h-full">
       <ResizablePanel>{firstNode}</ResizablePanel>
       <ResizableHandle />
       <ResizablePanel>{secondNode}</ResizablePanel>

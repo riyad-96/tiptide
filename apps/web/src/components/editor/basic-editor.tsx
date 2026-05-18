@@ -17,12 +17,13 @@ export function BasicEditor() {
   const isMounted = useMounted();
 
   if (!isMounted)
-    return <div className="grid h-screen place-items-center">Loading...</div>;
+    return <div className="grid h-full place-items-center">Loading...</div>;
 
   return (
     <ResizablePanelWindow
       firstNode={
         <TiptideEditor
+          placeholder="Start writing..."
           content={content}
           onChange={(editor) => {
             setContent(editor.getJSON());

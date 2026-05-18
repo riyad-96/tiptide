@@ -6,3 +6,4 @@ tsconfig.tsbuildinfo
 .prettierignore
 .vscode
 .gitignore
+.next

@@ -9,7 +9,12 @@ const ToolbarComponent = memo(function Toolbar({
   className,
 }: ToolbarProps) {
   return (
-    <div className={cn('tiptide-toolbar', className)}>
+    <div
+      className={cn(
+        'bg-background border-border h flex min-w-0 items-center gap-1 overflow-x-auto border-b p-2',
+        className,
+      )}
+    >
       {children || (
         <>
           <Tools.undo />
