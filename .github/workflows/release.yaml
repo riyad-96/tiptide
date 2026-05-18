@@ -3,6 +3,7 @@ name: tiptide
 on:
   pull_request:
     branches: [main]
+
   push:
     branches: [main]
 
@@ -17,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Pull the project code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -25,25 +26,25 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11
+          version: 10
 
       - name: Install node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm -r lint
 
       - name: Type check
-        run: pnpm type-check
+        run: pnpm -r type-check
 
-      - name: Build
-        run: pnpm build
+      - name: Build all
+        run: pnpm -r build
 
   release:
     name: Package release
@@ -51,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Pull the project code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -59,25 +60,25 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11
+          version: 10
 
       - name: Install node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
           cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
+      - name: Build all
+        run: pnpm -r build
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Version, commit, and publish
         uses: changesets/action@v1
         with:
-          publish: pnpm publish --access public --no-git-checks
+          publish: pnpm --filter tiptide publish --access public --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

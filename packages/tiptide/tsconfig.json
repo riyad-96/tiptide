@@ -30,9 +30,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "tiptide/*": ["./src/package/tiptide/*"]
+      "tiptide": ["./src/index.ts"]
     }
   },
-  "include": ["src/package/tiptide"]
+  "include": ["src"]
 }

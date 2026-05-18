@@ -1,102 +1,24 @@
 {
-  "name": "tiptide",
-  "version": "0.0.8",
-  "description": "A text editor built on top of tiptap text editor components.",
-  "type": "module",
-  "files": [
-    "dist",
-    "README.md"
-  ],
+  "name": "tiptide-project",
+  "private": true,
   "scripts": {
-    "build": "tsc -b && vite build",
-    "dev": "vite",
-    "type-check": "tsc --noEmit",
-    "lint": "eslint .",
+    "dev": "pnpm --filter tiptide-web dev",
+    "dev:docs": "pnpm --filter tiptide-web dev",
+    "dev:tiptide": "pnpm --filter tiptide dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check",
     "format": "prettier --write .",
     "cs": "changeset"
   },
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
-    },
-    "./styles": {
-      "import": "./dist/tiptide.css",
-      "default": "./dist/tiptide.css"
-    }
-  },
-  "peerDependencies": {
-    "react": ">=19",
-    "react-dom": ">=19",
-    "tailwindcss": ">=3.4.0"
-  },
-  "dependencies": {
-    "@fontsource-variable/geist": "^5.2.8",
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
-    "@radix-ui/react-popover": "^1.1.15",
-    "@radix-ui/react-slot": "^1.2.4",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tiptap/core": "^3.20.1",
-    "@tiptap/extension-drag-handle": "^3.20.1",
-    "@tiptap/extension-highlight": "^3.20.0",
-    "@tiptap/extension-image": "^3.20.0",
-    "@tiptap/extension-list": "^3.20.0",
-    "@tiptap/extension-placeholder": "^3.20.0",
-    "@tiptap/extension-subscript": "^3.20.0",
-    "@tiptap/extension-superscript": "^3.20.0",
-    "@tiptap/extension-text-align": "^3.20.0",
-    "@tiptap/extension-text-style": "^3.20.0",
-    "@tiptap/html": "^3.20.0",
-    "@tiptap/pm": "^3.20.1",
-    "@tiptap/react": "^3.20.0",
-    "@tiptap/starter-kit": "^3.20.0",
-    "@tiptap/suggestion": "^3.20.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.575.0",
-    "radix-ui": "^1.4.3",
-    "shadcn": "^4.7.0",
-    "tailwind-merge": "^3.5.0",
-    "tippy.js": "^6.3.7",
-    "tw-animate-css": "^1.4.0"
-  },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
-    "@eslint/js": "^9.39.2",
-    "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.6",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react-swc": "^4.2.2",
-    "eslint": "^10.3.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.26",
-    "globals": "^17.0.0",
-    "kitzo": "^3.1.2",
-    "prettier": "^3.8.3",
-    "prettier-plugin-tailwindcss": "^0.8.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "tailwindcss": "^4.3.0",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.52.0",
-    "vite": "^7.3.1",
-    "vite-plugin-dts": "^4.5.4"
-  },
-  "author": "Riyad",
-  "keywords": [
-    "text",
-    "editor"
-  ],
-  "homepage": "https://github.com/riyad-96/tiptide#readme",
-  "bugs": {
-    "url": "https://github.com/riyad-96/tiptide/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/riyad-96/tiptide.git"
-  },
-  "license": "MIT"
+    "eslint": "^9.39.2",
+    "prettier": "^3.8.0",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^6.0.3"
+  }
 }

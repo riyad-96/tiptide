@@ -11,7 +11,7 @@ export default defineConfig({
     dts({
       tsconfigPath: './tsconfig.json',
       outDir: 'dist',
-      entryRoot: 'src/package/tiptide',
+      entryRoot: 'src',
       rollupTypes: false,
       cleanVueFileName: true,
     }),
@@ -20,7 +20,7 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       entry: {
-        index: path.resolve(__dirname, 'src/package/tiptide/index.ts'),
+        index: path.resolve(__dirname, 'src/index.ts'),
       },
       formats: ['es'],
     },
@@ -28,15 +28,14 @@ export default defineConfig({
       external: (id) => !id.startsWith('.') && !path.isAbsolute(id),
       output: {
         preserveModules: true,
-        preserveModulesRoot: 'src/package/tiptide',
+        preserveModulesRoot: 'src/tiptide',
         entryFileNames: ({ name }) => `${name}.js`,
       },
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      tiptide: path.resolve(__dirname, './src/package/tiptide'),
+      tiptide: path.resolve(__dirname, './src'),
     },
   },
 });
