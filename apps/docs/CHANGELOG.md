@@ -1,5 +1,12 @@
 # tiptide-web
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [8ac7425]
+  - tiptide@0.0.10
+
 ## 0.0.1
 
 ### Patch Changes
