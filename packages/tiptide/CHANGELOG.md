@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.10
+
+### Patch Changes
+
+- 8ac7425: tiptide drag handler visibility unstability fixed
+
 ## 0.0.9
 
 ### Patch Changes
