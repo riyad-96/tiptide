@@ -29,7 +29,7 @@ export default function PreviewsPage() {
   );
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-6 py-12">
+    <div className="mx-auto w-full max-w-300 px-6 py-12">
       <div className="mb-12">
         <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-neutral-900">
           Advanced Previews

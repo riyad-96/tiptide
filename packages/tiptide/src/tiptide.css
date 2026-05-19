@@ -148,7 +148,7 @@
     s,
     strike,
     del {
-      color: inherit;
+      color: inherit !important;
     }
 
     --code-bg-clr: oklch(96.2% 0 0);

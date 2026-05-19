@@ -91,9 +91,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="w-full border-t border-neutral-200 py-8 text-center">
-        <p className="text-sm text-neutral-500">
-          Built with minimal black & white aesthetics.
-        </p>
+        <p className="text-sm text-neutral-500">Tiptide text editor</p>
       </footer>
     </div>
   );

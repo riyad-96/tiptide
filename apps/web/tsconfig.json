@@ -21,7 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "tiptide": ["../../packages/tiptide/src/index.ts"],
-      "tiptide/styles": ["../../packages/tiptide/dist/tiptide.css"]
+      "tiptide/styles": ["../../packages/tiptide/src/tiptide.css"]
     }
   },
   "include": [
