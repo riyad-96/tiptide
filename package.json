@@ -2,8 +2,8 @@
   "name": "tiptide-project",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter tiptide-web dev",
-    "dev:docs": "pnpm --filter tiptide-web dev",
+    "dev": "pnpm --filter tiptide-docs dev",
+    "dev:docs": "pnpm --filter tiptide-docs dev",
     "dev:tiptide": "pnpm --filter tiptide dev",
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
