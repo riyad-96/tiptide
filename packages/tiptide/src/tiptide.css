@@ -282,7 +282,7 @@
       }
 
       img {
-        margin-block: 0;
+        margin-block: 0 !important;
         border-radius: var(--image-resize-radius);
       }
     }
@@ -329,10 +329,6 @@
     --list-marker-clr: oklch(70% 0 0);
     --editor-selection-bg: oklch(1 0 0 / 0.2);
   }
-
-  /* .tiptide-button {
-    @apply focus-visible:ring-ring inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50;
-  } */
 
   .tiptide-preview {
     label:has(input[type='checkbox']) {
