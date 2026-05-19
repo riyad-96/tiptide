@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/navbar';
-import { TooltipProvider } from '@/components/ui/tooltip';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
 });
 
@@ -27,13 +26,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col font-sans">
-        <TooltipProvider delayDuration={0}>
-          <Navbar />
-          <main className="flex flex-1 flex-col">{children}</main>
-        </TooltipProvider>
+      <body className="font-inter flex min-h-full flex-col">
+        <Navbar />
+        <main className="flex flex-1 flex-col">{children}</main>
       </body>
     </html>
   );

@@ -139,6 +139,15 @@
 }
 
 /* Tiptide Editor Main Styles */
+.dark .tiptide-editor {
+  --code-bg-clr: oklch(22% 0 0);
+  --code-border-clr: oklch(28% 0 0);
+  --pre-code-clr: oklch(92% 0 0);
+  --line-through-clr: oklch(55% 0 0);
+  --task-list-accent-clr: oklch(95% 0 0);
+  --list-marker-clr: oklch(70% 0 0);
+}
+
 .tiptide-editor {
   strong,
   b,
@@ -156,7 +165,7 @@
   --line-through-clr: oklch(70% 0 0);
   --task-list-accent-clr: oklch(0 0 0);
   --list-marker-clr: oklch(40% 0 0);
-  --editor-selection-bg: oklch(0 0 0 / 0.2);
+  --editor-selection-bg: oklch(62.006% 0.00007 271.152 / 0.2);
   --root-size: 0.0625rem;
 
   &::selection {
@@ -319,16 +328,6 @@
   }
 }
 
-.dark .tiptide-editor {
-  --code-bg-clr: oklch(22% 0 0);
-  --code-border-clr: oklch(28% 0 0);
-  --pre-code-clr: oklch(92% 0 0);
-  --line-through-clr: oklch(55% 0 0);
-  --task-list-accent-clr: oklch(95% 0 0);
-  --list-marker-clr: oklch(70% 0 0);
-  --editor-selection-bg: oklch(1 0 0 / 0.2);
-}
-
 .tiptide-preview {
   label:has(input[type='checkbox']) {
     pointer-events: none;
@@ -394,24 +393,24 @@ span.tiptide-suggestion[data-decoration-content] {
 /* Drag Handler */
 .tiptide-drag-handler-container {
   cursor: grab;
-  transition: top 0.2s ease;
+  transition: top 0.2s ease, opacity 0.2s ease;
   width: fit-content;
   height: fit-content;
   padding-inline: 0.5rem;
   padding-block: 0.25rem;
-  opacity: 0.6;
+  opacity: 0;
 
   &:hover,
   &:active {
-    opacity: 1;
+    opacity: 1 !important;
   }
   &:active {
     cursor: grabbing;
   }
 }
 
-.tiptide-editor:hover .tiptide-drag-handler-container {
-  opacity: 1;
+.tiptide-text-area:hover .tiptide-drag-handler-container {
+  opacity: 0.6;
 }
 
 /* Drop cursor */
