@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.9
+
+### Patch Changes
+
+- ff87bef: updated docs and updated package
+
 ## 0.0.8
 
 ### Patch Changes
