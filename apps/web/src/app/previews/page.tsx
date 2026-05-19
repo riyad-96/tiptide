@@ -136,9 +136,9 @@ export default function PreviewsPage() {
                   onChange={(editor) => setDocContent(editor.getJSON())}
                 >
                   <Toolbar className="border-b border-neutral-100 bg-neutral-50 px-2 py-1" />
-                  <div className="flex-1 overflow-y-auto p-6">
-                    <TiptideTextarea />
-                  </div>
+
+                  <TiptideTextarea />
+
                   <BubbleMenu />
                 </TiptideProvider>
               </div>

@@ -50,7 +50,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="h-[500px] overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
+        <div className="h-[500px] overflow-hidden rounded-md border border-neutral-200 bg-white">
           <BasicEditor />
         </div>
       </section>
