@@ -3,6 +3,7 @@ import { getSectionBySlug } from '@/lib/docs-data';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Terminal } from 'lucide-react';
+import { CodeBlock } from '@/components/code-block';
 
 interface DocsPageProps {
   params: Promise<{ slug?: string[] }>;
@@ -18,27 +19,27 @@ export default async function DocsPage({ params }: DocsPageProps) {
   }
 
   return (
-    <div className="max-w-3xl pb-24">
+    <div className="mx-auto max-w-[1200px] pb-24">
       <div className="mb-10">
-        <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-neutral-900">
+        <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
           {section.title}
         </h1>
-        <p className="text-lg text-neutral-600">{section.description}</p>
+        <p className="text-lg text-neutral-600 dark:text-neutral-400">{section.description}</p>
       </div>
 
-      <div className="prose prose-neutral max-w-none text-neutral-800">
+      <div className="prose prose-neutral max-w-none text-neutral-800 dark:prose-invert dark:text-neutral-200">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ ...props }) => (
               <h1
-                className="mt-10 mb-4 border-b border-neutral-100 pb-2 text-2xl font-bold"
+                className="mt-10 mb-4 border-b border-neutral-100 pb-2 text-2xl font-bold dark:border-neutral-800"
                 {...props}
               />
             ),
             h2: ({ ...props }) => (
               <h2
-                className="mt-10 mb-4 border-b border-neutral-100 pb-2 text-xl font-bold"
+                className="mt-10 mb-4 border-b border-neutral-100 pb-2 text-xl font-bold dark:border-neutral-800"
                 {...props}
               />
             ),
@@ -56,28 +57,28 @@ export default async function DocsPage({ params }: DocsPageProps) {
             ),
             li: ({ ...props }) => <li className="text-[15px]" {...props} />,
             strong: ({ ...props }) => (
-              <strong className="font-semibold text-neutral-900" {...props} />
+              <strong className="font-semibold text-neutral-900 dark:text-neutral-100" {...props} />
             ),
             a: ({ ...props }) => (
               <a
-                className="font-medium underline underline-offset-4 hover:text-neutral-900"
+                className="font-medium underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-100"
                 {...props}
               />
             ),
             code: ({ ...props }) => (
               <code
-                className="rounded-md bg-neutral-100 px-1.5 py-0.5 font-mono text-[13px] text-neutral-800 before:hidden after:hidden"
+                className="rounded-md bg-neutral-100 px-1.5 py-0.5 font-mono text-[13px] text-neutral-800 before:hidden after:hidden dark:bg-neutral-800 dark:text-neutral-200"
                 {...props}
               />
             ),
             table: ({ ...props }) => (
-              <div className="mb-6 w-full overflow-x-auto rounded-md border border-neutral-200">
+              <div className="mb-6 w-full overflow-x-auto rounded-md border border-neutral-200 dark:border-neutral-800">
                 <table className="w-full text-left text-sm" {...props} />
               </div>
             ),
             thead: ({ ...props }) => (
               <thead
-                className="border-b border-neutral-200 bg-neutral-50 text-neutral-900"
+                className="border-b border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100"
                 {...props}
               />
             ),
@@ -86,7 +87,7 @@ export default async function DocsPage({ params }: DocsPageProps) {
             ),
             td: ({ ...props }) => (
               <td
-                className="border-b border-neutral-100 p-3 align-top last:border-0"
+                className="border-b border-neutral-100 p-3 align-top last:border-0 dark:border-neutral-800/50"
                 {...props}
               />
             ),
@@ -98,9 +99,9 @@ export default async function DocsPage({ params }: DocsPageProps) {
 
       {section.codeExample && (
         <div className="mt-12">
-          <h3 className="mb-4 text-lg font-bold">Example</h3>
-          <div className="overflow-hidden rounded-lg border border-neutral-200 bg-[#fafafa]">
-            <div className="flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-2">
+          <h3 className="mb-4 text-lg font-bold dark:text-neutral-100">Example</h3>
+          <div className="overflow-hidden rounded-lg border border-neutral-200 bg-[#fafafa] dark:bg-neutral-900 dark:border-neutral-800">
+            <div className="flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-2 dark:bg-neutral-950 dark:border-neutral-800">
               <div className="flex items-center gap-2">
                 <Terminal className="h-4 w-4 text-neutral-400" />
                 <span className="font-mono text-xs font-medium text-neutral-500 uppercase">
@@ -108,11 +109,10 @@ export default async function DocsPage({ params }: DocsPageProps) {
                 </span>
               </div>
             </div>
-            <div className="overflow-x-auto p-4 font-mono text-[13px] leading-relaxed text-neutral-800">
-              <pre className="whitespace-pre">
-                <code>{section.codeExample}</code>
-              </pre>
-            </div>
+            <CodeBlock 
+              code={section.codeExample} 
+              language={section.codeLanguage || 'typescript'} 
+            />
           </div>
         </div>
       )}

@@ -86,7 +86,7 @@ const TiptideTextarea = React.memo(function TiptideTextarea() {
   return (
     <EditorContent
       editor={editor}
-      className="h-full overflow-y-auto"
+      className="tiptide-text-area h-full overflow-y-auto"
       spellCheck={false}
     />
   );

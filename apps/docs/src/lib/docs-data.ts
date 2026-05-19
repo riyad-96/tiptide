@@ -44,14 +44,17 @@ function Editor() {
     slug: 'installation',
     title: 'Installation',
     description:
-      'How to install Tiptide and its peer dependencies in your React project.',
-    content: `Tiptide is designed to be installed alongside React 19 and its peer dependencies. Run the following command using your preferred package manager to get started:
+      'How to install Tiptide in your React project.',
+    content: `Tiptide is designed to be installed alongside React 19. Run the following command using your preferred package manager to get started:
 
 ### Step 1: Install Package
 
 \`\`\`bash
-pnpm add tiptide @tiptap/react @tiptap/core @tiptap/pm
+pnpm add tiptide
 \`\`\`
+*(Or use \`npm install tiptide\` or \`yarn add tiptide\`)*
+
+Tiptide already includes all necessary Tiptap core and extension dependencies, so you do not need to install them separately.
 
 ### Step 2: Configure Tailwind CSS
 
@@ -115,7 +118,7 @@ export function CustomEditor() {
         </div>
 
         {/* And we put the toolbar at the bottom of the editor! */}
-        <Toolbar className="border-t border-b-0 bg-neutral-50" />
+        <Toolbar className="border-t border-b-0 bg-neutral-50 dark:bg-neutral-900 dark:border-neutral-800" />
 
         {/* Floating Bubble Menu */}
         <BubbleMenu />
@@ -156,7 +159,7 @@ export function CommentEditor() {
     <TiptideProvider content="">
       <div className="border border-neutral-200 rounded-lg">
         {/* Simple compact toolbar for comments: bold, italic, link only! */}
-        <Toolbar className="bg-neutral-50 py-1 px-2 border-b">
+        <Toolbar className="bg-neutral-50 py-1 px-2 border-b dark:bg-neutral-900 dark:border-neutral-800">
           <Toolbar.bold />
           <Toolbar.italic />
           <Toolbar.link />
@@ -204,8 +207,8 @@ export function Post({ title, content }: PostProps) {
       {/* Renders content beautifully with identical typography */}
       <Viewer 
         content={content} 
-        className="text-neutral-800 leading-relaxed"
-        containerClassName="border border-neutral-100 rounded-lg p-6 bg-white"
+        className="text-neutral-800 leading-relaxed dark:text-neutral-200"
+        containerClassName="border border-neutral-100 rounded-lg p-6 bg-white dark:bg-neutral-950 dark:border-neutral-800"
       />
     </article>
   );

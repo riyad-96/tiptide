@@ -129,3 +129,14 @@
     @apply font-sans;
   }
 }
+
+/* Shiki Dual Theme Support */
+.shiki {
+  background-color: #fafafa !important;
+}
+.dark .shiki {
+  background-color: #171717 !important;
+}
+.dark .shiki * {
+  color: var(--shiki-dark) !important;
+}
