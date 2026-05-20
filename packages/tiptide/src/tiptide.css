@@ -401,6 +401,7 @@ span.tiptide-suggestion[data-decoration-content] {
   padding-inline: 0.5rem;
   padding-block: 0.25rem;
   opacity: 0;
+  pointer-events: none;
 
   &:hover,
   &:active {
@@ -413,6 +414,7 @@ span.tiptide-suggestion[data-decoration-content] {
 
 .tiptide-text-area:hover .tiptide-drag-handler-container {
   opacity: 0.6;
+  pointer-events: all;
 }
 
 /* Drop cursor */
