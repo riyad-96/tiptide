@@ -5,20 +5,34 @@ import { createHighlighter, type Highlighter } from 'shiki';
 
 let highlighterPromise: Promise<Highlighter> | null = null;
 
-export function CodeBlock({ code, language = 'tsx' }: { code: string; language?: string }) {
+export function CodeBlock({
+  code,
+  language = 'tsx',
+}: {
+  code: string;
+  language?: string;
+}) {
   const [html, setHtml] = useState<string>('');
 
   useEffect(() => {
     let isMounted = true;
-    
+
     async function highlight() {
       if (!highlighterPromise) {
         highlighterPromise = createHighlighter({
           themes: ['github-light', 'github-dark'],
-          langs: ['typescript', 'tsx', 'javascript', 'bash', 'json', 'html', 'css'],
+          langs: [
+            'typescript',
+            'tsx',
+            'javascript',
+            'bash',
+            'json',
+            'html',
+            'css',
+          ],
         });
       }
-      
+
       try {
         const highlighter = await highlighterPromise;
         if (!highlighter) return;
@@ -28,9 +42,9 @@ export function CodeBlock({ code, language = 'tsx' }: { code: string; language?:
           themes: {
             light: 'github-light',
             dark: 'github-dark',
-          }
+          },
         });
-        
+
         if (isMounted) {
           setHtml(highlighted);
         }
@@ -38,9 +52,9 @@ export function CodeBlock({ code, language = 'tsx' }: { code: string; language?:
         console.error('Shiki highlighting failed:', e);
       }
     }
-    
+
     highlight();
-    
+
     return () => {
       isMounted = false;
     };
@@ -48,7 +62,7 @@ export function CodeBlock({ code, language = 'tsx' }: { code: string; language?:
 
   if (!html) {
     return (
-      <div className="overflow-x-auto p-4 text-[13px] font-mono leading-relaxed text-neutral-800 dark:text-neutral-300">
+      <div className="overflow-x-auto p-4 font-mono text-[13px] leading-relaxed text-neutral-800 dark:text-neutral-300">
         <pre className="whitespace-pre">
           <code>{code}</code>
         </pre>
@@ -58,7 +72,7 @@ export function CodeBlock({ code, language = 'tsx' }: { code: string; language?:
 
   return (
     <div
-      className="shiki-container overflow-x-auto text-[13px] font-mono leading-relaxed [&>pre]:!bg-transparent [&>pre]:p-4"
+      className="shiki-container overflow-x-auto font-mono text-[13px] leading-relaxed [&>pre]:!bg-transparent [&>pre]:p-4"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

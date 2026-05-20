@@ -168,7 +168,9 @@ export default function PreviewsPage() {
                   }
                   secondNode={
                     <div>
-                      <p className="px-4 h-[50px] flex items-center text-neutral-600 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-800/50">Live Render Output</p>
+                      <p className="flex h-[50px] items-center border-b border-neutral-200 px-4 text-neutral-600 dark:border-neutral-800/50 dark:text-neutral-400">
+                        Live Render Output
+                      </p>
 
                       <Viewer content={docContent} />
                     </div>

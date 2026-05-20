@@ -14,8 +14,8 @@ export default function BuilderPage() {
           Editor Builder
         </h1>
         <p className="max-w-2xl text-lg text-neutral-600 dark:text-neutral-400">
-          Construct your own custom rich text editor by toggling the components you need. 
-          View the live preview and instantly copy the generated code.
+          Construct your own custom rich text editor by toggling the components
+          you need. View the live preview and instantly copy the generated code.
         </p>
       </div>
       <EditorBuilder />
