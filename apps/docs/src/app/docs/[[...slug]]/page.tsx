@@ -24,10 +24,12 @@ export default async function DocsPage({ params }: DocsPageProps) {
         <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
           {section.title}
         </h1>
-        <p className="text-lg text-neutral-600 dark:text-neutral-400">{section.description}</p>
+        <p className="text-lg text-neutral-600 dark:text-neutral-400">
+          {section.description}
+        </p>
       </div>
 
-      <div className="prose prose-neutral max-w-none text-neutral-800 dark:prose-invert dark:text-neutral-200">
+      <div className="prose prose-neutral dark:prose-invert max-w-none text-neutral-800 dark:text-neutral-200">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -57,7 +59,10 @@ export default async function DocsPage({ params }: DocsPageProps) {
             ),
             li: ({ ...props }) => <li className="text-[15px]" {...props} />,
             strong: ({ ...props }) => (
-              <strong className="font-semibold text-neutral-900 dark:text-neutral-100" {...props} />
+              <strong
+                className="font-semibold text-neutral-900 dark:text-neutral-100"
+                {...props}
+              />
             ),
             a: ({ ...props }) => (
               <a
@@ -99,9 +104,11 @@ export default async function DocsPage({ params }: DocsPageProps) {
 
       {section.codeExample && (
         <div className="mt-12">
-          <h3 className="mb-4 text-lg font-bold dark:text-neutral-100">Example</h3>
-          <div className="overflow-hidden rounded-lg border border-neutral-200 bg-[#fafafa] dark:bg-neutral-900 dark:border-neutral-800">
-            <div className="flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-2 dark:bg-neutral-950 dark:border-neutral-800">
+          <h3 className="mb-4 text-lg font-bold dark:text-neutral-100">
+            Example
+          </h3>
+          <div className="overflow-hidden rounded-lg border border-neutral-200 bg-[#fafafa] dark:border-neutral-800 dark:bg-neutral-900">
+            <div className="flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-2 dark:border-neutral-800 dark:bg-neutral-950">
               <div className="flex items-center gap-2">
                 <Terminal className="h-4 w-4 text-neutral-400" />
                 <span className="font-mono text-xs font-medium text-neutral-500 uppercase">
@@ -109,9 +116,9 @@ export default async function DocsPage({ params }: DocsPageProps) {
                 </span>
               </div>
             </div>
-            <CodeBlock 
-              code={section.codeExample} 
-              language={section.codeLanguage || 'typescript'} 
+            <CodeBlock
+              code={section.codeExample}
+              language={section.codeLanguage || 'typescript'}
             />
           </div>
         </div>

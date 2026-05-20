@@ -43,8 +43,7 @@ function Editor() {
   {
     slug: 'installation',
     title: 'Installation',
-    description:
-      'How to install Tiptide in your React project.',
+    description: 'How to install Tiptide in your React project.',
     content: `Tiptide is designed to be installed alongside React 19. Run the following command using your preferred package manager to get started:
 
 ### Step 1: Install Package

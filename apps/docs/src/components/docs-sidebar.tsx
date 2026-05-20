@@ -8,7 +8,7 @@ export function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-[280px] shrink-0 overflow-y-auto border-r border-neutral-200 py-8 pl-4 pr-6 md:block sm:pl-6 dark:border-neutral-800">
+    <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-[280px] shrink-0 overflow-y-auto border-r border-neutral-200 py-8 pr-6 pl-4 sm:pl-6 md:block dark:border-neutral-800">
       <h4 className="mb-4 px-2 text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
         Documentation
       </h4>

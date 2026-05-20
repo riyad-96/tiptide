@@ -393,7 +393,9 @@ span.tiptide-suggestion[data-decoration-content] {
 /* Drag Handler */
 .tiptide-drag-handler-container {
   cursor: grab;
-  transition: top 0.2s ease, opacity 0.2s ease;
+  transition:
+    top 0.2s ease,
+    opacity 0.2s ease;
   width: fit-content;
   height: fit-content;
   padding-inline: 0.5rem;

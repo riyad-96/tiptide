@@ -12,9 +12,7 @@ export default function DocsLayout({
       {/* Mobile Sidebar Trigger/Nav can be implemented here if needed, but keeping it minimal for now */}
 
       {/* Main Documentation Content Area */}
-      <main className="min-w-0 flex-1 px-6 py-8 md:px-8">
-        {children}
-      </main>
+      <main className="min-w-0 flex-1 px-6 py-8 md:px-8">{children}</main>
     </div>
   );
 }
