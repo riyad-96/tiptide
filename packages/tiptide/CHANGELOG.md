@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.11
+
+### Patch Changes
+
+- 16c5ef4: drag handler pointer events issue fixed
+
 ## 0.0.10
 
 ### Patch Changes
