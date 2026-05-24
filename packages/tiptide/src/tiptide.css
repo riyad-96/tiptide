@@ -431,3 +431,6 @@ span.tiptide-suggestion[data-decoration-content] {
     opacity: 1;
   }
 }
+.tiptide-theme svg {
+  color: inherit;
+}

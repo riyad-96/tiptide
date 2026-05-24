@@ -5,11 +5,12 @@ import { Slot } from 'radix-ui';
 import { cn } from '../../style';
 
 const buttonVariants = cva(
-  "tt:inline-flex tt:items-center tt:justify-center tt:gap-2 tt:whitespace-nowrap tt:rounded-md tt:text-sm tt:font-medium tt:transition-all tt:disabled:pointer-events-none tt:disabled:opacity-50 tt:[&_svg]:pointer-events-none tt:[&_svg:not([class*='size-'])]:size-4 tt:shrink-0 tt:[&_svg]:shrink-0 tt:outline-none tt:focus-visible:border-ring tt:focus-visible:ring-ring/50 tt:focus-visible:ring-[3px] tt:aria-invalid:ring-destructive/20 tt:dark:aria-invalid:ring-destructive/40 tt:aria-invalid:border-destructive",
+  'tt:inline-flex tt:items-center tt:justify-center tt:gap-2 tt:whitespace-nowrap tt:rounded-md tt:text-sm tt:font-medium tt:transition-all tt:disabled:pointer-events-none tt:disabled:opacity-50 tt:[&_svg]:pointer-events-none tt:[&_svg]:h-4 tt:[&_svg]:w-4 tt:shrink-0 tt:outline-none tt:focus-visible:border-ring tt:focus-visible:ring-ring/50 tt:focus-visible:ring-[3px] tt:aria-invalid:ring-destructive/20 tt:dark:aria-invalid:ring-destructive/40 tt:aria-invalid:border-destructive',
   {
     variants: {
       variant: {
-        default: 'tt:bg-primary tt:text-primary-foreground tt:hover:bg-primary/90',
+        default:
+          'tt:bg-primary tt:text-primary-foreground tt:hover:bg-primary/90',
         destructive:
           'tt:bg-destructive tt:text-white tt:hover:bg-destructive/90 tt:focus-visible:ring-destructive/20 tt:dark:focus-visible:ring-destructive/40 tt:dark:bg-destructive/60',
         outline:
@@ -26,7 +27,8 @@ const buttonVariants = cva(
         sm: 'tt:h-8 tt:rounded-md tt:gap-1.5 tt:px-3 tt:has-[>svg]:px-2.5',
         lg: 'tt:h-10 tt:rounded-md tt:px-6 tt:has-[>svg]:px-4',
         icon: 'tt:size-9',
-        'icon-xs': "tt:size-6 tt:rounded-md tt:[&_svg:not([class*='size-'])]:size-3",
+        'icon-xs':
+          "tt:size-6 tt:rounded-md tt:[&_svg:not([class*='size-'])]:size-3",
         'icon-sm': 'tt:size-8',
         'icon-lg': 'tt:size-10',
       },
