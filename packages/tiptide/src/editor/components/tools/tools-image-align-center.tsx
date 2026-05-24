@@ -51,7 +51,7 @@ export const ToolsImageAlignCenter = memo(function ToolsImageAlignCenter({
         type="button"
         className={className}
       >
-        {children ?? <AlignCenterIcon className="size-4" />}
+        {children ?? <AlignCenterIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

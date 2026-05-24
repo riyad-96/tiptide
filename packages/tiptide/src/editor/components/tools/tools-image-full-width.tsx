@@ -42,7 +42,7 @@ export const ToolsImageFullWidth = memo(function ToolsImageFullWidth({
         type="button"
         className={className}
       >
-        {children ?? <MaximizeIcon className="size-4" />}
+        {children ?? <MaximizeIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

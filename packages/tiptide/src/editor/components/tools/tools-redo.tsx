@@ -44,7 +44,7 @@ export const ToolsRedo = memo(function ToolsRedo({
         type="button"
         className={className}
       >
-        {children ?? <Redo2Icon className="size-4" />}
+        {children ?? <Redo2Icon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

@@ -34,7 +34,7 @@ export const ToolsImageRemove = memo(function ToolsImageRemove({
         type="button"
         className={className}
       >
-        {children ?? <XIcon className="size-4" />}
+        {children ?? <XIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

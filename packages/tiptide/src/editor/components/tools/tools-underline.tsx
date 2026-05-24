@@ -45,7 +45,7 @@ export const ToolsUnderline = memo(function ToolsUnderline({
         type="button"
         className={className}
       >
-        {children ?? <UnderlineIcon className="size-4" />}
+        {children ?? <UnderlineIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

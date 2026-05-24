@@ -45,7 +45,7 @@ export const ToolsStrike = memo(function ToolsStrike({
         type="button"
         className={className}
       >
-        {children ?? <StrikethroughIcon className="size-4" />}
+        {children ?? <StrikethroughIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

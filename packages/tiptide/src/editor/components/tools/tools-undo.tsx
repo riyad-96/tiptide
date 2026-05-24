@@ -44,7 +44,7 @@ export const ToolsUndo = memo(function ToolsUndo({
         type="button"
         className={className}
       >
-        {children ?? <Undo2Icon className="size-4" />}
+        {children ?? <Undo2Icon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );
