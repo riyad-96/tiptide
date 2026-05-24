@@ -50,7 +50,7 @@ export const ToolsImage = memo(function ToolsImage({
         >
           {children ?? (
             <>
-              <ImagePlusIcon className="h-4 w-4" />
+              <ImagePlusIcon className="tt:h-4 tt:w-4" />
               <span>Add</span>
             </>
           )}
@@ -123,7 +123,7 @@ export const ToolsImage = memo(function ToolsImage({
           >
             {children ?? (
               <>
-                <ImagePlusIcon className="h-4 w-4" />
+                <ImagePlusIcon className="tt:h-4 tt:w-4" />
                 <span>Add</span>
               </>
             )}
@@ -133,24 +133,29 @@ export const ToolsImage = memo(function ToolsImage({
 
       <PopoverContent
         align={popoverAlign ?? 'center'}
-        className="flex w-80 flex-col gap-4"
+        className="tt:flex tt:w-80 tt:flex-col tt:gap-4"
       >
-        <div className="flex flex-col gap-1">
-          <h3 className="text-sm leading-none font-semibold">Insert Image</h3>
-          <p className="text-muted-foreground text-xs">
+        <div className="tt:flex tt:flex-col tt:gap-1">
+          <h3 className="tt:text-sm tt:leading-none tt:font-semibold">
+            Insert Image
+          </h3>
+          <p className="tt:text-muted-foreground tt:text-xs">
             Add an image from a URL or upload a file.
           </p>
         </div>
 
-        <form onSubmit={handleLinkSubmit} className="flex flex-col gap-2">
-          <div className="flex gap-2">
+        <form
+          onSubmit={handleLinkSubmit}
+          className="tt:flex tt:flex-col tt:gap-2"
+        >
+          <div className="tt:flex tt:gap-2">
             <Input
               placeholder="Paste image URL..."
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
               disabled={isUploading}
               type="url"
-              className="tt:h-8 text-xs"
+              className="tt:h-8 tt:text-xs"
             />
             <Button
               type="submit"
@@ -166,7 +171,7 @@ export const ToolsImage = memo(function ToolsImage({
 
         <div className="tt:relative tt:flex tt:items-center tt:justify-center tt:py-1">
           <div className="tt:absolute tt:inset-0 tt:flex tt:items-center">
-            <span className="border-muted/50 tt:border-border tt:w-full tt:border-t" />
+            <span className="tt:border-muted/50 tt:border-border tt:w-full tt:border-t" />
           </div>
           <span className="tt:bg-popover tt:text-muted-foreground tt:relative tt:px-2 tt:text-[10px] tt:font-medium tt:tracking-wider tt:uppercase">
             or

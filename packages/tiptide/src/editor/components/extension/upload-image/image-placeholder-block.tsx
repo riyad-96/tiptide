@@ -17,7 +17,7 @@ export const ImagePlaceholderBlock = ({
   if (imagePlaceholderBlock) {
     const CustomPlaceholder = imagePlaceholderBlock;
     return (
-      <NodeViewWrapper className="my-4">
+      <NodeViewWrapper className="tt:my-4">
         <CustomPlaceholder
           editor={editor}
           getPos={getPos as () => number}

@@ -45,7 +45,7 @@ export const ToolsBlockquote = memo(function ToolsBlockquote({
         type="button"
         className={className}
       >
-        {children ?? <QuoteIcon className="size-4" />}
+        {children ?? <QuoteIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

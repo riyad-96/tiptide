@@ -44,7 +44,7 @@ export const ToolsCodeblock = memo(function ToolsCodeblock({
         type="button"
         className={className}
       >
-        {children ?? <Code2Icon className="size-4" />}
+        {children ?? <Code2Icon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

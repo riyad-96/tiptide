@@ -45,7 +45,7 @@ export const ToolsItalic = memo(function ToolsItalic({
         type="button"
         className={className}
       >
-        {children ?? <ItalicIcon className="size-4" />}
+        {children ?? <ItalicIcon className="tt:size-4" />}
       </Button>
     </Tooltip>
   );

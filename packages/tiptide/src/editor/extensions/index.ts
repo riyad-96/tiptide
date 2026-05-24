@@ -47,7 +47,7 @@ export const tiptapExtensions = (props?: TiptapExtensionProps) => {
     CustomImage.configure({
       allowBase64: true,
       HTMLAttributes: {
-        class: 'rounded-lg',
+        class: 'tt:rounded-lg',
       },
       resize: {
         enabled: true,
