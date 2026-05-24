@@ -1,6 +1,6 @@
 {
   "name": "tiptide",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A text editor built on top of tiptap text editor components.",
   "type": "module",
   "files": [
