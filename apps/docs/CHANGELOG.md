@@ -1,5 +1,12 @@
 # tiptide-web
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [d2d770a]
+  - tiptide@0.0.16
+
 ## 0.0.7
 
 ### Patch Changes

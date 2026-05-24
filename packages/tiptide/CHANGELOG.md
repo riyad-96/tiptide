@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.16
+
+### Patch Changes
+
+- d2d770a: fixing style issue
+
 ## 0.0.15
 
 ### Patch Changes
