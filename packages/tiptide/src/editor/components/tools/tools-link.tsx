@@ -106,8 +106,8 @@ export const ToolsLink = memo(function ToolsLink({
         </Tooltip>
       )}
 
-      <PopoverContent align={popoverAlign ?? 'center'} className="w-fit p-1">
-        <div className="flex items-center gap-1">
+      <PopoverContent align={popoverAlign ?? 'center'} className="tt:w-fit tt:p-1">
+        <div className="tt:flex tt:items-center tt:gap-1">
           <input
             ref={inputRef}
             placeholder="https://example.com"
@@ -119,11 +119,11 @@ export const ToolsLink = memo(function ToolsLink({
                 handleSetLink();
               }
             }}
-            className="px-4 py-1.5 text-sm outline-none"
+            className="tt:px-4 tt:py-1.5 tt:text-sm tt:outline-none"
             autoFocus
           />
 
-          <div className="flex items-center gap-1">
+          <div className="tt:flex tt:items-center tt:gap-1">
             <Button
               variant="ghost"
               size="icon-sm"

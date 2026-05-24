@@ -11,7 +11,7 @@ const ToolbarComponent = memo(function Toolbar({
   return (
     <div
       className={cn(
-        'bg-background border-border h flex min-w-0 items-center gap-1 overflow-x-auto border-b p-2',
+        'tt:bg-background tt:border-border tt:h tt:flex tt:min-w-0 tt:items-center tt:gap-1 tt:overflow-x-auto tt:border-b tt:p-2',
         className,
       )}
     >

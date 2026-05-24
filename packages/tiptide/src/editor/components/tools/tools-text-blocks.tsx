@@ -103,7 +103,7 @@ export const ToolsTextBlocks = memo(function ToolsTextBlocks({
           <Button
             variant={activeBlock ? 'secondary' : 'ghost'}
             size={size ?? 'sm'}
-            className={`flex items-center gap-0.5 pe-1! ${className || ''}`}
+            className={`tt:flex tt:items-center tt:gap-0.5 tt:pe-1! ${className || ''}`}
             type="button"
             onClick={() => {
               if (typeof propOnClick === 'function') propOnClick(editor);
@@ -121,14 +121,14 @@ export const ToolsTextBlocks = memo(function ToolsTextBlocks({
                   )}
                 </span>
 
-                <ChevronDownIcon className="size-2.5" />
+                <ChevronDownIcon className="tt:size-2.5" />
               </>
             )}
           </Button>
         </PopoverTrigger>
       </Tooltip>
 
-      <PopoverContent align={popoverAlign ?? 'start'} className="w-fit p-1">
+      <PopoverContent align={popoverAlign ?? 'start'} className="tt:w-fit tt:p-1">
         <div>
           {textBlocks.map((b) => (
             <Button
@@ -139,7 +139,7 @@ export const ToolsTextBlocks = memo(function ToolsTextBlocks({
               }}
               variant={activeBlock?.id === b.id ? 'secondary' : 'ghost'}
               size="sm"
-              className="flex w-full justify-start"
+              className="tt:flex tt:w-full tt:justify-start"
               aria-label={b.text}
               type="button"
             >

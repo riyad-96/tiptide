@@ -103,7 +103,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
           <Button
             variant={isColorActive || open ? 'secondary' : 'ghost'}
             size={size ?? 'sm'}
-            className={`flex items-center gap-0.5 pe-1! ${className || ''}`}
+            className={`tt:flex tt:items-center tt:gap-0.5 tt:pe-1! ${className || ''}`}
             type="button"
             onClick={() => {
               if (typeof propOnClick === 'function') propOnClick(editor);
@@ -112,7 +112,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
             {children ?? (
               <>
                 <PaletteIcon />
-                <ChevronDownIcon className="size-2.5" />
+                <ChevronDownIcon className="tt:size-2.5" />
               </>
             )}
           </Button>
@@ -121,14 +121,14 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
 
       <PopoverContent
         align={popoverAlign ?? 'start'}
-        className="w-fit overflow-hidden p-0"
+        className="tt:w-fit tt:overflow-hidden tt:p-0"
       >
-        <div className="max-h-62.5 min-w-37.5 space-y-2.5 overflow-y-auto p-1 py-2">
-          <div className="grid gap-1">
-            <span className="px-2.5 text-xs text-neutral-700 dark:text-neutral-300">
+        <div className="tt:max-h-62.5 tt:min-w-37.5 tt:space-y-2.5 tt:overflow-y-auto tt:p-1 tt:py-2">
+          <div className="tt:grid tt:gap-1">
+            <span className="tt:px-2.5 tt:text-xs tt:text-neutral-700 tt:dark:text-neutral-300">
               Colors
             </span>
-            <div className="grid">
+            <div className="tt:grid">
               {colors.map((c) => (
                 <Button
                   key={c.id}
@@ -137,7 +137,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                     activeTextColor?.color === c.color ? 'secondary' : 'ghost'
                   }
                   className={cn(
-                    'flex h-9 items-center justify-start gap-2 px-2.5',
+                    'tt:flex tt:h-9 tt:items-center tt:justify-start tt:gap-2 tt:px-2.5',
                   )}
                   aria-label={c.text}
                   onClick={() => {
@@ -147,7 +147,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                       editor
                         .chain()
                         .focus()
-                        .setColor('var(--editor-default-text-clr)')
+                        .setColor('var(--tt-editor-default-text-clr)')
                         .run();
                     }
                     setOpen(false);
@@ -156,7 +156,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                   type="button"
                 >
                   <span
-                    className="grid size-6 place-items-center rounded-sm border"
+                    className="tt:grid tt:size-6 tt:place-items-center tt:rounded-sm tt:border"
                     style={{ color: c.color }}
                   >
                     A
@@ -167,11 +167,11 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
             </div>
           </div>
 
-          <div className="grid gap-1">
-            <span className="px-2.5 text-xs text-neutral-700 dark:text-neutral-300">
+          <div className="tt:grid tt:gap-1">
+            <span className="tt:px-2.5 tt:text-xs tt:text-neutral-700 tt:dark:text-neutral-300">
               Highlights
             </span>
-            <div className="grid">
+            <div className="tt:grid">
               {highlights.map((h) => (
                 <Button
                   key={h.id}
@@ -182,7 +182,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                       : 'ghost'
                   }
                   className={cn(
-                    'flex h-9 items-center justify-start gap-2 px-2.5',
+                    'tt:flex tt:h-9 tt:items-center tt:justify-start tt:gap-2 tt:px-2.5',
                   )}
                   aria-label={h.text}
                   onClick={() => {
@@ -196,7 +196,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                       editor
                         .chain()
                         .focus()
-                        .setHighlight({ color: 'var(--background)' })
+                        .setHighlight({ color: 'var(--tt-background)' })
                         .run();
                     }
                     setOpen(false);
@@ -205,7 +205,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                   type="button"
                 >
                   <span
-                    className="grid size-6 place-items-center rounded-sm border"
+                    className="tt:grid tt:size-6 tt:place-items-center tt:rounded-sm tt:border"
                     style={{ backgroundColor: h.color }}
                   >
                     A

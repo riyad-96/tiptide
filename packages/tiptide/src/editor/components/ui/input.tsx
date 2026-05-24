@@ -8,9 +8,9 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
       type={type}
       data-slot="input"
       className={cn(
-        'file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-        'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-        'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+        'tt:file:text-foreground tt:placeholder:text-muted-foreground tt:selection:bg-primary tt:selection:text-primary-foreground tt:dark:bg-input/30 tt:border-input tt:h-9 tt:w-full tt:min-w-0 tt:rounded-md tt:border tt:bg-transparent tt:px-3 tt:py-1 tt:text-base tt:shadow-xs tt:transition-[color,box-shadow] tt:outline-none tt:file:inline-flex tt:file:h-7 tt:file:border-0 tt:file:bg-transparent tt:file:text-sm tt:file:font-medium tt:disabled:pointer-events-none tt:disabled:cursor-not-allowed tt:disabled:opacity-50 tt:md:text-sm',
+        'tt:focus-visible:border-ring tt:focus-visible:ring-ring/50 tt:focus-visible:ring-[3px]',
+        'tt:aria-invalid:ring-destructive/20 tt:dark:aria-invalid:ring-destructive/40 tt:aria-invalid:border-destructive',
         className,
       )}
       {...props}
