@@ -30,7 +30,7 @@ function PopoverContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          'tiptide-theme tt:bg-popover tt:text-popover-foreground tt:data-[state=open]:animate-in tt:data-[state=closed]:animate-out tt:data-[state=closed]:fade-out-0 tt:data-[state=open]:fade-in-0 tt:data-[state=closed]:zoom-out-95 tt:data-[state=open]:zoom-in-95 tt:data-[side=bottom]:slide-in-from-top-2 tt:data-[side=left]:slide-in-from-right-2 tt:data-[side=right]:slide-in-from-left-2 tt:data-[side=top]:slide-in-from-bottom-2 tt:z-50 tt:w-72 tt:origin-(--radix-popover-content-transform-origin) tt:rounded-md tt:border tt:p-4 tt:shadow-md tt:outline-hidden',
+          'tiptide-theme tt:bg-popover tt:text-popover-foreground tt:data-[state=open]:animate-in tt:data-[state=closed]:animate-out tt:data-[state=closed]:fade-out-0 tt:data-[state=open]:fade-in-0 tt:data-[state=closed]:zoom-out-95 tt:data-[state=open]:zoom-in-95 tt:data-[side=bottom]:slide-in-from-top-2 tt:data-[side=left]:slide-in-from-right-2 tt:data-[side=right]:slide-in-from-left-2 tt:data-[side=top]:slide-in-from-bottom-2 tt:z-50 tt:w-72 tt:origin-(--radix-popover-content-transform-origin) tt:rounded-md tt:border tt:border-border tt:p-4 tt:shadow-md tt:outline-hidden',
           className,
         )}
         {...props}

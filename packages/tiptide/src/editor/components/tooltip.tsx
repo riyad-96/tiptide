@@ -30,7 +30,7 @@ export const Tooltip = memo(function Tooltip({
       : providerHideTooltip;
 
   return (
-    <ShadcnTooltip disableHoverableContent>
+    <ShadcnTooltip disableHoverableContent delayDuration={400}>
       <TooltipTrigger asChild disabled={disabled}>
         {children}
       </TooltipTrigger>
