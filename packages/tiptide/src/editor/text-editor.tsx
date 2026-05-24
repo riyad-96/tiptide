@@ -72,7 +72,7 @@ function TiptideProvider({
   return (
     <editorContext.Provider value={value}>
       <TooltipProvider>
-        <div className="tiptide-theme text-primary grid h-full grid-rows-[auto_1fr] overflow-y-auto">
+        <div className="tiptide-theme tt:text-primary tt:grid tt:h-full tt:grid-rows-[auto_1fr] tt:overflow-y-auto">
           {children}
         </div>
       </TooltipProvider>
@@ -86,7 +86,7 @@ const TiptideTextarea = React.memo(function TiptideTextarea() {
   return (
     <EditorContent
       editor={editor}
-      className="tiptide-text-area h-full overflow-y-auto"
+      className="tiptide-text-area tt:h-full tt:overflow-y-auto"
       spellCheck={false}
     />
   );

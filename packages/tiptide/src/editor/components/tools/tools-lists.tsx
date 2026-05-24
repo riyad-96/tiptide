@@ -76,7 +76,7 @@ export const ToolsLists = memo(function ToolsLists({
           <Button
             variant={activeList || open ? 'secondary' : 'ghost'}
             size={size ?? 'sm'}
-            className={`flex items-center gap-0.5 pe-1! ${className || ''}`}
+            className={`tt:flex tt:items-center tt:gap-0.5 tt:pe-1! ${className || ''}`}
             type="button"
             onClick={() => {
               if (typeof propOnClick === 'function') propOnClick(editor);
@@ -94,7 +94,7 @@ export const ToolsLists = memo(function ToolsLists({
                   )}
                 </span>
 
-                <ChevronDownIcon className="size-2.5" />
+                <ChevronDownIcon className="tt:size-2.5" />
               </>
             )}
           </Button>
@@ -103,7 +103,7 @@ export const ToolsLists = memo(function ToolsLists({
 
       <PopoverContent
         align={popoverAlign ?? 'start'}
-        className="grid w-fit p-1"
+        className="tt:grid tt:w-fit tt:p-1"
       >
         {lists.map((l) => (
           <Button
@@ -114,7 +114,7 @@ export const ToolsLists = memo(function ToolsLists({
             }}
             variant={activeList?.id === l.id ? 'secondary' : 'ghost'}
             size="sm"
-            className={cn('flex justify-start')}
+            className={cn('tt:flex tt:justify-start')}
             aria-label={l.text}
             type="button"
           >

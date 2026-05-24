@@ -59,35 +59,35 @@ export const ImagePlaceholderBlock = ({
   };
 
   return (
-    <NodeViewWrapper className="my-4">
-      <div className="group relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-neutral-200 bg-neutral-50/50 p-8 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:border-neutral-600 dark:hover:bg-neutral-900">
+    <NodeViewWrapper className="tt:my-4">
+      <div className="tt:group tt:relative tt:flex tt:flex-col tt:items-center tt:justify-center tt:rounded-xl tt:border-2 tt:border-dashed tt:border-neutral-200 tt:bg-neutral-50/50 tt:p-8 tt:hover:border-neutral-400 tt:hover:bg-neutral-50 tt:dark:border-neutral-800 tt:dark:bg-neutral-900/50 tt:dark:hover:border-neutral-600 tt:dark:hover:bg-neutral-900">
         <Button
           onClick={deleteNode}
-          className="absolute top-2 right-2 rounded-md p-1 opacity-0 group-hover:opacity-100"
+          className="tt:absolute tt:top-2 tt:right-2 tt:rounded-md tt:p-1 tt:opacity-0 tt:group-hover:opacity-100"
           variant={'outline'}
           size="icon-sm"
           type="button"
         >
-          <X className="h-4 w-4" />
+          <X className="tt:h-4 tt:w-4" />
         </Button>
 
-        <div className="flex flex-col items-center gap-4 text-center select-none">
-          <div className="rounded-full bg-white p-3 shadow-sm ring-1 ring-neutral-200 dark:bg-neutral-900 dark:ring-neutral-800">
+        <div className="tt:flex tt:flex-col tt:items-center tt:gap-4 tt:text-center tt:select-none">
+          <div className="tt:rounded-full tt:bg-white tt:p-3 tt:shadow-sm tt:ring-1 tt:ring-neutral-200 tt:dark:bg-neutral-900 tt:dark:ring-neutral-800">
             {isUploading ? (
-              <Loader2 className="h-6 w-6 animate-spin text-neutral-500 dark:text-neutral-400" />
+              <Loader2 className="tt:h-6 tt:w-6 tt:animate-spin tt:text-neutral-500 tt:dark:text-neutral-400" />
             ) : (
-              <ImageIcon className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+              <ImageIcon className="tt:h-6 tt:w-6 tt:text-neutral-500 tt:dark:text-neutral-400" />
             )}
           </div>
 
           <div>
-            <p className="text-sm font-medium">Add an image</p>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400">
+            <p className="tt:text-sm tt:font-medium">Add an image</p>
+            <p className="tt:text-xs tt:text-neutral-500 tt:dark:text-neutral-400">
               Upload from computer or paste a link
             </p>
           </div>
 
-          <div className="flex gap-2">
+          <div className="tt:flex tt:gap-2">
             <Button
               onClick={() => fileInputRef.current?.click()}
               disabled={isUploading}
@@ -96,12 +96,12 @@ export const ImagePlaceholderBlock = ({
             >
               {isUploading ? (
                 <>
-                  <Loader2 className="animate-duration-1000 h-4 w-4 animate-spin" />
+                  <Loader2 className="tt:animate-duration-1000 tt:h-4 tt:w-4 tt:animate-spin" />
                   <span>Uploading...</span>
                 </>
               ) : (
                 <>
-                  <Upload className="h-4 w-4" />
+                  <Upload className="tt:h-4 tt:w-4" />
                   <span>Upload File</span>
                 </>
               )}
@@ -109,7 +109,7 @@ export const ImagePlaceholderBlock = ({
             <input
               type="file"
               ref={fileInputRef}
-              className="hidden"
+              className="tt:hidden"
               accept="image/*"
               onChange={handleFileChange}
             />

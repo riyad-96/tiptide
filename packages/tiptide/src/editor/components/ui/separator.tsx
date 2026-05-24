@@ -13,8 +13,8 @@ export const Separator = memo(function Separator({
   return (
     <div
       className={cn(
-        'bg-border shrink-0',
-        direction === 'vertical' ? 'mx-1 h-6 w-px' : 'my-1 h-px w-full',
+        'tt:bg-border tt:shrink-0',
+        direction === 'vertical' ? 'tt:mx-1 tt:h-6 tt:w-px' : 'tt:my-1 tt:h-px tt:w-full',
         className,
       )}
     />

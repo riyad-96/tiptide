@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/navbar';
+import { Providers } from './providers';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -24,14 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="font-inter flex min-h-full flex-col">
-        <Navbar />
-        <main className="flex flex-1 flex-col">{children}</main>
-      </body>
-    </html>
+    <Providers>
+      <html
+        lang="en"
+        className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+      >
+        <body className="font-inter flex min-h-full flex-col">
+          <Navbar />
+          <main className="flex flex-1 flex-col">{children}</main>
+        </body>
+      </html>
+    </Providers>
   );
 }

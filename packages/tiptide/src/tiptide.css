@@ -1,92 +1,90 @@
-@import 'tailwindcss';
+@import 'tailwindcss' prefix(tt);
+@source './**/*.{ts,tsx}';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import '@fontsource-variable/geist';
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: 'Geist Variable', sans-serif;
+  --color-background: var(--tt-background);
+  --color-foreground: var(--tt-foreground);
   --font-mono: var(--font-geist-mono);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
-  --font-heading: var(--font-sans);
+  --color-ring: var(--tt-ring);
+  --color-input: var(--tt-input);
+  --color-border: var(--tt-border);
+  --color-destructive: var(--tt-destructive);
+  --color-accent-foreground: var(--tt-accent-foreground);
+  --color-accent: var(--tt-accent);
+  --color-muted-foreground: var(--tt-muted-foreground);
+  --color-muted: var(--tt-muted);
+  --color-secondary-foreground: var(--tt-secondary-foreground);
+  --color-secondary: var(--tt-secondary);
+  --color-primary-foreground: var(--tt-primary-foreground);
+  --color-primary: var(--tt-primary);
+  --color-popover-foreground: var(--tt-popover-foreground);
+  --color-popover: var(--tt-popover);
+  --color-card-foreground: var(--tt-card-foreground);
+  --color-card: var(--tt-card);
+  --radius-sm: calc(var(--tt-radius) - 4px);
+  --radius-md: calc(var(--tt-radius) - 2px);
+  --radius-lg: var(--tt-radius);
+  --radius-xl: calc(var(--tt-radius) + 4px);
+  --radius-2xl: calc(var(--tt-radius) + 8px);
+  --radius-3xl: calc(var(--tt-radius) + 12px);
+  --radius-4xl: calc(var(--tt-radius) + 16px);
 }
 
 .tiptide-theme {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --tt-radius: 0.625rem;
+  --tt-background: oklch(1 0 0);
+  --tt-foreground: oklch(0.145 0 0);
+  --tt-card: oklch(1 0 0);
+  --tt-card-foreground: oklch(0.145 0 0);
+  --tt-popover: oklch(1 0 0);
+  --tt-popover-foreground: oklch(0.145 0 0);
+  --tt-primary: oklch(0.205 0 0);
+  --tt-primary-foreground: oklch(0.985 0 0);
+  --tt-secondary: oklch(0.97 0 0);
+  --tt-secondary-foreground: oklch(0.205 0 0);
+  --tt-muted: oklch(0.97 0 0);
+  --tt-muted-foreground: oklch(0.556 0 0);
+  --tt-accent: oklch(0.97 0 0);
+  --tt-accent-foreground: oklch(0.205 0 0);
+  --tt-destructive: oklch(0.577 0.245 27.325);
+  --tt-border: oklch(0.922 0 0);
+  --tt-input: oklch(0.922 0 0);
+  --tt-ring: oklch(0.708 0 0);
 }
 
 .tiptide-theme:where(.dark, .dark *) {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --tt-background: oklch(0.145 0 0);
+  --tt-foreground: oklch(0.985 0 0);
+  --tt-card: oklch(0.205 0 0);
+  --tt-card-foreground: oklch(0.985 0 0);
+  --tt-popover: oklch(0.205 0 0);
+  --tt-popover-foreground: oklch(0.985 0 0);
+  --tt-primary: oklch(0.922 0 0);
+  --tt-primary-foreground: oklch(0.205 0 0);
+  --tt-secondary: oklch(0.269 0 0);
+  --tt-secondary-foreground: oklch(0.985 0 0);
+  --tt-muted: oklch(0.269 0 0);
+  --tt-muted-foreground: oklch(0.708 0 0);
+  --tt-accent: oklch(0.269 0 0);
+  --tt-accent-foreground: oklch(0.985 0 0);
+  --tt-destructive: oklch(0.704 0.191 22.216);
+  --tt-border: oklch(1 0 0 / 10%);
+  --tt-input: oklch(1 0 0 / 15%);
+  --tt-ring: oklch(0.556 0 0);
 }
 
 @layer base {
   .tiptide-theme {
-    @apply bg-background text-foreground font-sans;
+    @apply tt:bg-background tt:text-foreground;
 
     &,
     & * {
-      @apply border-border outline-ring/50;
+      @apply tt:border-border tt:outline-ring/50;
     }
 
     * {
@@ -97,7 +95,7 @@
       color-scheme: dark;
 
       * {
-        scrollbar-color: var(--ring) transparent;
+        scrollbar-color: var(--tt-ring) transparent;
       }
     }
   }
@@ -105,12 +103,12 @@
 
 /* Tiptide Editor Main Styles */
 .dark .tiptide-editor {
-  --code-bg-clr: oklch(22% 0 0);
-  --code-border-clr: oklch(28% 0 0);
-  --pre-code-clr: oklch(92% 0 0);
-  --line-through-clr: oklch(55% 0 0);
-  --task-list-accent-clr: oklch(95% 0 0);
-  --list-marker-clr: oklch(70% 0 0);
+  --tt-code-bg-clr: oklch(22% 0 0);
+  --tt-code-border-clr: oklch(28% 0 0);
+  --tt-pre-code-clr: oklch(92% 0 0);
+  --tt-line-through-clr: oklch(55% 0 0);
+  --tt-task-list-accent-clr: oklch(95% 0 0);
+  --tt-list-marker-clr: oklch(70% 0 0);
 }
 
 .tiptide-editor {
@@ -124,17 +122,17 @@
     color: inherit !important;
   }
 
-  --code-bg-clr: oklch(96.2% 0 0);
-  --code-border-clr: oklch(90.2% 0 0);
-  --pre-code-clr: oklch(10% 0 0);
-  --line-through-clr: oklch(70% 0 0);
-  --task-list-accent-clr: oklch(0 0 0);
-  --list-marker-clr: oklch(40% 0 0);
-  --editor-selection-bg: oklch(62.006% 0.00007 271.152 / 0.3);
-  --root-size: 0.0625rem;
+  --tt-code-bg-clr: oklch(96.2% 0 0);
+  --tt-code-border-clr: oklch(90.2% 0 0);
+  --tt-pre-code-clr: oklch(10% 0 0);
+  --tt-line-through-clr: oklch(70% 0 0);
+  --tt-task-list-accent-clr: oklch(0 0 0);
+  --tt-list-marker-clr: oklch(40% 0 0);
+  --tt-editor-selection-bg: oklch(62.006% 0.00007 271.152 / 0.3);
+  --tt-root-size: 0.0625rem;
 
   &::selection {
-    background-color: var(--editor-selection-bg);
+    background-color: var(--tt-editor-selection-bg);
   }
 
   code::before,
@@ -145,8 +143,8 @@
   code:not(pre *) {
     font-weight: normal;
     font-size: 0.825rem;
-    border: 1px solid var(--code-border-clr);
-    background-color: var(--code-bg-clr);
+    border: 1px solid var(--tt-code-border-clr);
+    background-color: var(--tt-code-bg-clr);
     border-radius: 0.355rem;
     padding-inline: 0.3rem;
     padding-block: 0.175rem 0.1rem;
@@ -160,12 +158,12 @@
   pre {
     padding-inline: 1rem;
     padding-block: 1rem;
-    border: 1px solid var(--code-border-clr);
-    background-color: var(--code-bg-clr);
+    border: 1px solid var(--tt-code-border-clr);
+    background-color: var(--tt-code-bg-clr);
     border-radius: 0.555rem;
 
     code {
-      color: var(--pre-code-clr);
+      color: var(--tt-pre-code-clr);
     }
   }
 
@@ -176,7 +174,7 @@
       margin: 0 !important;
     }
     li::marker {
-      color: var(--muted-foreground);
+      color: var(--tt-muted-foreground);
     }
     li * {
       color: inherit;
@@ -202,7 +200,7 @@
       }
     }
     input[type='checkbox'] {
-      accent-color: var(--task-list-accent-clr);
+      accent-color: var(--tt-task-list-accent-clr);
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -222,8 +220,8 @@
     margin-block: 2rem;
     display: flex;
     width: 100%;
-    --resize-handle-bg: oklch(73.155% 0.14431 250.444);
-    --image-resize-radius: 10px;
+    --tt-resize-handle-bg: oklch(73.155% 0.14431 250.444);
+    --tt-image-resize-radius: 10px;
 
     &[data-align='left'] {
       justify-content: flex-start;
@@ -237,7 +235,7 @@
   }
 
   [data-resize-wrapper] {
-    border-radius: var(--image-resize-radius);
+    border-radius: var(--tt-image-resize-radius);
     width: fit-content;
     position: relative;
 
@@ -249,14 +247,14 @@
     }
 
     &:hover::before {
-      background-color: oklch(from var(--primary) l c h / 0.1);
-      border-radius: var(--image-resize-radius);
+      background-color: oklch(from var(--tt-primary) l c h / 0.1);
+      border-radius: var(--tt-image-resize-radius);
       cursor: pointer;
     }
 
     img {
       margin-block: 0 !important;
-      border-radius: var(--image-resize-radius);
+      border-radius: var(--tt-image-resize-radius);
     }
   }
 
@@ -264,8 +262,8 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: var(--resize-handle-bg);
-    outline: 2px solid var(--background);
+    background-color: var(--tt-resize-handle-bg);
+    outline: 2px solid var(--tt-background);
     border-radius: 100%;
     z-index: 2;
     opacity: 0;
@@ -286,7 +284,7 @@
   }
 
   .ProseMirror-selectednode [data-resize-wrapper] {
-    outline: 2px solid var(--resize-handle-bg);
+    outline: 2px solid var(--tt-resize-handle-bg);
     [data-resize-handle] {
       opacity: 1;
     }
@@ -345,7 +343,7 @@ span.tiptide-suggestion[data-decoration-content] {
     inset-block: 0;
     border-radius: 0.525rem;
     z-index: -1;
-    background-color: var(--secondary);
+    background-color: var(--tt-secondary);
   }
 }
 
@@ -384,8 +382,8 @@ span.tiptide-suggestion[data-decoration-content] {
 
 /* Drop cursor */
 .prosemirror-dropcursor-block {
-  background-color: var(--ring) !important;
-  border-block: 1px solid var(--ring);
+  background-color: var(--tt-ring) !important;
+  border-block: 1px solid var(--tt-ring);
 }
 
 @keyframes tiptide-scale-out {

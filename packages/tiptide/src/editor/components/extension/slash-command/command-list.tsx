@@ -69,30 +69,30 @@ export const CommandList = forwardRef<CommandListRef, CommandListProps>(
     return (
       <div
         ref={containerRef}
-        className="tiptide-slash-command-container tiptide-theme bg-popover border-border z-50 grid max-h-80.5 w-55 scroll-py-1 overflow-y-auto rounded-md border p-1 shadow-md"
+        className="tiptide-slash-command-container tiptide-theme tt:bg-popover tt:border-border tt:z-50 tt:grid tt:max-h-80.5 tt:w-55 tt:scroll-py-1 tt:overflow-y-auto tt:rounded-md tt:border tt:p-1 tt:shadow-md"
       >
         {props.items.length ? (
           props.items.map((item, index) => (
             <Button
               key={index}
               onClick={() => selectItem(index)}
-              className="flex h-fit items-center justify-start gap-2 rounded-md px-2 text-start transition-none"
+              className="tt:flex tt:h-fit tt:items-center tt:justify-start tt:gap-2 tt:rounded-md tt:px-2 tt:text-start tt:transition-none"
               variant={index === selectedIndex ? 'secondary' : 'ghost'}
               type="button"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border">
-                <item.icon className="h-4 w-4" />
+              <span className="tt:flex tt:size-9 tt:shrink-0 tt:items-center tt:justify-center tt:rounded-md tt:border">
+                <item.icon className="tt:h-4 tt:w-4" />
               </span>
-              <span className="grid">
-                <span className="font-medium">{item.title}</span>
-                <span className="text-xs text-balance text-neutral-500">
+              <span className="tt:grid">
+                <span className="tt:font-medium">{item.title}</span>
+                <span className="tt:text-xs tt:text-balance tt:text-neutral-500">
                   {item.description}
                 </span>
               </span>
             </Button>
           ))
         ) : (
-          <div className="px-2 py-1.5 text-sm text-neutral-500">
+          <div className="tt:px-2 tt:py-1.5 tt:text-sm tt:text-neutral-500">
             No results found
           </div>
         )}
