@@ -21,7 +21,7 @@ const ImageBubbleMenuComponent = memo(function ImageBubbleMenu({
       pluginKey={'image-bubble-menu'}
       shouldShow={({ editor }) => editor.isActive('image')}
       className={cn(
-        'tiptide-bubble-menu-inner-element bg-background z-100 flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg',
+        'tiptide-theme tiptide-bubble-menu-inner-element bg-background z-100 flex flex-wrap items-center gap-1 rounded-md border p-1 shadow-lg',
         className,
       )}
       updateDelay={40}

@@ -9,6 +9,7 @@
     "start": "pnpm --filter tiptide-docs build && pnpm --filter tiptide-docs start",
     "lint": "pnpm -r lint",
     "type-check": "pnpm -r type-check",
+    "check": "pnpm lint && pnpm type-check",
     "format": "prettier --write .",
     "cs": "changeset"
   },
