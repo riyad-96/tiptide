@@ -26,7 +26,7 @@ export function Viewer({
     >
       <div
         className={cn(
-          `${tiptapStyleClasses} tiptide-preview whitespace-pre-wrap`,
+          `${tiptapStyleClasses} tiptide-preview tt:whitespace-pre-wrap`,
           className,
         )}
         dangerouslySetInnerHTML={{ __html: getHTML() }}
