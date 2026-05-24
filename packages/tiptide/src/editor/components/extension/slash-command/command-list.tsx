@@ -69,7 +69,7 @@ export const CommandList = forwardRef<CommandListRef, CommandListProps>(
     return (
       <div
         ref={containerRef}
-        className="tiptide-slash-command-container bg-popover border-border z-50 grid max-h-80.5 w-55 scroll-py-1 overflow-y-auto rounded-md border p-1 shadow-md"
+        className="tiptide-slash-command-container tiptide-theme bg-popover border-border z-50 grid max-h-80.5 w-55 scroll-py-1 overflow-y-auto rounded-md border p-1 shadow-md"
       >
         {props.items.length ? (
           props.items.map((item, index) => (

@@ -21,7 +21,9 @@ export function Viewer({
   }
 
   return (
-    <div className={cn('h-full overflow-x-auto', containerClassName)}>
+    <div
+      className={cn('tiptide-theme h-full overflow-x-auto', containerClassName)}
+    >
       <div
         className={cn(
           `${tiptapStyleClasses} tiptide-preview whitespace-pre-wrap`,

@@ -72,7 +72,7 @@ function TiptideProvider({
   return (
     <editorContext.Provider value={value}>
       <TooltipProvider>
-        <div className="text-primary grid h-full grid-rows-[auto_1fr] overflow-y-auto">
+        <div className="tiptide-theme text-primary grid h-full grid-rows-[auto_1fr] overflow-y-auto">
           {children}
         </div>
       </TooltipProvider>
