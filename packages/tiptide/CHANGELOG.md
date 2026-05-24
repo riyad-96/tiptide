@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.12
+
+### Patch Changes
+
+- ffdf509: trying to solve style issues.
+
 ## 0.0.11
 
 ### Patch Changes
