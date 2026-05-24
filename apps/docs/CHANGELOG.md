@@ -1,5 +1,14 @@
 # tiptide-web
 
+## 0.0.5
+
+### Patch Changes
+
+- 7049b79: improved editor builder page
+- Updated dependencies [7049b79]
+- Updated dependencies [99fd157]
+  - tiptide@0.0.13
+
 ## 0.0.4
 
 ### Patch Changes
