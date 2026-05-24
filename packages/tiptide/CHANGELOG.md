@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.15
+
+### Patch Changes
+
+- bececcb: fixing style issues
+
 ## 0.0.14
 
 ### Patch Changes
