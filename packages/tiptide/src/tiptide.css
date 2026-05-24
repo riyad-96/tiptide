@@ -9,9 +9,9 @@
 @theme inline {
   --color-background: var(--tt-background);
   --color-foreground: var(--tt-foreground);
-  --color-ring: var(--tt-ring);
-  --color-input: var(--tt-input);
-  --color-border: var(--tt-border);
+  --color-border: var(--tt-border, oklch(0.922 0 0));
+  --color-ring: var(--tt-ring, oklch(0.708 0 0));
+  --color-input: var(--tt-input, oklch(0.922 0 0));
   --color-destructive: var(--tt-destructive);
   --color-accent-foreground: var(--tt-accent-foreground);
   --color-accent: var(--tt-accent);
@@ -56,7 +56,8 @@
   --tt-ring: oklch(0.708 0 0);
 }
 
-.tiptide-theme:where(.dark, .dark *) {
+.tiptide-theme.dark,
+.dark .tiptide-theme {
   --tt-background: oklch(0.145 0 0);
   --tt-foreground: oklch(0.985 0 0);
   --tt-card: oklch(0.205 0 0);
@@ -88,11 +89,13 @@
     scrollbar-width: thin;
   }
 
-  .tiptide-theme:where(.dark, .dark *) {
+  .tiptide-theme.dark,
+  .dark .tiptide-theme {
     color-scheme: dark;
   }
 
-  .tiptide-theme:where(.dark, .dark *) * {
+  .tiptide-theme.dark *,
+  .dark .tiptide-theme * {
     scrollbar-color: var(--tt-ring) transparent;
   }
 }
