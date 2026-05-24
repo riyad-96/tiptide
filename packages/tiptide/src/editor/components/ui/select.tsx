@@ -37,7 +37,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "tt:border-input tt:data-placeholder:text-muted-foreground tt:[&_svg:not([class*='text-'])]:text-muted-foreground tt:focus-visible:border-ring tt:focus-visible:ring-ring/50 tt:aria-invalid:ring-destructive/20 tt:dark:aria-invalid:ring-destructive/40 tt:aria-invalid:border-destructive tt:dark:bg-input/30 tt:dark:hover:bg-input/50 tt:flex tt:w-fit tt:items-center tt:justify-between tt:gap-2 tt:rounded-md tt:border tt:border-border tt:bg-transparent tt:px-3 tt:py-2 tt:text-sm tt:whitespace-nowrap tt:shadow-xs tt:transition-[color,box-shadow] tt:outline-none tt:focus-visible:ring-[3px] tt:disabled:cursor-not-allowed tt:disabled:opacity-50 tt:data-[size=default]:h-9 tt:data-[size=sm]:h-8 tt:*:data-[slot=select-value]:line-clamp-1 tt:*:data-[slot=select-value]:flex tt:*:data-[slot=select-value]:items-center tt:*:data-[slot=select-value]:gap-2 tt:[&_svg]:pointer-events-none tt:[&_svg]:shrink-0 tt:[&_svg:not([class*='size-'])]:size-4",
+        "tt:data-placeholder:text-muted-foreground tt:[&_svg:not([class*='text-'])]:text-muted-foreground tt:focus-visible:border-ring tt:focus-visible:ring-ring/50 tt:aria-invalid:ring-destructive/20 tt:dark:aria-invalid:ring-destructive/40 tt:aria-invalid:border-destructive tt:dark:bg-input/30 tt:dark:hover:bg-input/50 tt:flex tt:w-fit tt:items-center tt:justify-between tt:gap-2 tt:rounded-md tt:border tt:border-border tt:bg-transparent tt:px-3 tt:py-2 tt:text-sm tt:whitespace-nowrap tt:shadow-xs tt:transition-[color,box-shadow] tt:outline-none tt:focus-visible:ring-[3px] tt:disabled:cursor-not-allowed tt:disabled:opacity-50 tt:data-[size=default]:h-9 tt:data-[size=sm]:h-8 tt:*:data-[slot=select-value]:line-clamp-1 tt:*:data-[slot=select-value]:flex tt:*:data-[slot=select-value]:items-center tt:*:data-[slot=select-value]:gap-2 tt:[&_svg]:pointer-events-none tt:[&_svg]:shrink-0 tt:[&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
@@ -94,7 +94,10 @@ function SelectLabel({
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn('tt:text-muted-foreground tt:px-2 tt:py-1.5 tt:text-xs', className)}
+      className={cn(
+        'tt:text-muted-foreground tt:px-2 tt:py-1.5 tt:text-xs',
+        className,
+      )}
       {...props}
     />
   );
@@ -134,7 +137,10 @@ function SelectSeparator({
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
-      className={cn('tt:bg-border tt:pointer-events-none tt:-mx-1 tt:my-1 tt:h-px', className)}
+      className={cn(
+        'tt:bg-border tt:pointer-events-none tt:-mx-1 tt:my-1 tt:h-px',
+        className,
+      )}
       {...props}
     />
   );

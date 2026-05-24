@@ -156,36 +156,36 @@ export const ToolsImage = memo(function ToolsImage({
               type="submit"
               size="sm"
               disabled={!imageUrl.trim() || isUploading}
-              className="shrink-0"
+              className="tt:shrink-0"
             >
-              <Link className="mr-1 h-3 w-3" />
+              <Link className="tt:mr-1 tt:h-3 tt:w-3" />
               <span>Insert</span>
             </Button>
           </div>
         </form>
 
-        <div className="relative flex items-center justify-center py-1">
-          <div className="absolute inset-0 flex items-center">
-            <span className="border-muted/50 border-border w-full border-t" />
+        <div className="tt:relative tt:flex tt:items-center tt:justify-center tt:py-1">
+          <div className="tt:absolute tt:inset-0 tt:flex tt:items-center">
+            <span className="border-muted/50 tt:border-border tt:w-full tt:border-t" />
           </div>
-          <span className="bg-popover text-muted-foreground relative px-2 text-[10px] font-medium tracking-wider uppercase">
+          <span className="tt:bg-popover tt:text-muted-foreground tt:relative tt:px-2 tt:text-[10px] tt:font-medium tt:tracking-wider tt:uppercase">
             or
           </span>
         </div>
 
-        <div className="flex flex-col gap-1.5">
+        <div className="tt:flex tt:flex-col tt:gap-1.5">
           <Button
             type="button"
             variant="outline"
             size="sm"
-            className="w-full justify-start text-xs font-normal"
+            className="tt:w-full tt:justify-start tt:text-xs tt:font-normal"
             disabled={isUploading}
             onClick={() => fileInputRef.current?.click()}
           >
             {isUploading ? (
-              <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+              <Loader2 className="tt:mr-2 tt:h-3.5 tt:w-3.5 tt:animate-spin" />
             ) : (
-              <Upload className="mr-2 h-3.5 w-3.5" />
+              <Upload className="tt:mr-2 tt:h-3.5 tt:w-3.5" />
             )}
             <span>
               {isUploading ? 'Uploading file...' : 'Upload from computer'}
@@ -197,14 +197,14 @@ export const ToolsImage = memo(function ToolsImage({
               type="button"
               variant="outline"
               size="sm"
-              className="w-full justify-start text-xs font-normal"
+              className="tt:w-full tt:justify-start tt:text-xs tt:font-normal"
               disabled={isUploading}
               onClick={() => {
                 onMediaLibraryClick(editor);
                 setIsOpen(false);
               }}
             >
-              <FolderOpen className="mr-2 h-3.5 w-3.5" />
+              <FolderOpen className="tt:mr-2 tt:h-3.5 tt:w-3.5" />
               <span>Choose from media library</span>
             </Button>
           )}
@@ -213,14 +213,14 @@ export const ToolsImage = memo(function ToolsImage({
             type="button"
             variant="outline"
             size="sm"
-            className="w-full justify-start text-xs font-normal"
+            className="tt:w-full tt:justify-start tt:text-xs tt:font-normal"
             disabled={isUploading}
             onClick={() => {
               editor.chain().focus().insertImagePlaceholder().run();
               setIsOpen(false);
             }}
           >
-            <ImageIcon className="mr-2 h-3.5 w-3.5" />
+            <ImageIcon className="tt:mr-2 tt:h-3.5 tt:w-3.5" />
             <span>Insert upload placeholder card</span>
           </Button>
         </div>
@@ -228,7 +228,7 @@ export const ToolsImage = memo(function ToolsImage({
         <input
           type="file"
           ref={fileInputRef}
-          className="hidden"
+          className="tt:hidden"
           accept="image/*"
           onChange={handleUpload}
         />
