@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.17
+
+### Patch Changes
+
+- 06bd0c8: style issue fixed
+
 ## 0.0.16
 
 ### Patch Changes
