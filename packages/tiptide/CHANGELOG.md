@@ -1,5 +1,12 @@
 # tiptide
 
+## 0.0.13
+
+### Patch Changes
+
+- 7049b79: fixed style conflict issues & changed some icons & minor improvements.
+- 99fd157: added prefix for tailwindcss classes
+
 ## 0.0.12
 
 ### Patch Changes
