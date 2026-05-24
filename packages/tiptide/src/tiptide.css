@@ -9,7 +9,6 @@
 @theme inline {
   --color-background: var(--tt-background);
   --color-foreground: var(--tt-foreground);
-  --font-mono: var(--font-geist-mono);
   --color-ring: var(--tt-ring);
   --color-input: var(--tt-input);
   --color-border: var(--tt-border);
@@ -78,26 +77,23 @@
   --tt-ring: oklch(0.556 0 0);
 }
 
-@layer base {
+@layer components {
   .tiptide-theme {
     @apply tt:bg-background tt:text-foreground;
 
-    &,
-    & * {
-      @apply tt:border-border tt:outline-ring/50;
-    }
+    scrollbar-width: thin;
+  }
 
-    * {
-      scrollbar-width: thin;
-    }
+  .tiptide-theme * {
+    scrollbar-width: thin;
+  }
 
-    &:where(.dark, .dark *) {
-      color-scheme: dark;
+  .tiptide-theme:where(.dark, .dark *) {
+    color-scheme: dark;
+  }
 
-      * {
-        scrollbar-color: var(--tt-ring) transparent;
-      }
-    }
+  .tiptide-theme:where(.dark, .dark *) * {
+    scrollbar-color: var(--tt-ring) transparent;
   }
 }
 
@@ -394,11 +390,5 @@ span.tiptide-suggestion[data-decoration-content] {
   to {
     transform: scale(1);
     opacity: 1;
-  }
-}
-
-@media (pointer: fine) {
-  button {
-    cursor: pointer;
   }
 }

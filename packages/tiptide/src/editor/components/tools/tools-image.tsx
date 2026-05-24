@@ -150,13 +150,13 @@ export const ToolsImage = memo(function ToolsImage({
               onChange={(e) => setImageUrl(e.target.value)}
               disabled={isUploading}
               type="url"
-              className="h-8 text-xs"
+              className="tt:h-8 text-xs"
             />
             <Button
               type="submit"
               size="sm"
               disabled={!imageUrl.trim() || isUploading}
-              className="h-8 shrink-0"
+              className="shrink-0"
             >
               <Link className="mr-1 h-3 w-3" />
               <span>Insert</span>
@@ -166,7 +166,7 @@ export const ToolsImage = memo(function ToolsImage({
 
         <div className="relative flex items-center justify-center py-1">
           <div className="absolute inset-0 flex items-center">
-            <span className="border-muted/50 w-full border-t" />
+            <span className="border-muted/50 border-border w-full border-t" />
           </div>
           <span className="bg-popover text-muted-foreground relative px-2 text-[10px] font-medium tracking-wider uppercase">
             or

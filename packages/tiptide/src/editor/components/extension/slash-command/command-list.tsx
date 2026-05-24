@@ -69,7 +69,7 @@ export const CommandList = forwardRef<CommandListRef, CommandListProps>(
     return (
       <div
         ref={containerRef}
-        className="tiptide-slash-command-container tiptide-theme tt:bg-popover tt:border-border tt:z-50 tt:grid tt:max-h-80.5 tt:w-55 tt:scroll-py-1 tt:overflow-y-auto tt:rounded-md tt:border tt:p-1 tt:shadow-md"
+        className="tiptide-slash-command-container tiptide-theme tt:bg-popover tt:z-50 tt:grid tt:max-h-80.5 tt:w-55 tt:scroll-py-1 tt:overflow-y-auto tt:rounded-md tt:border tt:border-border tt:p-1 tt:shadow-md"
       >
         {props.items.length ? (
           props.items.map((item, index) => (
@@ -80,7 +80,7 @@ export const CommandList = forwardRef<CommandListRef, CommandListProps>(
               variant={index === selectedIndex ? 'secondary' : 'ghost'}
               type="button"
             >
-              <span className="tt:flex tt:size-9 tt:shrink-0 tt:items-center tt:justify-center tt:rounded-md tt:border">
+              <span className="tt:flex tt:size-9 tt:shrink-0 tt:items-center tt:justify-center tt:rounded-md tt:border tt:border-border">
                 <item.icon className="tt:h-4 tt:w-4" />
               </span>
               <span className="tt:grid">

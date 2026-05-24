@@ -156,7 +156,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                   type="button"
                 >
                   <span
-                    className="tt:grid tt:size-6 tt:place-items-center tt:rounded-sm tt:border"
+                    className="tt:grid tt:size-6 tt:place-items-center tt:rounded-sm tt:border tt:border-border"
                     style={{ color: c.color }}
                   >
                     A
@@ -205,7 +205,7 @@ export const ToolsColorSelector = memo(function ToolsColorSelector({
                   type="button"
                 >
                   <span
-                    className="tt:grid tt:size-6 tt:place-items-center tt:rounded-sm tt:border"
+                    className="tt:grid tt:size-6 tt:place-items-center tt:rounded-sm tt:border tt:border-border"
                     style={{ backgroundColor: h.color }}
                   >
                     A
