@@ -56,7 +56,6 @@
   --tt-ring: oklch(0.708 0 0);
 }
 
-.tiptide-theme.dark,
 .dark .tiptide-theme {
   --tt-background: oklch(0.145 0 0);
   --tt-foreground: oklch(0.985 0 0);
@@ -89,12 +88,10 @@
     scrollbar-width: thin;
   }
 
-  .tiptide-theme.dark,
   .dark .tiptide-theme {
     color-scheme: dark;
   }
 
-  .tiptide-theme.dark *,
   .dark .tiptide-theme * {
     scrollbar-color: var(--tt-ring) transparent;
   }
