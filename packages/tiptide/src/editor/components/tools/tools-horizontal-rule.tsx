@@ -29,7 +29,7 @@ export const ToolsHorizontalRule = memo(function ToolsHorizontalRule({
 
   return (
     <Tooltip
-      content={tooltipContent ?? 'Divider'}
+      content={tooltipContent ?? 'Horizontal Rule'}
       hideTooltip={hideTooltip}
       side={tooltipPosition}
     >
@@ -40,7 +40,7 @@ export const ToolsHorizontalRule = memo(function ToolsHorizontalRule({
           editor.chain().focus().setHorizontalRule().run();
           if (typeof propOnClick === 'function') propOnClick(editor);
         }}
-        aria-label="Divider"
+        aria-label="Horizontal Rule"
         type="button"
         className={className}
       >

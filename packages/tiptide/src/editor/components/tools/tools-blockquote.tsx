@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
-import { TextQuoteIcon } from 'lucide-react';
+import { QuoteIcon } from 'lucide-react';
 
 import { Button } from '../ui/button';
 
@@ -45,7 +45,7 @@ export const ToolsBlockquote = memo(function ToolsBlockquote({
         type="button"
         className={className}
       >
-        {children ?? <TextQuoteIcon className="size-4" />}
+        {children ?? <QuoteIcon className="size-4" />}
       </Button>
     </Tooltip>
   );

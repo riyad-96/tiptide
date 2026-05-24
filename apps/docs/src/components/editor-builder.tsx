@@ -35,10 +35,12 @@ import {
   AlignJustify,
   RotateCcw,
   Trash2,
+  SeparatorHorizontal,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CodeBlock } from '@/components/code-block';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 const ALL_TOOLS = [
   { id: 'undo', label: 'Undo', icon: Undo },
@@ -59,7 +61,7 @@ const ALL_TOOLS = [
   { id: 'alignJustify', label: 'Align Justify', icon: AlignJustify },
   { id: 'image', label: 'Image', icon: ImageIcon },
   { id: 'codeblock', label: 'Code Block', icon: Code2 },
-  { id: 'horizontalRule', label: 'Horizontal Rule', icon: Minus },
+  { id: 'horizontalRule', label: 'Horizontal Rule', icon: SeparatorHorizontal },
 ] as const;
 
 type ToolId = (typeof ALL_TOOLS)[number]['id'] | 'separator';
@@ -145,17 +147,13 @@ export function EditorBuilder() {
     updateConfig({ activeTools: [...DEFAULT_TOOLS] });
   };
 
-  const generatedCode = `import { useState } from 'react';
-import { 
+  const generatedCode = `import { 
   TiptideProvider,
-  type TiptideContentType,
   TiptideTextarea,
 ${currentConfig.includeToolbar ? '  Toolbar,\n  Tools,\n' : ''}${currentConfig.includeBubbleMenu ? '  BubbleMenu,\n' : ''}${currentConfig.includeImageBubbleMenu ? '  ImageBubbleMenu,\n' : ''}} from 'tiptide';
 import 'tiptide/styles';
 
 export function CustomTiptideEditor() {
-  const [content, setContent] = useState<TiptideContentType>();
-
   return (
     <TiptideProvider content={content} onChange={(editor) => setContent(editor.getJSON())}>
       <div className="flex flex-col border border-neutral-200 rounded-lg overflow-hidden dark:border-neutral-800">
@@ -163,11 +161,11 @@ ${
   currentConfig.includeToolbar && currentConfig.toolbarPosition === 'top'
     ? `        <Toolbar className="border-b border-neutral-200 bg-neutral-50 px-2 py-1 dark:border-neutral-800 dark:bg-neutral-900">
 ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
-        </Toolbar>\n`
+        </Toolbar>\n\n`
     : ''
 }        <div className="min-h-[300px] bg-white dark:bg-neutral-950 text-sm">
           <TiptideTextarea />
-        </div>
+        </div>\n
 ${
   currentConfig.includeToolbar && currentConfig.toolbarPosition === 'bottom'
     ? `\n        <Toolbar className="border-t border-neutral-200 bg-neutral-50 px-2 py-1 dark:border-neutral-800 dark:bg-neutral-900">
@@ -202,7 +200,6 @@ ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
                 size="icon"
                 onClick={handleUndo}
                 disabled={historyIndex === 0}
-                className="h-7 w-7 rounded-md border-neutral-200 dark:border-neutral-800"
                 title="Undo config change"
               >
                 <Undo className="h-3.5 w-3.5" />
@@ -212,7 +209,6 @@ ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
                 size="icon"
                 onClick={handleRedo}
                 disabled={historyIndex === history.length - 1}
-                className="h-7 w-7 rounded-md border-neutral-200 dark:border-neutral-800"
                 title="Redo config change"
               >
                 <Redo className="h-3.5 w-3.5" />
@@ -248,20 +244,30 @@ ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
                     Position
                   </span>
                   <div className="flex gap-2">
-                    <button
+                    <Button
                       onClick={() => updateConfig({ toolbarPosition: 'top' })}
-                      className={`flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${currentConfig.toolbarPosition === 'top' ? 'bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900' : 'bg-neutral-200/50 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400'}`}
+                      variant={
+                        currentConfig.toolbarPosition === 'top'
+                          ? 'default'
+                          : 'outline'
+                      }
+                      className="flex-1"
                     >
                       Top
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       onClick={() =>
                         updateConfig({ toolbarPosition: 'bottom' })
                       }
-                      className={`flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${currentConfig.toolbarPosition === 'bottom' ? 'bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900' : 'bg-neutral-200/50 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400'}`}
+                      variant={
+                        currentConfig.toolbarPosition === 'bottom'
+                          ? 'default'
+                          : 'outline'
+                      }
+                      className="flex-1"
                     >
                       Bottom
-                    </button>
+                    </Button>
                   </div>
                 </div>
               )}
@@ -315,18 +321,24 @@ ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
                       tool.id,
                     );
                     return (
-                      <button
+                      <Tooltip
                         key={tool.id}
-                        onClick={() => toggleTool(tool.id)}
-                        title={tool.label}
-                        className={`flex h-8 w-8 items-center justify-center rounded-md border transition-colors ${
-                          isActive
-                            ? 'border-neutral-900 bg-neutral-900 text-white dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900'
-                            : 'border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:bg-neutral-900'
-                        }`}
+                        delayDuration={700}
+                        disableHoverableContent
                       >
-                        <Icon className="h-4 w-4" />
-                      </button>
+                        <TooltipTrigger asChild>
+                          <Button
+                            key={tool.id}
+                            onClick={() => toggleTool(tool.id)}
+                            variant={isActive ? 'default' : 'outline'}
+                            size="icon"
+                          >
+                            <Icon />
+                          </Button>
+                        </TooltipTrigger>
+
+                        <TooltipContent>{tool.label}</TooltipContent>
+                      </Tooltip>
                     );
                   })}
                 </div>
@@ -386,7 +398,7 @@ ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
                         return (
                           <div
                             key={`${toolId}-${index}`}
-                            className="flex items-center gap-1.5 rounded border border-neutral-200 bg-white px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300"
+                            className="relative flex items-center gap-1.5 rounded border border-neutral-200 bg-white px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300"
                           >
                             <ToolIcon className="h-3 w-3 shrink-0" />
                             <span className="max-w-[70px] truncate">
@@ -398,6 +410,7 @@ ${currentConfig.activeTools.map((t) => `          <Tools.${t} />`).join('\n')}
                               title={`Remove ${label}`}
                             >
                               ×
+                              <span className="absolute inset-0" />
                             </button>
                           </div>
                         );

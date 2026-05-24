@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useEditorState } from '@tiptap/react';
-import { CodeXmlIcon } from 'lucide-react';
+import { CodeIcon } from 'lucide-react';
 
 import { Button } from '../ui/button';
 
@@ -45,7 +45,7 @@ export const ToolsCode = memo(function ToolsCode({
         type="button"
         className={className}
       >
-        {children ?? <CodeXmlIcon className="size-4" />}
+        {children ?? <CodeIcon className="size-4" />}
       </Button>
     </Tooltip>
   );
