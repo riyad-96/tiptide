@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.18
+
+### Patch Changes
+
+- e07763a: fixing class prefix issues
+
 ## 0.0.17
 
 ### Patch Changes
