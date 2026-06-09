@@ -1,5 +1,11 @@
 # tiptide
 
+## 0.0.19
+
+### Patch Changes
+
+- f50f6c2: fixing the border style override issue.
+
 ## 0.0.18
 
 ### Patch Changes
